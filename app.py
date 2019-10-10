@@ -8,4 +8,4 @@ app.register_blueprint(api.user.view.user, url_prefix ="/user")
 CORS(app, supports_credentials=True)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0",port=5000)
