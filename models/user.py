@@ -49,7 +49,3 @@ class UserRegister():
             return
 
 
-
-
-
-

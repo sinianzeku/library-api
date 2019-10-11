@@ -18,3 +18,20 @@ def into_register_info(username,password):
         return [False,"注册出错"]
     finally:
         db.close()
+
+
+def user_login(username,password):
+    db = pymysql.connect("127.0.0.1", "root", "123456", "library")
+    cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
+    try:
+        sql = 'select count(*) as count from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        if result[0]["count"]:
+            return [True,"登入成功"]
+        else:
+            return [False,"账号或密码错误"]
+    except:
+        return [False,"系统出错，登入失败"]
+    finally:
+        db.close()
