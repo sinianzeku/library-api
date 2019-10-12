@@ -70,17 +70,13 @@ def user_verify_login():
         into_resutl = user_login(username_result[1],password_result[1])
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
-        if "username"in session :
-            return jsonify({"status": -1, "message": "用户已经登入"})
-        session["username"] = username
-        return jsonify({"status": 0, "message": into_resutl[1],"data":escape(session['username'])})
+        return jsonify({"status": 0, "message": into_resutl[1],"data":username})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
 
 
 @user.route("logout", methods = ["post"])
 def logout():
-    session.pop("username",None)
     return jsonify({"status": 0, "message": "退出成功"})
 
 @user.route("UpdatePassword",methods = ["post"])
