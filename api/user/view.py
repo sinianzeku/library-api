@@ -1,4 +1,4 @@
-from flask import Blueprint,jsonify,request,session,escape
+from flask import Blueprint,jsonify,request
 from models.user import UserRegister
 from db.user import into_register_info,user_login
 from flask_mail import Mail,Message
@@ -73,6 +73,8 @@ def user_verify_login():
         return jsonify({"status": 0, "message": into_resutl[1],"data":username})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
+
+
 
 
 @user.route("logout", methods = ["post"])
