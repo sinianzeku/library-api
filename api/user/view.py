@@ -9,24 +9,27 @@ user = Blueprint("user",__name__)
 
 @user.route("register",methods = ["post"])
 def user_verify_register():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    username = data["username"]
-    password = data["password"]
-    verifycode = data["verifycode"]
-    email = data["email"]
-    user = UserRegister(username,password)
-    password_result = user.password
-    username_result = user.username
-    if email and verifycode != dict_Verify[email]:
-        return jsonify({"status": -1, "message": "验证码错误"})
-    if not username_result[0]:
-        return jsonify({"status": -1, "message": username_result[1]})
-    if not password_result[0]:
-        return jsonify({"status": -1, "message": password_result[1]})
-    into_resutl = into_register_info(username_result[1],password_result[1])
-    if not into_resutl[0]:
-        return jsonify({"status": -1, "message": into_resutl[1]})
-    return jsonify({"status": 0, "message": into_resutl[1]})
+    try:
+        data = json.loads(request.get_data("").decode("utf-8"))
+        username = data["username"]
+        password = data["password"]
+        verifycode = data["verifycode"]
+        email = data["email"]
+        user = UserRegister(username,password)
+        password_result = user.password
+        username_result = user.username
+        if email and verifycode != dict_Verify[email]:
+            return jsonify({"status": -1, "message": "验证码错误"})
+        if not username_result[0]:
+            return jsonify({"status": -1, "message": username_result[1]})
+        if not password_result[0]:
+            return jsonify({"status": -1, "message": password_result[1]})
+        into_resutl = into_register_info(username_result[1],password_result[1])
+        if not into_resutl[0]:
+            return jsonify({"status": -1, "message": into_resutl[1]})
+        return jsonify({"status": 0, "message": into_resutl[1]})
+    except:
+        return jsonify({"status": -1, "message": "服务器出错"})
 
 @user.route("email_verify",methods = ["post"])
 def email_verify():
@@ -47,34 +50,32 @@ def email_verify():
 
 @user.route("login",methods = ["post"])
 def user_verify_login():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    username = data["username"]
-    password = data["password"]
-    user = UserRegister(username,password)
-    username_result = user.username
-    password_result = user.password
-    if not username_result[0]:
-        return jsonify({"status": -1, "message": username_result[1]})
-    if not password_result[0]:
-        return jsonify({"status": -1, "message": "密码错误"})
-    into_resutl = user_login(username_result[1],password_result[1])
-    if not into_resutl[0]:
-        return jsonify({"status": -1, "message": into_resutl[1]})
-    if "username"in session :
-        return jsonify({"status": -1, "message": "用户已经登入"})
-    session["username"] = username
-    return jsonify({"status": 0, "message": into_resutl[1],"data":escape(session['username'])})
+    try:
+        data = json.loads(request.get_data("").decode("utf-8"))
+        username = data["username"]
+        password = data["password"]
+        user = UserRegister(username,password)
+        username_result = user.username
+        password_result = user.password
+        if not username_result[0]:
+            return jsonify({"status": -1, "message": username_result[1]})
+        if not password_result[0]:
+            return jsonify({"status": -1, "message": "密码错误"})
+        into_resutl = user_login(username_result[1],password_result[1])
+        if not into_resutl[0]:
+            return jsonify({"status": -1, "message": into_resutl[1]})
+        if "username"in session :
+            return jsonify({"status": -1, "message": "用户已经登入"})
+        session["username"] = username
+        return jsonify({"status": 0, "message": into_resutl[1],"data":escape(session['username'])})
+    except:
+        return jsonify({"status": -1, "message": "服务器出错"})
+
 
 @user.route("logout", methods = ["post"])
 def logout():
     session.pop("username",None)
     return jsonify({"status": 0, "message": "退出成功"})
-
-
-
-
-
-
 
 @user.route("UpdatePassword",methods = ["post"])
 def user_change_password():

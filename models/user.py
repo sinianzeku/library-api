@@ -22,7 +22,7 @@ class UserRegister():
             err = "密码含有非法字符"
             self._password = [False,err]
             return
-        if not (len(password)>=8 and len(password)<=16):
+        if not (len(password)>=6 and len(password)<=16):
             err = "密码长度必须在8—16之间"
             self._password = [False, err]
             return
@@ -40,7 +40,7 @@ class UserRegister():
             err = "用户名含有非法字符"
             self._username = [False,err]
             return
-        if not (len(username)>=4 and len(username)<=16):
+        if not (len(username)>=2 and len(username)<=16):
             err = "用户名长度应为4—16个字符"
             self._username = [False, err]
             return
