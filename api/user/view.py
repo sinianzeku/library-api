@@ -13,11 +13,17 @@ def user_verify_register():
         data = json.loads(request.get_data("").decode("utf-8"))
         username = data["username"]
         password = data["password"]
+        cpassword = data["cpassword"]
         verifycode = data["verifycode"]
         email = data["email"]
+
+        if password != cpassword:
+            return jsonify({"status": -1, "message": "两次密码不一致"})
+
         user = UserRegister(username,password)
         password_result = user.password
         username_result = user.username
+
         if email and verifycode != dict_Verify[email]:
             return jsonify({"status": -1, "message": "验证码错误"})
         if not username_result[0]:

@@ -21,7 +21,7 @@ def into_register_info(username,password):
 
 
 def user_login(username,password):
-    db = pymysql.connect("127.0.0.1", "root", "123456", "library")
+    db = pymysql.connect("47.96.139.19", "root", "123456", "library")
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
     try:
         sql = 'select count(*) as count from user where user_account = "{}" and user_password = "{}"'.format(username,password)
