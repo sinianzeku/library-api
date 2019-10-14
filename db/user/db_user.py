@@ -1,6 +1,6 @@
 import pymysql
-def into_register_info(username,password):
-    db = pymysql.connect("47.96.139.19", "root", "123456", "library")
+def into_register_info(username,password,email):
+    db = pymysql.connect("127.0.0.1", "root", "123456", "library")
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
     try:
         sql = "select count(user_account) as count from user where user_account = '{}'".format(username)
@@ -9,7 +9,7 @@ def into_register_info(username,password):
         if result[0]["count"]:
             return [False,"该用户已存在"]
         else:
-            sql = 'INSERT INTO user(user_account,user_password) VALUES("{}","{}")'.format(username,password)
+            sql = 'INSERT INTO user(user_account,user_password,user_email) VALUES("{}","{}","{}")'.format(username,password,email)
             cursor.execute(sql)
             cursor.fetchall()
             db.commit()
