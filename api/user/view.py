@@ -1,9 +1,9 @@
 from flask import Blueprint,jsonify,request
-from models.user import UserRegister
-from db.user import into_register_info,user_login
+from models.user.user import UserRegister
+from db.user.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
-from models.emailverify import dict_Verify
+from models.user.emailverify import dict_Verify
 
 user = Blueprint("user",__name__)
 

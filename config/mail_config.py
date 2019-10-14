@@ -10,7 +10,7 @@ MAIL_USERNAME = "374652530@qq.com"
 MAIL_PASSWORD = "qjrlnuwjzbjicadd" #生成的授权码
 
 MAIL_DEFAULT_SENDER = "374652530@qq.com"
-# MAIL_DEFAULT_SENDER = "pepper.hot@qq.com"
+
 
 
 # MAIL_SERVER	localhost	电子邮件服务器的主机名或IP地址

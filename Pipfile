@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 verify_ssl = true
 
 [dev-packages]
@@ -10,6 +10,11 @@ flask = "*"
 flask-cors = "*"
 pymysql = "*"
 flask-mail = "*"
+qrcode = "*"
+image = "*"
+xpinyin = "==0.5.6"
+opencv-python = "*"
+pyzbar = "*"
 
 [requires]
 python_version = "3.6"
