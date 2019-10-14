@@ -9,7 +9,7 @@ user = Blueprint("user",__name__)
 
 @user.route("register",methods = ["post"])
 def user_verify_register():
-    # try:
+    try:
         data = json.loads(request.get_data("").decode("utf-8"))
         username = data["username"]
         password = data["password"]
@@ -35,8 +35,8 @@ def user_verify_register():
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
         return jsonify({"status": 0, "message": into_resutl[1]})
-    # except:
-    #     return jsonify({"status": -1, "message": "服务器出错"})
+    except:
+        return jsonify({"status": -1, "message": "服务器出错"})
 
 @user.route("email_verify",methods = ["post"])
 def email_verify():

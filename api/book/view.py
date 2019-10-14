@@ -23,5 +23,11 @@ def new_book_entry():
 
 
 
+@book.route("sweep_code",methods = ["POST"])
+def sweep_code():
+    books.sweepcode()
+    return jsonify({"status": 0, "message": "null"})
+
+
 
 
