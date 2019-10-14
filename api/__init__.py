@@ -1,1 +1,1 @@
-from . import user,book
+from . import user,book,user_activity

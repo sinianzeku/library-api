@@ -1,9 +1,9 @@
 import pymysql
 
-def insertnewbook(auther,bookname,QR_path):
+def insertnewbook(keys,values):
     try:
-        db = pymysql.connect("47.96.139.19", "root", "123456", "library")
-        sql = 'insert into book (bookname,auther,QR_path)  VALUES ("{}","{}","{}")'.format(bookname,auther,QR_path)
+        db = pymysql.connect("127.0.0.1", "root", "123456", "library")
+        sql = "insert into book_info ({}) values ({})".format(keys,'"'+values+'"')
         cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
         cursor.execute(sql)
         cursor.fetchall()

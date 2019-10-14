@@ -14,6 +14,8 @@ mail.init_app(app)
 
 app.register_blueprint(api.user.view.user, url_prefix = "/user")
 app.register_blueprint(api.book.view.book, url_prefix = "/book")
+app.register_blueprint(api.user_activity.view.user_activity, url_prefix = "/user_activity")
+
 CORS(app, supports_credentials=True)
 
 if __name__ == "__main__":

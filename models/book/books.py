@@ -23,20 +23,22 @@ class ChineseToPinyin():
 class NewBookEntry():
     def __init__(self,data):
         self.data = data
-        self.bookname = data["bookname"]
-        self.auther = data["auther"]
+        self.synopsis = data["synopsis"]
+
+        py = ChineseToPinyin(data["book_name"], data["book_auther"])
+        self.bookname = py.bookname_to_py()
+        self.auther = py.auther_to_py()
+
 
     #生成二维码
     def generate_QR_code(self):
         try:
-            py = ChineseToPinyin(self.bookname,self.auther)
-            bookname = py.bookname_to_py()
-            auther = py.auther_to_py()
+
             QR_path = 'C:/Users/zpg/Desktop/QR'
             if not os.path.exists(QR_path):
                 os.makedirs(QR_path)
-            self.QR_path =QR_path +'/{}-{}.png'.format(bookname,auther)
-            # 实例化QRCode生成qr对象
+            self.data["book_QR_path"] =QR_path +'/{}-{}.png'.format(self.bookname,self.auther)
+
             qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -46,19 +48,30 @@ class NewBookEntry():
             qr.add_data(self.data)
             qr.make(fit=True)
             img = qr.make_image()
-            img.save(self.QR_path)
+            img.save(self.data["book_QR_path"])
             return [True]
         except:
             return [False]
+    #保存简介
+    def save_synopsis(self):
+        try:
+            synopsis_path = 'C:/Users/zpg/Desktop/synopsis'
+            self.data["book_synopsis_path"] = synopsis_path + '/{}-{}.txt'.format(self.bookname, self.auther)
+            file_handle = open(self.data["book_synopsis_path"], mode='w')
+            file_handle.write(self.synopsis)
+            file_handle.close()
+            return True
+        except:
+            return False
 
 
     #数据入库
     def data_access_to_database(self):
-        auther = self.auther
-        bookname = self.bookname
-        QR_path = self.QR_path
-        result = db_book.insertnewbook(auther,bookname,QR_path)
-        return result
+        self.data.pop("synopsis")
+        keys = ",".join(list(self.data.keys()))
+        values = '","'.join(list(self.data.values()))
+        result = db_book.insertnewbook(keys,values,)
+        return True
 
 
 

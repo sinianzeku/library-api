@@ -84,6 +84,12 @@ def logout():
 
 @user.route("UpdatePassword",methods = ["post"])
 def user_change_password():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    print(data)
+    data["abc"] = "sadsda"
+    print(data)
+    iter_key = iter(list(data.keys()))
+    iter_value = iter(list(data.values()))
     return jsonify({"status":0,"message":"update  password success"})
 
 
