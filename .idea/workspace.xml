@@ -2,18 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/user_activity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/user_activity/view.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/user_activity/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/user_activity/db_user_activity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user_activity/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/db_book.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/emailverify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_activity/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/book/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/book/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/user/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/user/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/book/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/book/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/book/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user_activity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user_activity/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/view.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/book/db_book.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/book/db_book.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/book/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/book/books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/book/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/book/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/book/db_book.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/user/db_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/db_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/user_activity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/user_activity/db_user_activity.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/db_user_activity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/book/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/book/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/book/books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user/emailverify.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/emailverify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user_activity/__init__.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +75,7 @@
     <session id="1282909388">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
@@ -68,28 +85,28 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="31" />
-          <entry key="dummy" value="15" />
-          <entry key="py" value="10014" />
+          <entry key="dummy" value="16" />
+          <entry key="py" value="10215" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="10045" />
+          <entry key="PLAIN_TEXT" value="19" />
+          <entry key="Python" value="10246" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Pipfile" value="5" />
           <entry key="lock" value="1" />
-          <entry key="py" value="106" />
+          <entry key="py" value="119" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="106" />
+          <entry key="Python" value="119" />
           <entry key="TOML" value="5" />
         </counts>
       </usages-collector>
@@ -97,68 +114,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="14" column="64" lean-forward="true" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+            <state relative-caret-position="293">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/user/view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3096">
-              <caret line="86" column="59" lean-forward="true" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="59" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <marker date="1571043964799" expanded="true" signature="3004:3058" ph="..." />
-                <marker date="1571043964799" expanded="true" signature="3058:3059" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/book/view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="18" column="45" lean-forward="true" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/book/books.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <marker date="1571048322473" expanded="true" signature="114:119" ph="..." />
-                <marker date="1571048322473" expanded="true" signature="795:796" ph="..." />
-                <marker date="1571048322473" expanded="true" signature="1483:1876" ph="..." />
-                <marker date="1571048322473" expanded="true" signature="2056:2065" ph="..." />
-                <marker date="1571048322473" expanded="true" signature="2133:3200" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/book/db_book.py">
+        <entry file="file://$PROJECT_DIR$/book/view.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+              <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
               <folding>
-                <marker date="1571048095160" expanded="true" signature="47:52" ph="..." />
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/view.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+              <folding>
+                <marker date="1571063506174" expanded="true" signature="2987:3041" ph="..." />
+                <marker date="1571063506174" expanded="true" signature="3041:3042" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_activity/view.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1571063341712" expanded="true" signature="176:299" ph="..." />
               </folding>
             </state>
           </provider>
@@ -181,8 +181,6 @@
       <list>
         <option value="$PROJECT_DIR$/test/text.py" />
         <option value="$PROJECT_DIR$/test/view.py" />
-        <option value="$PROJECT_DIR$/user/__init__.py" />
-        <option value="$PROJECT_DIR$/user/view.py" />
         <option value="$PROJECT_DIR$/text-----------------------------------------.py" />
         <option value="$PROJECT_DIR$/db/a.py" />
         <option value="$PROJECT_DIR$/api/user/email.py" />
@@ -203,19 +201,24 @@
         <option value="$PROJECT_DIR$/db/user/db_user.py" />
         <option value="$PROJECT_DIR$/api/user_activity/__init__.py" />
         <option value="$PROJECT_DIR$/api/__init__.py" />
-        <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/api/user_activity/view.py" />
         <option value="$PROJECT_DIR$/db/user_activity/db_user_activity.py" />
         <option value="$PROJECT_DIR$/api/user/view.py" />
-        <option value="$PROJECT_DIR$/api/book/view.py" />
         <option value="$PROJECT_DIR$/db/book/db_book.py" />
+        <option value="$PROJECT_DIR$/api/book/view.py" />
         <option value="$PROJECT_DIR$/models/book/books.py" />
+        <option value="$PROJECT_DIR$/api/user_activity/view.py" />
+        <option value="$PROJECT_DIR$/api/user/__init__.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/user/__init__.py" />
+        <option value="$PROJECT_DIR$/book/__init__.py" />
+        <option value="$PROJECT_DIR$/user_activity/__init__.py" />
+        <option value="$PROJECT_DIR$/user/view.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="695" />
-    <option name="y" value="7" />
+    <option name="y" value="6" />
     <option name="width" value="1425" />
     <option name="height" value="825" />
   </component>
@@ -235,6 +238,11 @@
               <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="library-api" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="book" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -247,15 +255,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\flask-api\lib\library-api\db" />
-      <recent name="G:\flask-api\lib\library-api\models\user" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\flask-api\lib\library-api\user_activity" />
+      <recent name="G:\flask-api\lib\library-api\book" />
+      <recent name="G:\flask-api\lib\library-api\user" />
       <recent name="G:\flask-api\lib\library-api\models\book" />
       <recent name="G:\flask-api\lib\library-api\models\user" />
-      <recent name="G:\flask-api\lib\library-api\db\user" />
-      <recent name="G:\flask-api\library-api\api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\flask-api\lib\library-api\user" />
+      <recent name="G:\flask-api\lib\library-api\db" />
+      <recent name="G:\flask-api\lib\library-api\models\user" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -304,7 +314,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="G:\flask-api\lib\library-api\models\book\books.py" />
+      <option name="SCRIPT_NAME" value="G:\flask-api\lib\library-api\book\books.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -325,7 +335,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/book/books.py" />
+      <option name="SCRIPT_NAME" value="G:\flask-api\lib\library-api\book\books.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -346,7 +356,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db/book/db_book.py" />
+      <option name="SCRIPT_NAME" value="G:\flask-api\lib\library-api\book\db_book.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -388,7 +398,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api/user/view.py" />
+      <option name="SCRIPT_NAME" value="G:\flask-api\lib\library-api\user\view.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -538,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571032212051</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="zpg">
+      <created>1571048825576</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1571048825576</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -554,12 +571,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04029062" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17701453" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6103038" visible="true" weight="0.24220963" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6103038" weight="0.3427762" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993395" weight="0.44334278" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -612,34 +629,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/envs/library-api-_xae6i_D/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-_xae6i_D/Lib/sre_compile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="561" selection-start-line="561" selection-end-line="561" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-_xae6i_D/Lib/sre_parse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-_xae6i_D/Lib/site-packages/pip/_vendor/urllib3/packages/rfc3986/exceptions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="83" column="6" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/envs/library-api-_xae6i_D/Lib/site-packages/pymysql/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -808,13 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/mail_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/user/emailverify.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -835,13 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/user/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/user_activity/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -856,14 +831,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/user/db_user.py">
+    <entry file="file://$PROJECT_DIR$/user/db_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/user_activity/db_user_activity.py">
+    <entry file="file://$PROJECT_DIR$/user_activity/db_user_activity.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
@@ -873,70 +848,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/user_activity/view.py">
+    <entry file="file://$PROJECT_DIR$/book/db_book.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        <state relative-caret-position="-72">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <marker date="1571050109866" expanded="true" signature="47:52" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/user/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/books.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1571063341677" expanded="true" signature="111:116" ph="..." />
+            <marker date="1571063341677" expanded="true" signature="1486:1879" ph="..." />
+            <marker date="1571063341677" expanded="true" signature="2059:2068" ph="..." />
+            <marker date="1571063341677" expanded="true" signature="2168:3235" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/emailverify.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/email_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/book/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <marker date="1571063506174" expanded="true" signature="2987:3041" ph="..." />
+            <marker date="1571063506174" expanded="true" signature="3041:3042" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1571034102501" expanded="true" signature="176:298" ph="..." />
+            <marker date="1571063341712" expanded="true" signature="176:299" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="14" column="64" lean-forward="true" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+        <state relative-caret-position="293">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/user/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3096">
-          <caret line="86" column="59" lean-forward="true" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <marker date="1571043964799" expanded="true" signature="3004:3058" ph="..." />
-            <marker date="1571043964799" expanded="true" signature="3058:3059" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/book/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="18" column="45" lean-forward="true" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/book/db_book.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-          <folding>
-            <marker date="1571048095160" expanded="true" signature="47:52" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/book/books.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1571048322473" expanded="true" signature="114:119" ph="..." />
-            <marker date="1571048322473" expanded="true" signature="795:796" ph="..." />
-            <marker date="1571048322473" expanded="true" signature="1483:1876" ph="..." />
-            <marker date="1571048322473" expanded="true" signature="2056:2065" ph="..." />
-            <marker date="1571048322473" expanded="true" signature="2133:3200" ph="..." />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

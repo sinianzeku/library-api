@@ -9,3 +9,4 @@ def book_enquiry():
     query_mode = data["query_mode"]
 
 
+

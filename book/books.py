@@ -1,5 +1,5 @@
 from xpinyin import Pinyin
-from db.book import db_book
+from book import db_book
 import qrcode
 import os
 
@@ -24,7 +24,6 @@ class NewBookEntry():
     def __init__(self,data):
         self.data = data
         self.synopsis = data["synopsis"]
-
         py = ChineseToPinyin(data["book_name"], data["book_auther"])
         self.bookname = py.bookname_to_py()
         self.auther = py.auther_to_py()
@@ -32,26 +31,24 @@ class NewBookEntry():
 
     #生成二维码
     def generate_QR_code(self):
-        try:
-
+        # try:
             QR_path = 'C:/Users/zpg/Desktop/QR'
             if not os.path.exists(QR_path):
                 os.makedirs(QR_path)
             self.data["book_QR_path"] =QR_path +'/{}-{}.png'.format(self.bookname,self.auther)
-
             qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_H,
                 box_size=10,
                 border=4
             )
-            qr.add_data(self.data)
+            qr.add_data(self.book_id)
             qr.make(fit=True)
             img = qr.make_image()
             img.save(self.data["book_QR_path"])
             return [True]
-        except:
-            return [False]
+        # except:
+        #     return [False]
     #保存简介
     def save_synopsis(self):
         try:
@@ -70,7 +67,8 @@ class NewBookEntry():
         self.data.pop("synopsis")
         keys = ",".join(list(self.data.keys()))
         values = '","'.join(list(self.data.values()))
-        result = db_book.insertnewbook(keys,values,)
+        result = db_book.insertnewbook(keys, values, )
+        self.book_id = result
         return True
 
 
