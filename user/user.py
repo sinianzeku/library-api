@@ -23,7 +23,7 @@ class UserRegister():
             self._password = [False,err]
             return
         if not (len(password)>=6 and len(password)<=16):
-            err = "密码长度必须在8—16之间"
+            err = "密码长度必须在6—16之间"
             self._password = [False, err]
             return
         else:
