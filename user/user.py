@@ -41,7 +41,7 @@ class UserRegister():
             self._username = [False,err]
             return
         if not (len(username)>=2 and len(username)<=16):
-            err = "用户名长度应为4—16个字符"
+            err = "用户名长度应为2—16个字符"
             self._username = [False, err]
             return
         else:
