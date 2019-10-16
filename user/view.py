@@ -1,9 +1,9 @@
 from flask import Blueprint,jsonify,request
-from user.user import UserRegister
+from user.verify.userverify import UserRegister
 from user.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
-from user.emailverify import dict_Verify
+from user.verify.emailverify import dict_Verify
 
 user = Blueprint("user",__name__)
 
@@ -20,7 +20,8 @@ def user_verify_register():
         if password != cpassword:
             return jsonify({"status": -1, "message": "两次密码不一致"})
 
-        user = UserRegister(username,password)
+        user = UserRegister(username,
+                            password)
         password_result = user.password
         username_result = user.username
 
@@ -31,7 +32,9 @@ def user_verify_register():
         if not password_result[0]:
             return jsonify({"status": -1, "message": password_result[1]})
 
-        into_resutl = into_register_info(username_result[1],password_result[1],email)
+        into_resutl = into_register_info(username_result[1],
+                                         password_result[1],
+                                         email)
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
         return jsonify({"status": 0, "message": into_resutl[1]})

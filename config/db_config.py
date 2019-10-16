@@ -19,7 +19,3 @@ def mysql_module(sql):
     finally:
         db.close()
 
-sql = "select * from book_info where instr(book_auther,'lx1f')"
-result = mysql_module(sql)
-
-print(not result[1])
