@@ -24,7 +24,7 @@ def user_verify_register():
         password_result = user.password
         username_result = user.username
 
-        if email and verifycode != dict_Verify[email]:
+        if email not in dict_Verify.keys() or verifycode != dict_Verify[email]:
             return jsonify({"status": -1, "message": "验证码错误"})
         if not username_result[0]:
             return jsonify({"status": -1, "message": username_result[1]})

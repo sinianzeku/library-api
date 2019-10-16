@@ -1,24 +1,19 @@
-import pymysql
+from config.db_config import mysql_module
 
 def insertnewbook(keys,values):
-    # try:
-        db = pymysql.connect("127.0.0.1", "root", "123456", "library")
-        cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
-        sql = "insert into book_info ({}) values ({})".format(keys,'"'+values+'"')
-        print(sql)
-        cursor.execute(sql)
-        cursor.fetchall()
-        db.commit()
-
+    try:
+        sql = "insert into book_info ({}) values ({})".format(keys, '"' + values + '"')
+        into_result = mysql_module(sql)
+        if not into_result[0]:
+            return [False,"数据存储失败"]
         sql1 = 'SELECT book_id from book_info where book_id = (SELECT max(book_id) FROM book_info)'
-        cursor.execute(sql1)
-        result = cursor.fetchall()
-        print(result[0]["book_id"])
-        return [result[0]["book_id"]]
-    # except:
-    #     return [False, "图书入管失败"]
-    # finally:
-    #     db.close()
+        select_result = mysql_module(sql1)
+        if not select_result[0]:
+            return [False]
+        return [True,select_result[1]]
+    except:
+        return [False,"数据库出错"]
+
 
 
 
