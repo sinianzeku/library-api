@@ -1,18 +1,24 @@
-from config import email_config
-import user,book,user_activity
+from config import config
+import user, user_activity,administrators
 from flask_mail import Mail
 from flask import Flask
 from flask_cors import *
 
+
 mail = Mail()
 
 app = Flask(__name__)
-app.config.from_object(email_config)
+app.config.from_object(config.email_config)
+app.config.from_object(config.session_config)
 mail.init_app(app)
 
-app.register_blueprint(user.view.user, url_prefix ="/user")
-app.register_blueprint(book.view.book, url_prefix ="/book")
+app.register_blueprint(user.private_operation.view.user, url_prefix ="/user")
+app.register_blueprint(user.public_operation.view.user, url_prefix ="/user")
+app.register_blueprint(administrators.book.view.book, url_prefix ="/book")
 app.register_blueprint(user_activity.view.user_activity, url_prefix ="/user_activity")
+
+
+
 
 CORS(app, supports_credentials=True)
 

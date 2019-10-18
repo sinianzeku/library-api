@@ -1,11 +1,11 @@
-from flask import Blueprint,jsonify,request
+from flask import Blueprint,jsonify,request,session
 from user.verify.userverify import UserRegister
-from user.db_user import into_register_info,user_login
+from user.db.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
 from user.verify.emailverify import dict_Verify
 
-user = Blueprint("user",__name__)
+user = Blueprint("user_public",__name__)
 
 @user.route("register",methods = ["post"])
 def user_verify_register():
@@ -16,22 +16,18 @@ def user_verify_register():
         cpassword = data["cpassword"]
         verifycode = data["verifycode"]
         email = data["email"]
-
         if password != cpassword:
             return jsonify({"status": -1, "message": "两次密码不一致"})
-
         user = UserRegister(username,
                             password)
         password_result = user.password
         username_result = user.username
-
         if email not in dict_Verify.keys() or verifycode != dict_Verify[email]:
             return jsonify({"status": -1, "message": "验证码错误"})
         if not username_result[0]:
             return jsonify({"status": -1, "message": username_result[1]})
         if not password_result[0]:
             return jsonify({"status": -1, "message": password_result[1]})
-
         into_resutl = into_register_info(username_result[1],
                                          password_result[1],
                                          email)
@@ -40,6 +36,7 @@ def user_verify_register():
         return jsonify({"status": 0, "message": into_resutl[1]})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
+
 
 @user.route("email_verify",methods = ["post"])
 def email_verify():
@@ -57,7 +54,6 @@ def email_verify():
     except:
         return jsonify({"status": -1, "message": "验证码发送失败"})
 
-
 @user.route("login",methods = ["post"])
 def user_verify_login():
     try:
@@ -74,29 +70,10 @@ def user_verify_login():
         into_resutl = user_login(username_result[1],password_result[1])
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
-        return jsonify({"status": 0, "message": into_resutl[1],"data":username})
+
+        session["username"] = username
+        session.permanent = True
+
+        return jsonify({"status": 0, "message": into_resutl[1],"data":session['username']})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
-
-
-
-
-@user.route("logout", methods = ["post"])
-def logout():
-    return jsonify({"status": 0, "message": "退出成功"})
-
-@user.route("UpdatePassword",methods = ["post"])
-def user_change_password():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    print(data)
-    data["abc"] = "sadsda"
-    print(data)
-    iter_key = iter(list(data.keys()))
-    iter_value = iter(list(data.values()))
-    return jsonify({"status":0,"message":"update  password success"})
-
-
-@user.route("UpdateInformation",methods = ["post"])
-def user_update_information():
-    return jsonify({"status":0,"message":"undate information success"})
-
