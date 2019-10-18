@@ -54,7 +54,7 @@ def email_verify():
     except:
         return jsonify({"status": -1, "message": "验证码发送失败"})
 
-@user.route("login",methods = ["post"])
+@user.route("login")
 def user_verify_login():
     try:
         data = json.loads(request.get_data("").decode("utf-8"))
@@ -71,7 +71,7 @@ def user_verify_login():
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
 
-        session["username"] = username
+        session["username"] = password_result
         session.permanent = True
 
         return jsonify({"status": 0, "message": into_resutl[1],"data":session['username']})
