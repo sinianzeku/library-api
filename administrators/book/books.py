@@ -1,9 +1,12 @@
 from xpinyin import Pinyin
 from administrators.book import db_book
+import os
+import random
+import string
 
 
 
-#将中文转成拼音
+
 class ChineseToPinyin():
     def __init__(self,bookname,auther):
         self.bookname = bookname
@@ -18,7 +21,7 @@ class ChineseToPinyin():
         auther = p.get_pinyin(self.auther,"")
         return auther
 
-#新书入库
+
 class NewBookEntry():
     def __init__(self,data):
         self.data = data
@@ -27,15 +30,20 @@ class NewBookEntry():
         self.bookname = py.bookname_to_py()
         self.auther = py.auther_to_py()
 
-    #保存简介
+
     def save_synopsis(self):
         try:
-            synopsis_path = 'C:/Users/zpg/Desktop/synopsis'
-            self.data["book_synopsis_path"] = synopsis_path + '/{}-{}.txt'.format(self.bookname, self.auther)
+            synopsis_path = 'C:/Users/zpg/Desktop/date/synopsis'
+            file_exists = True
+            while file_exists:
+                ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 5))
+                self.data["book_synopsis_path"] = synopsis_path + '/{}{}{}.txt'.format(self.bookname, self.auther,ran_str)
+                if not os.path.isfile(self.data["book_synopsis_path"]):
+                    file_exists = False
             file_handle = open(self.data["book_synopsis_path"], mode='w')
             file_handle.write(self.synopsis)
             file_handle.close()
-            return True
+            return [True]
         except:
             return False
 
@@ -45,8 +53,10 @@ class NewBookEntry():
         keys = ",".join(list(self.data.keys()))
         values = '","'.join(list(self.data.values()))
         result = db_book.insertnewbook(keys, values, )
+        if not result[0]:
+            return result
         self.book_id = result
-        return True
+        return [True]
 
 
 

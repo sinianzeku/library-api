@@ -3,7 +3,8 @@ from . import db_user_activity
 import json
 user_activity = Blueprint("user_activity",__name__)
 
-@user_activity.route("book_enquiry",methods = ["post"])
+
+@user_activity.route("query_book",methods = ["post"])
 def book_enquiry():
     try:
         data = json.loads(request.get_data("").decode("utf-8"))

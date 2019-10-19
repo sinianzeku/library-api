@@ -2,7 +2,6 @@ from flask import Blueprint,request,jsonify
 from administrators.book import books
 import json
 
-
 book = Blueprint("book",__name__)
 
 @book.route("new_book_entry",methods = ["POST"])
@@ -14,7 +13,7 @@ def new_book_entry():
         if not save_result:
             return jsonify({"status": -1, "message": "数据存储失败,请求终止"})
         update_result = QRC.data_access_to_database()  # 存储数据
-        if not update_result:
+        if not update_result[0]:
             return jsonify({"status": -1, "message": update_result[1]})
         return jsonify({"status": 0, "message": "新书入库成功"})
     except:

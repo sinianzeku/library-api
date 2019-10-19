@@ -1,1 +1,1 @@
-from . import book
+from . import book,manage_info

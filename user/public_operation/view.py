@@ -1,11 +1,18 @@
 from flask import Blueprint,jsonify,request,session
 from user.verify.userverify import UserRegister
-from user.db.db_user import into_register_info,user_login
+from user.db.db_user import into_register_info,user_login,sql_retrieve_password
 from flask_mail import Mail,Message
 import json,random
 from user.verify.emailverify import dict_Verify
 
 user = Blueprint("user_public",__name__)
+
+
+"""
+注册
+邮箱验证
+登入
+"""
 
 @user.route("register",methods = ["post"])
 def user_verify_register():
@@ -54,26 +61,40 @@ def email_verify():
     except:
         return jsonify({"status": -1, "message": "验证码发送失败"})
 
-@user.route("login")
+@user.route("login",methods = ["post"])
 def user_verify_login():
     try:
         data = json.loads(request.get_data("").decode("utf-8"))
         username = data["username"]
         password = data["password"]
+
+
+        customer_type = data["customer_type"]
+
         user = UserRegister(username,password)
         username_result = user.username
         password_result = user.password
         if not username_result[0]:
             return jsonify({"status": -1, "message": username_result[1]})
         if not password_result[0]:
-            return jsonify({"status": -1, "message": "密码错误"})
-        into_resutl = user_login(username_result[1],password_result[1])
+            return jsonify({"status": -1, "message": password_result[1]})
+        into_resutl = user_login(username_result[1],password_result[1],customer_type)
         if not into_resutl[0]:
             return jsonify({"status": -1, "message": into_resutl[1]})
-
-        session["username"] = password_result
+        session["username"] = username
         session.permanent = True
-
-        return jsonify({"status": 0, "message": into_resutl[1],"data":session['username']})
+        return jsonify({"status": 0, "message": into_resutl[1],"data":"登入成功"})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
+
+"""
+找回密码
+"""
+@user.route("retrieve_password")
+def retrieve_password():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    username = data["username"]
+    email = data["email"]
+    verify = data["verify"]
+    result = sql_retrieve_password()
+    return jsonify({"status":0,"message":"success"})

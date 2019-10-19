@@ -12,12 +12,33 @@ def into_register_info(username,password,email):
 
 
 
-def user_login(username,password):
+def user_login(username,password,customer_type):
     try:
-        sql = 'select count(*) as count from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+        if customer_type == "ordinaryusers":
+            sql = 'select count(*) as count from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+        elif customer_type == "administrators":
+            sql = 'select count(*) as count from user where work_id = "{}" and work_password = "{}"'.format(username, password)
         result = mysql_module(sql)
         if not result[1][0]["count"]:
             return [False, "账号或密码错误"]
         return [True,"登入成功"]
     except:
         return [False,"系统出错，登入失败"]
+
+
+def sql_feedbacks(user_id,readers,phone,path):
+    sql = "insert into feedback(user_id,readers,phone,feedbacks) value ('{}','{}','{}','{}')".format(user_id,readers,phone,path)
+    result = mysql_module(sql)
+    if not result[0]:
+        return False
+    return True
+
+
+def sql_update_infos():
+    pass
+
+def sql_reset_password():
+    pass
+
+def sql_retrieve_password():
+    pass
