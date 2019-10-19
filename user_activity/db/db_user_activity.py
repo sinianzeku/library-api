@@ -1,5 +1,6 @@
 from config.db_config import mysql_module
-from . import activity_set
+from user_activity.module import activity_set
+
 
 def search_book(query_criteria,query_content):
     sql = "select book_id, book_name, book_auther, book_publisher from book_info where instr({},'{}')".format(query_criteria,query_content)

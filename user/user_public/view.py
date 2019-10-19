@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,request,session
 from user.verify.userverify import UserRegister
-from user.db.db_user import into_register_info,user_login,sql_retrieve_password
+from user.db.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
 from user.verify.emailverify import dict_Verify
@@ -67,10 +67,7 @@ def user_verify_login():
         data = json.loads(request.get_data("").decode("utf-8"))
         username = data["username"]
         password = data["password"]
-
-
-        customer_type = data["customer_type"]
-
+        # customer_type = data["customer_type"]
         user = UserRegister(username,password)
         username_result = user.username
         password_result = user.password
@@ -78,23 +75,14 @@ def user_verify_login():
             return jsonify({"status": -1, "message": username_result[1]})
         if not password_result[0]:
             return jsonify({"status": -1, "message": password_result[1]})
-        into_resutl = user_login(username_result[1],password_result[1],customer_type)
-        if not into_resutl[0]:
-            return jsonify({"status": -1, "message": into_resutl[1]})
+        verify_resutl = user_login(username_result[1],password_result[1])
+        if not verify_resutl[0]:
+            return jsonify({"status": -1, "message": verify_resutl[1]})
         session["username"] = username
+        session["user_id"] = verify_resutl[1]
         session.permanent = True
-        return jsonify({"status": 0, "message": into_resutl[1],"data":"登入成功"})
+
+        return jsonify({"status": 0, "message": "success"})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
 
-"""
-找回密码
-"""
-@user.route("retrieve_password")
-def retrieve_password():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    username = data["username"]
-    email = data["email"]
-    verify = data["verify"]
-    result = sql_retrieve_password()
-    return jsonify({"status":0,"message":"success"})
