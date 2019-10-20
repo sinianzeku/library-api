@@ -13,8 +13,39 @@ def search_book(query_criteria,query_content):
 def search_book_info(book_id):
     sql = "select * from book_info where book_id = '{}' ".format(book_id)
     result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
     if not result[1]:
         return [False,"查无数据"]
     final_result = activity_set.processing_data(result)
     return final_result
+
+def sql_borrowed_records(user_id):
+    sql = ''
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
+    if not result[1]:
+        return [False,"查无数据"]
+    return [True,result[1]]
+
+def sql_borrowing_books(user_id):
+    sql = ''
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
+    if not result[1]:
+        return [False,"查无数据"]
+    return [True,result[1]]
+
+def sql_my_bookshelf(user_id):
+    sql = ''
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
+    if not result[1]:
+        return [False,"查无数据"]
+    return [True,result[1]]
+
+
 

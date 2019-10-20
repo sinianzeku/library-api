@@ -9,9 +9,7 @@ class UserRegister():
     @property
     def password(self):
         if self._password[0]:
-            pwd_hash = hashlib.md5()
-            pwd_hash.update(self._password[1].encode("utf8"))
-            password = pwd_hash.hexdigest()
+            password = password_encryption(self._password[1])
             return [self._password[0],password]
         else:
             return [self._password[0],self._password[1]]
@@ -49,3 +47,8 @@ class UserRegister():
             return
 
 
+def password_encryption(password):
+    pwd_hash = hashlib.md5()
+    pwd_hash.update(password.encode("utf8"))
+    password = pwd_hash.hexdigest()
+    return password

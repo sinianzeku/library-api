@@ -1,1 +1,1 @@
-from . import view
+from user_activity.activity_public import view

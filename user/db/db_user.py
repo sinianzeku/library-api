@@ -19,7 +19,6 @@ def user_login(username,password):
         # elif customer_type == "administrators":
         #     sql = 'select count(*) as count from user where work_id = "{}" and work_password = "{}"'.format(username, password)
         result = mysql_module(sql)
-        print(result)
         if not result[1]:
             return [False, "账号或密码错误"]
         return [True,result[1][0]["user_id"]]
