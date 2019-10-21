@@ -8,15 +8,9 @@ from user.verify.emailverify import dict_Verify
 user = Blueprint("user_public",__name__)
 
 
-"""
-注册
-邮箱验证
-登入
-"""
 
 @user.route("register",methods = ["post"])
 def user_verify_register():
-    # try:
     data = json.loads(request.get_data("").decode("utf-8"))
     username = data["username"]
     password = data["password"]
@@ -41,13 +35,12 @@ def user_verify_register():
     if not into_resutl[0]:
         return jsonify({"status": -1, "message": into_resutl[1]})
     return jsonify({"status": 0, "message": into_resutl[1]})
-    # except:
-    #     return jsonify({"status": -1, "message": "服务器出错"})
+
 
 
 @user.route("email_verify",methods = ["post"])
 def email_verify():
-    # try:
+
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
     verifycode = str(random.randint(100000,999999))
@@ -58,17 +51,18 @@ def email_verify():
     dict_Verify[email] = verifycode
     mail.send(message)
     return jsonify({"status": 0, "message": "验证码发送成功"})
-    # except:
-    #     return jsonify({"status": -1, "message": "验证码发送失败"})
+
 
 @user.route("login",methods = ["post"])
 def user_verify_login():
-
-    # try:
     data = json.loads(request.get_data("").decode("utf-8"))
     username = data["username"]
     password = data["password"]
-    # customer_type = data["customer_type"]
+
+    # username = "sinianzeku"
+    # password = 123456789
+
+
     user = UserVerify(username,password)
     username_result = user.username
     password_result = user.password
@@ -83,6 +77,5 @@ def user_verify_login():
     session["user_id"] = verify_resutl[1]
     session.permanent = True
     return jsonify({"status": 0, "message": "success"})
-    # except:
-    #     return jsonify({"status": -1, "message": "服务器出错"})
+
 

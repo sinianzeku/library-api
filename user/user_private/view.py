@@ -15,7 +15,6 @@ def before_user():
 
 @user.route("feedback",methods = ["post"])
 def feedback():
-    # try:
     data = json.loads(request.get_data("").decode("utf-8"))
     user_id = session["user_id"]
     feedbacks = data["feedbacks"]
@@ -26,13 +25,10 @@ def feedback():
     if not result:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
-    # except:
-    #     return jsonify({"status":-1,"message":"fail","data":"Server error"})
 
 
 @user.route("update_password", methods = ["post"])
 def update_password():
-    # try:
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = session["username"]
     old_password = data["old_password"]
@@ -52,12 +48,9 @@ def update_password():
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":-1,"message":"success"})
-    # except:
-    #     return jsonify({"status":0,"message":"success"})
 
-@user.route("borrowing_books",methods = ["post"])
-def borrowing_books():
-    user_id = session["user_id"]
+
+
 
 
 

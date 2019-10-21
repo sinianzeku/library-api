@@ -13,17 +13,12 @@ def into_register_info(username,password,email):
 
 
 def user_login(username,password):
-    try:
-        # if customer_type == "ordinaryusers":
-        sql = 'select user_id from user where user_account = "{}" and user_password = "{}"'.format(username,password)
-        # elif customer_type == "administrators":
-        #     sql = 'select count(*) as count from user where work_id = "{}" and work_password = "{}"'.format(username, password)
-        result = mysql_module(sql)
-        if not result[1]:
-            return [False, "账号或密码错误"]
-        return [True,result[1][0]["user_id"]]
-    except:
-        return [False,"系统出错，登入失败"]
+    sql = 'select user_id from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+    result = mysql_module(sql)
+    if not result[1]:
+        return [False, "账号或密码错误"]
+    return [True,result[1][0]["user_id"]]
+
 
 
 def sql_feedbacks(user_id,readers,phone,path):
@@ -51,6 +46,5 @@ def sql_update_password(user_account,new_password):
     return [True]
 
 
-def sql_borrowing_books(user_id):
-    sql = ""
+
 
