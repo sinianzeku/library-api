@@ -1,4 +1,4 @@
-from xpinyin import Pinyin
+# from xpinyin import Pinyin
 import os
 import random
 import string

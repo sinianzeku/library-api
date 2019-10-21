@@ -38,8 +38,8 @@ class UserVerify():
             err = "用户名含有非法字符"
             self._username = [False,err]
             return
-        if not (len(username)>=2 and len(username)<=16):
-            err = "用户名长度应为2—16个字符"
+        if not (len(username)>=4 and len(username)<=12):
+            err = "用户名长度应为4—12个字符"
             self._username = [False, err]
             return
         else:
