@@ -1,7 +1,7 @@
 import hashlib
 import re
 
-class UserRegister():
+class UserVerify():
     def __init__(self,username,password):
         self.username = username
         self.password = password

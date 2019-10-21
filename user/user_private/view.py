@@ -68,9 +68,10 @@ def borrowing_books():
 """
 @user.route("logout",methods = ["post"])
 def logout():
-    session.pop('username',None)
+    session.clear()
     return jsonify({"status": 0, "message": "退出成功"})
 
-@user.route("test",methods = ["post"])
+@user.route("test")
 def test():
+    # return "测试成功"
     return jsonify({"status": 0, "message": "success"})

@@ -1,5 +1,5 @@
 from flask import Blueprint,jsonify,request,session
-from user.verify.userverify import UserRegister
+from user.verify.userverify import UserVerify
 from user.db.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
@@ -25,7 +25,7 @@ def user_verify_register():
         email = data["email"]
         if password != cpassword:
             return jsonify({"status": -1, "message": "两次密码不一致"})
-        user = UserRegister(username,
+        user = UserVerify(username,
                             password)
         password_result = user.password
         username_result = user.username
@@ -63,12 +63,15 @@ def email_verify():
 
 @user.route("login",methods = ["post"])
 def user_verify_login():
+
     try:
         data = json.loads(request.get_data("").decode("utf-8"))
         username = data["username"]
         password = data["password"]
+        username = 'zpgzpg'
+        password = '1234567'
         # customer_type = data["customer_type"]
-        user = UserRegister(username,password)
+        user = UserVerify(username,password)
         username_result = user.username
         password_result = user.password
         if not username_result[0]:
@@ -81,7 +84,6 @@ def user_verify_login():
         session["username"] = username
         session["user_id"] = verify_resutl[1]
         session.permanent = True
-
         return jsonify({"status": 0, "message": "success"})
     except:
         return jsonify({"status": -1, "message": "服务器出错"})
