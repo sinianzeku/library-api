@@ -68,8 +68,6 @@ def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
     username = data["username"]
     password = data["password"]
-    username = 'zpgzpg'
-    password = '1234567'
     # customer_type = data["customer_type"]
     user = UserVerify(username,password)
     username_result = user.username
