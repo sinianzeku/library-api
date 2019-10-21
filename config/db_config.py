@@ -1,7 +1,7 @@
 import pymysql
 
-# host = "47.96.139.19"
-host = "127.0.0.1"
+host = "47.96.139.19"
+# host = "127.0.0.1"
 user = "root"
 password = "123456"
 database = "library"

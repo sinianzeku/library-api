@@ -12,7 +12,6 @@ class email_config():
     MAIL_DEFAULT_SENDER = "374652530@qq.com"
 
 
-
 # session
 class session_config():
     SECRET_KEY = os.urandom(24)
