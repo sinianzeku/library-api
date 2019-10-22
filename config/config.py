@@ -16,3 +16,4 @@ class email_config():
 class session_config():
     SECRET_KEY = os.urandom(24)
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
+

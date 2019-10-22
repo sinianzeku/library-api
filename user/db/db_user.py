@@ -1,8 +1,12 @@
 from config.db_config import mysql_module
 def into_register_info(username,password,email):
-        select_user = "select count(user_account) as count from user where user_account = '{}'".format(username)
+        select_user = "select user_id from user where user_account = '{}'".format(username)
         result = mysql_module(select_user)
-        if result[1][0]["count"]:
+        if result[1]:
+            return [False,"该昵称已存在"]
+        select_user = "select work_id from admin where work_id = '{}'".format(username)
+        result = mysql_module(select_user)
+        if result[1]:
             return [False,"该昵称已存在"]
         into_user = 'INSERT INTO user(user_account,user_password,user_email) VALUES("{}","{}","{}")'.format(username,password,email)
         result = mysql_module(into_user)
@@ -11,9 +15,11 @@ def into_register_info(username,password,email):
         return [True,"注册成功"]
 
 
-
-def user_login(username,password):
-    sql = 'select user_id from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+def user_login(username,password,code):
+    if code == 0:
+        sql = 'select user_id from user where user_account = "{}" and user_password = "{}"'.format(username,password)
+    elif code == 1:
+        sql = 'select work_id from admin where work_id = "{}" and work_password = "{}"'.format(username, password)
     result = mysql_module(sql)
     if not result[1]:
         return [False, "账号或密码错误"]

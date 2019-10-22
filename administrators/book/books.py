@@ -8,9 +8,6 @@ from administrators.module.defaulttime import set_time
 class NewBookEntry():
     def __init__(self,data):
         self.synopsis = data["book_synopsis"]
-        # py = ChineseToPinyin(data["book_name"], data["book_auther"])
-        # self.bookname = py.bookname_to_py()
-        # self.auther = py.auther_to_py()
         self.book_name = data["book_name"]
         self.book_auther = data["book_auther"]
         self.book_category = data["book_category"]

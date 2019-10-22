@@ -52,3 +52,4 @@ def password_encryption(password):
     pwd_hash.update(password.encode("utf8"))
     password = pwd_hash.hexdigest()
     return password
+

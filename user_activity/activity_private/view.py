@@ -10,7 +10,7 @@ def before_user():
 
 @user_activity.route("borrowed_records", methods = ["post"])
 def borrowed_records():
-    user_id = session["user_id"]
+    user_id = session["id"]
     result = db_user_activity.sql_borrowed_records(user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
@@ -19,7 +19,7 @@ def borrowed_records():
 
 @user_activity.route("borrowing_books", methods = ["post"])
 def borrowing_books():
-    user_id = session["user_id"]
+    user_id = session["id"]
     result = db_user_activity.sql_borrowing_books(user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
@@ -28,7 +28,7 @@ def borrowing_books():
 
 @user_activity.route("my_bookshelf", methods = ["post"])
 def my_bookshelf():
-    user_id = session["user_id"]
+    user_id = session["id"]
     result = db_user_activity.sql_my_bookshelf(user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})

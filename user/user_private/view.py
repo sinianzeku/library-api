@@ -50,12 +50,6 @@ def update_password():
     return jsonify({"status":-1,"message":"success"})
 
 
-
-
-
-
-
-
 """
 退出登入
 """

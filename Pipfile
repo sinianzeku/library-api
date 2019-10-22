@@ -12,10 +12,10 @@ pymysql = "*"
 flask-mail = "*"
 qrcode = "*"
 image = "*"
-xpinyin = "==0.5.6"
 opencv-python = "*"
 pyzbar = "*"
 flask-cache = "*"
+
 
 [requires]
 python_version = "3.6"

@@ -3,7 +3,8 @@ from user.verify.userverify import UserVerify
 from user.db.db_user import into_register_info,user_login
 from flask_mail import Mail,Message
 import json,random
-from user.verify.emailverify import dict_Verify
+from user.verify.emailverify import get_my_item
+
 
 user = Blueprint("user_public",__name__)
 
@@ -19,16 +20,19 @@ def user_verify_register():
     email = data["email"]
     if password != cpassword:
         return jsonify({"status": -1, "message": "两次密码不一致"})
-    user = UserVerify(username,
-                        password)
-    password_result = user.password
+    user = UserVerify(username,password)
+
     username_result = user.username
-    if email not in dict_Verify.keys() or verifycode != dict_Verify[email]:
-        return jsonify({"status": -1, "message": "验证码错误"})
     if not username_result[0]:
         return jsonify({"status": -1, "message": username_result[1]})
+
+    password_result = user.password
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
+
+    if  verifycode != get_my_item(email):
+        return jsonify({"status": -1, "message": "验证码错误"})
+
     into_resutl = into_register_info(username_result[1],
                                      password_result[1],
                                      email)
@@ -48,7 +52,7 @@ def email_verify():
     message = Message(subject="验证码",
                       recipients=[email],
                       body=verifycode)
-    dict_Verify[email] = verifycode
+    get_my_item(email,verifycode)
     mail.send(message)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
@@ -58,11 +62,7 @@ def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
     username = data["username"]
     password = data["password"]
-
-    # username = "sinianzeku"
-    # password = 123456789
-
-
+    code = data["code"]#admin:1     user:0
     user = UserVerify(username,password)
     username_result = user.username
     password_result = user.password
@@ -70,12 +70,11 @@ def user_verify_login():
         return jsonify({"status": -1, "message": username_result[1]})
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
-    verify_resutl = user_login(username_result[1],password_result[1])
+    verify_resutl = user_login(username_result[1],password_result[1],code)
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
     session["username"] = username
-    session["user_id"] = verify_resutl[1]
-    session.permanent = True
-    return jsonify({"status": 0, "message": "success"})
+    session["id"] = verify_resutl[1]
+    return jsonify({"status": 0, "message": "success","data":session["id"]})
 
 

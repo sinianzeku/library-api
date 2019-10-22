@@ -1,7 +1,7 @@
 import pymysql
 
-host = "47.96.139.19"
-# host = "127.0.0.1"
+# host = "47.96.139.19"
+host = "127.0.0.1"
 user = "root"
 password = "123456"
 database = "library"
@@ -17,11 +17,14 @@ def mysql_module(sql):
 
 
 def mysql_modules(sql_list):
+    i = 0
+    result = []
     db = pymysql.connect(host, user, password, database)
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
     for sql in sql_list:
         cursor.execute(sql)
-        result = cursor.fetchall()
+        result[i] = cursor.fetchall()
+        i = i + 1
     db.commit()
     return [True,result]
 
