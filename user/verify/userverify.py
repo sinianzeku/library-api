@@ -2,49 +2,31 @@ import hashlib
 import re
 
 class UserVerify():
-    def __init__(self,username,password):
-        self.username = username
-        self.password = password
 
-    @property
-    def password(self):
-        if self._password[0]:
-            password = password_encryption(self._password[1])
-            return [self._password[0],password]
-        else:
-            return [self._password[0],self._password[1]]
-
-    @password.setter
     def password(self,password):
         if not re.search(u'^[_a-zA-Z0-9]+$', password) :
             err = "密码含有非法字符"
-            self._password = [False,err]
-            return
+            password = [False,err]
+            return password
         if not (len(password)>=6 and len(password)<=16):
             err = "密码长度必须在6—16之间"
-            self._password = [False, err]
-            return
-        else:
-            self._password = [True,password]
-            return
+            password = [False, err]
+            return password
+        password = password_encryption(password)
+        return [True,password]
 
-    @property
-    def username(self):
-        return self._username
 
-    @username.setter
     def username(self,username):
         if not re.search(u'^[_a-zA-Z\u4e00-\u9fa5]+$', username) :
             err = "用户名含有非法字符"
-            self._username = [False,err]
+            self.username = [False,err]
             return
         if not (len(username)>=4 and len(username)<=12):
             err = "用户名长度应为4—12个字符"
-            self._username = [False, err]
+            self.username = [False, err]
             return
-        else:
-            self._username = [True, username]
-            return
+        self.username = [True, username]
+        return self.username
 
 
 def password_encryption(password):

@@ -20,13 +20,12 @@ def user_verify_register():
     email = data["email"]
     if password != cpassword:
         return jsonify({"status": -1, "message": "两次密码不一致"})
-    user = UserVerify(username,password)
-
-    username_result = user.username
+    user = UserVerify()
+    username_result = user.username(username)
     if not username_result[0]:
         return jsonify({"status": -1, "message": username_result[1]})
 
-    password_result = user.password
+    password_result = user.password(password)
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
 
@@ -65,9 +64,9 @@ def user_verify_login():
     password = data["password"]
     # code = data["code"]#admin:1     user:0
     code = 0
-    user = UserVerify(username,password)
-    username_result = user.username
-    password_result = user.password
+    user = UserVerify()
+    username_result = user.username(username)
+    password_result = user.password(password)
     if not username_result[0]:
         return jsonify({"status": -1, "message": username_result[1]})
     if not password_result[0]:
