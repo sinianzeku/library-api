@@ -19,7 +19,7 @@ class NewBookEntry():
 
 
     def save_synopsis(self):
-        synopsis_path = 'C:/Users/zpg/Desktop/date/synopsis'
+        synopsis_path = './data/synopsis'
         file_exists = True
         while file_exists:
             ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))

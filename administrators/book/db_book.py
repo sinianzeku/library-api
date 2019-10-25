@@ -18,7 +18,7 @@ def sql_borrow_book(book_id,user_id):
     time = set_time()
     sql = "insert into borrow_info (user_id,book_id,borrow_time,return_time,state) values ('{}','{}','{}','{}','{}')".format(user_id,book_id,time.today(),time.next_month(),1)
     sql2 = "UPDATE book_info set book_state = '1' where book_id = {}".format(book_id)
-    result = mysql_modules([sql,sql2])
+    result = mysql_modules(sql,sql2)
     return result
 
 
@@ -26,7 +26,7 @@ def sql_return_book(book_id,user_id,borrow_time):
     time = set_time()
     sql = "UPDATE borrow_info set state = '0',actual_return_time = '{}' where book_id = {} and user_id = {} and borrow_time = '{}'".format(time.today(),book_id,user_id,borrow_time)
     sql2 = "UPDATE book_info set book_state = '0' where book_id = {}".format(book_id)
-    result = mysql_modules([sql,sql2])
+    result = mysql_modules(sql,sql2)
     return result
 
 

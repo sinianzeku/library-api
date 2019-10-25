@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,session,request
 import json
-from user.db.db_user import sql_feedbacks,sql_verify_old_password,sql_update_password
+from user.db.db_user import sql_feedbacks,sql_verify_old_password,sql_update_password,sql_update_info
 from user.module.module import save_feedbacks
 from user.verify import userverify
 
@@ -11,6 +11,9 @@ def before_user():
     if 'username' not in session:
         return jsonify({"status": -1, "message": "未登入"})
 
+@user.route("get_session")
+def get_session():
+    return jsonify({"status":0})
 
 
 @user.route("feedback",methods = ["post"])
@@ -47,7 +50,20 @@ def update_password():
     result = sql_update_password(user_account,password[1])
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":-1,"message":"success"})
+    return jsonify({"status":0,"message":"success"})
+
+
+@user.route("update_info",methods = ["post"])
+def update_info():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_id = session["id"]
+    email = data["email"]
+    phone = data["phone"]
+    address = data["address"]
+    result = sql_update_info(user_id,email,phone,address)
+    return jsonify({"status":0,"message":"success"})
+
+
 
 
 """

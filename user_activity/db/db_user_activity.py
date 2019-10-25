@@ -50,3 +50,7 @@ def sql_my_bookshelf(user_id):
         return [False,"查无数据"]
     return [True,result[1]]
 
+def sql_collect_book(user_id,book_id):
+    sql = "insert into my_bookshelf values('{}','{}')".format(user_id,book_id)
+    result = mysql_module(sql)
+    return [True,"收藏成功"]

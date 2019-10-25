@@ -49,7 +49,7 @@ def email_verify():
     email = data["email"]
     verifycode = str(random.randint(100000,999999))
     mail = Mail()
-    message = Message(subject="验证码",
+    message = Message(subject="图书馆注册验证码",
                       recipients=[email],
                       body=verifycode)
     get_my_item(email,verifycode)
@@ -57,12 +57,14 @@ def email_verify():
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
 
-@user.route("login",methods = ["post"])
+@user.route("login",methods = ["post","get"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
+
     username = data["username"]
     password = data["password"]
-    code = data["code"]#admin:1     user:0
+    # code = data["code"]#admin:1     user:0
+    code = 0
     user = UserVerify(username,password)
     username_result = user.username
     password_result = user.password
@@ -75,6 +77,6 @@ def user_verify_login():
         return jsonify({"status": -1, "message": verify_resutl[1]})
     session["username"] = username
     session["id"] = verify_resutl[1]
-    return jsonify({"status": 0, "message": "success","data":session["id"]})
+    return jsonify({"status": 0, "message": "success"})
 
 

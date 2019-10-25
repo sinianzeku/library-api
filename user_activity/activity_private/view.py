@@ -1,7 +1,7 @@
-from flask import Blueprint,jsonify,session
+from flask import Blueprint,jsonify,session,request
 from user_activity.db import db_user_activity
 user_activity = Blueprint("activity_private",__name__)
-
+import json
 @user_activity.before_request
 def before_user():
     if 'username' not in session:
@@ -33,4 +33,15 @@ def my_bookshelf():
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
+
+@user_activity.route("collect_book",methods = ["post"])
+def collect_book():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_id = data["book_id"]
+    user_id = session["id"]
+    result = db_user_activity.sql_collect_book(user_id,book_id)
+    if not result[0]:
+        return jsonify({"status":0,"message":"收藏失败"})
+    return jsonify({"status":0,"message":"收藏成功"})
+
 
