@@ -54,3 +54,14 @@ def sql_collect_book(user_id,book_id):
     sql = "insert into my_bookshelf values('{}','{}')".format(user_id,book_id)
     result = mysql_module(sql)
     return [True,"收藏成功"]
+
+def sql_popular_recommendation():
+    sql = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 3"
+    result = mysql_module(sql)
+    return [True,result[1]]
+
+
+def sql_new_arrivals():
+    sql = 'select book_id,book_name,book_auther from book_info order by books_add_time desc limit 5;'
+    result = mysql_module(sql)
+    return [True,result[1]]

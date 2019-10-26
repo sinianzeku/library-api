@@ -15,7 +15,7 @@ def new_book_entry():
     update_result = NBE.data_access_to_database()  # 存储数据
     if not update_result[0]:
         return jsonify({"status": -1, "message" : update_result[1]})
-    return jsonify({"status" : 0, "message" : "新书入库成功"})
+    return jsonify({"status" : 0, "message" : "success"})
 
 @book.route("borrow_book",methods = ["post"])
 def borrow_book():
@@ -24,8 +24,8 @@ def borrow_book():
     user_id = data["user_id"]
     result = sql_borrow_book(book_id,user_id)
     if not result[0]:
-        return jsonify({"status":-1,"message":"请求出错"})
-    return jsonify({"status":0,"message":"借书成功"})
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success"})
 
 @book.route("return_book",methods = ["post"])
 def return_book():
@@ -35,8 +35,8 @@ def return_book():
     borrow_time = data["borrow_time"]
     result = sql_return_book(book_id,user_id,borrow_time)
     if not result[0]:
-        return jsonify({"status":-1,"message":"请求出错"})
-    return jsonify({"status":0,"message":"还书成功"})
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success"})
 
 
 

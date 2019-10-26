@@ -13,7 +13,6 @@ def insertnewbook(**kwargs):
     return [True]
 
 
-
 def sql_borrow_book(book_id,user_id):
     time = set_time()
     sql = "insert into borrow_info (user_id,book_id,borrow_time,return_time,state) values ('{}','{}','{}','{}','{}')".format(user_id,book_id,time.today(),time.next_month(),1)

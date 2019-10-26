@@ -24,5 +24,18 @@ def query_book_info():
         return jsonify({"status":-1,"massage":"fail","data":result[1]})
     return jsonify({"status":-1,"massage":"success","data":result[1]})
 
+@user_activity.route("popular_recommendation",methods = ["post"])
+def popular_recommendation():
+    result = db_user_activity.sql_popular_recommendation()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+@user_activity.route("new_arrivals",methods = ["post"])
+def new_arrivals():
+    result = db_user_activity.sql_new_arrivals()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 
 

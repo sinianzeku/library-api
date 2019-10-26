@@ -41,7 +41,7 @@ def collect_book():
     user_id = session["id"]
     result = db_user_activity.sql_collect_book(user_id,book_id)
     if not result[0]:
-        return jsonify({"status":0,"message":"收藏失败"})
-    return jsonify({"status":0,"message":"收藏成功"})
+        return jsonify({"status":0,"message":"fail"})
+    return jsonify({"status":0,"message":"success"})
 
 

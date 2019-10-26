@@ -1,5 +1,7 @@
 from config.db_config import mysql_module
+from administrators.module.defaulttime import set_time
 def into_register_info(username,password,email):
+        st = set_time()
         select_user = "select user_id from user where user_account = '{}'".format(username)
         result = mysql_module(select_user)
         if result[1]:
@@ -8,7 +10,7 @@ def into_register_info(username,password,email):
         result = mysql_module(select_user)
         if result[1]:
             return [False,"该昵称已存在"]
-        into_user = 'INSERT INTO user(user_account,user_password,user_email) VALUES("{}","{}","{}")'.format(username,password,email)
+        into_user = 'INSERT INTO user(user_account,user_password,user_email,user_registration_time) VALUES("{}","{}","{}","{}")'.format(username,password,email,st.today())
         result = mysql_module(into_user)
         if not result[0]:
             return [False,"注册失败"]

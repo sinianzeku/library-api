@@ -9,10 +9,14 @@ user = Blueprint("user_private",__name__)
 @user.before_request
 def before_user():
     if 'username' not in session:
+        print(session)
         return jsonify({"status": -1, "message": "未登入"})
+
+
 
 @user.route("get_session")
 def get_session():
+    session
     return jsonify({"status":0})
 
 
@@ -43,7 +47,7 @@ def update_password():
         return jsonify({"status":-1,"message":result[1]})
     if new_password != new_cpassword:
         return jsonify({"status":-1,"meaasge":"两次密码输入不一致"})
-    ver = userverify.UserVerify(user_account,new_password)
+    ver = userverify.UserVerify()
     password = ver.password
     if not password[0]:
         return jsonify({"status":-1,"message":password[1]})
@@ -72,7 +76,7 @@ def update_info():
 @user.route("logout",methods = ["post"])
 def logout():
     session.clear()
-    return jsonify({"status": 0, "message": "退出成功"})
+    return jsonify({"status": 0, "message": "exit successfully"})
 
 @user.route("test")
 def test():
