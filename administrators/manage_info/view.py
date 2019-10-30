@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
-from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info
+from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info,sql_add_book_category
 import json
 
 admin = Blueprint("admin",__name__)
@@ -40,3 +40,13 @@ def query_book_info():
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+
+@admin.route("add_book_category",methods = ["post"])
+def add_book_category():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    category1 = data["category1"]
+    category2 = data["category2"]
+    result = sql_add_book_category(category1,category2)
+    if not result[0]:
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success"})

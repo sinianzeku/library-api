@@ -43,7 +43,6 @@ def user_verify_register():
 
 @user.route("email_verify",methods = ["post"])
 def email_verify():
-
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
     verifycode = str(random.randint(100000,999999))

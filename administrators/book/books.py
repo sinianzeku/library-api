@@ -10,12 +10,32 @@ class NewBookEntry():
         self.synopsis = data["book_synopsis"]
         self.book_name = data["book_name"]
         self.book_auther = data["book_auther"]
-        self.book_category = data["book_category"]
         self.book_publisher = data["book_publisher"]
         self.book_room = data["book_room"]
         self.book_bookshelf = data["book_bookshelf"]
         self.book_publication_date = data["book_publication_date"]
+        self.book_code = data["book_code"]
+        self.category1 = data["category1"]
+        self.category2 = data["category2"]
+        self.book_language = data["book_language"]
 
+    def verify_book_code(self):
+        result = db_book.sql_verify_book_code(self.book_code)
+        return result
+
+
+    def query_book_category(self):
+        result = db_book.sql_query_book_category(self.category1,self.category2)
+        if not result[0]:
+            return [False,result[1]]
+        self.book_category = result[1]
+        return [True]
+
+    def language(self):
+        if self.book_language == "中文图书":
+            self.book_language = 0
+        if self.book_language == "外文图书":
+            self.book_language = 1
 
 
     def save_synopsis(self):
@@ -44,7 +64,9 @@ class NewBookEntry():
             book_bookshelf = self.book_bookshelf,
             book_synopsis_path = self.book_synopsis_path,
             book_publication_date = self.book_publication_date,
-            books_add_time = st.today()
+            books_add_time = st.today(),
+            book_code = self.book_code,
+            book_language = self.book_language
         )
         if not result[0]:
             return result

@@ -9,9 +9,16 @@ book = Blueprint("book",__name__)
 def new_book_entry():
     data = json.loads(request.get_data("").decode("utf-8"))
     NBE = books.NewBookEntry(data)
+    NBE.language()
     save_result = NBE.save_synopsis()  # 存储图书简介
     if not save_result:
         return jsonify({"status": -1, "message": "数据存储失败,请求终止"})
+    result = NBE.query_book_category()#查询类别id
+    if not result[0]:
+        return jsonify({"status": -1, "message": result[1]})
+    result = NBE.verify_book_code()#验证条码号是否存在
+    if not result[0]:
+        return jsonify({"status": -1, "message": result[1]})
     update_result = NBE.data_access_to_database()  # 存储数据
     if not update_result[0]:
         return jsonify({"status": -1, "message" : update_result[1]})

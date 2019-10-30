@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="zpg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administrators/book/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/books.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administrators/book/db_book.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/db_book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administrators/book/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/administrators/manage_info/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/db_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/user_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_public/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/verify/userverify.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/verify/userverify.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +55,7 @@
     <session id="1282909388">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="24" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.1" value="8" />
           <entry key="project.open.time.10" value="5" />
           <entry key="project.open.time.11" value="2" />
@@ -56,36 +64,39 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="25" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="24964" />
+          <entry key="py" value="26199" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="24995" />
+          <entry key="Python" value="26230" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Pipfile" value="8" />
+          <entry key="h" value="1" />
           <entry key="lock" value="4" />
-          <entry key="py" value="607" />
+          <entry key="py" value="625" />
           <entry key="pyi" value="1" />
+          <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="607" />
+          <entry key="C++" value="1" />
+          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="Python" value="625" />
           <entry key="PythonStub" value="1" />
           <entry key="TOML" value="8" />
         </counts>
@@ -95,16 +106,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/manage_info/view.py">
+        <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-                <marker date="1572060803210" expanded="true" signature="310:1208" ph="..." />
-                <marker date="1572060803210" expanded="true" signature="917:1208" ph="..." />
-                <marker date="1572060803210" expanded="true" signature="1281:1571" ph="..." />
-              </folding>
+            <state relative-caret-position="106">
+              <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -112,19 +117,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrators/book/books.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+            <state relative-caret-position="256">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1572329225651" expanded="true" signature="750:841" ph="..." />
+                <marker date="1572329225651" expanded="true" signature="1100:1259" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/db_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-125">
-              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="131">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding>
-                <marker date="1572057636211" expanded="true" signature="138:143" ph="..." />
+                <marker date="1572318123904" expanded="true" signature="138:143" ph="..." />
               </folding>
             </state>
           </provider>
@@ -133,70 +143,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrators/book/db_book.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/module/defaulttime.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="35">
+              <caret line="40" column="82" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
               <folding>
-                <element signature="e#16#46#0" expanded="true" />
+                <marker date="1572329292022" expanded="true" signature="1874:2043" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/user_public/view.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-92">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/book/__init__.py">
+        <entry file="file://$PROJECT_DIR$/user/verify/userverify.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/manage_info/db_manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="20" column="23" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
-              <folding>
-                <marker date="1572060802980" expanded="true" signature="99:104" ph="..." />
-                <marker date="1572060802980" expanded="true" signature="383:388" ph="..." />
-                <marker date="1572060802980" expanded="true" signature="710:998" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/administrators/manage_info/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" selection-start-column="29" selection-end-column="29" />
+            <state relative-caret-position="233">
+              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -257,29 +229,29 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/Pipfile" />
         <option value="$PROJECT_DIR$/user/verify/emailverify.py" />
-        <option value="$PROJECT_DIR$/administrators/book/books.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
-        <option value="$PROJECT_DIR$/user/verify/userverify.py" />
         <option value="$PROJECT_DIR$/text.py" />
-        <option value="$PROJECT_DIR$/user/user_public/view.py" />
         <option value="$PROJECT_DIR$/user/db/db_user.py" />
         <option value="$PROJECT_DIR$/user_activity/activity_private/view.py" />
         <option value="$PROJECT_DIR$/user/user_private/view.py" />
-        <option value="$PROJECT_DIR$/administrators/book/view.py" />
-        <option value="$PROJECT_DIR$/config/db_config.py" />
         <option value="$PROJECT_DIR$/user_activity/db/db_user_activity.py" />
         <option value="$PROJECT_DIR$/user_activity/activity_public/view.py" />
+        <option value="$PROJECT_DIR$/config/db_config.py" />
         <option value="$PROJECT_DIR$/administrators/manage_info/db_manage.py" />
         <option value="$PROJECT_DIR$/administrators/manage_info/view.py" />
+        <option value="$PROJECT_DIR$/administrators/book/view.py" />
+        <option value="$PROJECT_DIR$/administrators/book/books.py" />
         <option value="$PROJECT_DIR$/administrators/book/db_book.py" />
+        <option value="$PROJECT_DIR$/user/verify/userverify.py" />
+        <option value="$PROJECT_DIR$/user/user_public/view.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="292" />
-    <option name="y" value="127" />
-    <option name="width" value="1268" />
-    <option name="height" value="898" />
+    <option name="x" value="390" />
+    <option name="y" value="135" />
+    <option name="width" value="1555" />
+    <option name="height" value="715" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -289,7 +261,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,60 +282,44 @@
             <path>
               <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="administrators" type="462c0819:PsiDirectoryNode" />
-              <item name="manage_info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="administrators" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="synopsis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="password&#9;null&#9;null" />
-    <property name="last_opened_file_path" value="G:/py_text/jxcBackend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\flask-api\lib\library-api\administrators\module" />
+      <recent name="G:\flask-api\lib\library-api\user" />
+      <recent name="G:\flask-api\lib\library-api\db" />
+      <recent name="G:\flask-api\lib\library-api\models\user" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\flask-api\lib\library-api\user\verify" />
       <recent name="G:\flask-api\lib\library-api\user_activity\activity_public" />
       <recent name="G:\flask-api\lib\library-api\user_activity\module" />
       <recent name="G:\flask-api\lib\library-api\user_activity\db" />
       <recent name="G:\flask-api\lib\library-api\administrators" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\flask-api\lib\library-api\administrators\module" />
-      <recent name="G:\flask-api\lib\library-api\user" />
-      <recent name="G:\flask-api\lib\library-api\db" />
-      <recent name="G:\flask-api\lib\library-api\models\user" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -401,6 +356,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="db_book" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="library-api" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/administrators/book" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/administrators/book/db_book.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="defaulttime" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="library-api" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -414,27 +390,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/administrators/module/defaulttime.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="emailverify" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="library-api" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/user/verify" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/user/verify/emailverify.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -509,18 +464,18 @@
     <list>
       <item itemvalue="Python.user" />
       <item itemvalue="Python.app" />
-      <item itemvalue="Python.emailverify" />
       <item itemvalue="Python.defaulttime" />
       <item itemvalue="Python.view" />
       <item itemvalue="Python.text" />
+      <item itemvalue="Python.db_book" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.db_book" />
         <item itemvalue="Python.text" />
         <item itemvalue="Python.defaulttime" />
         <item itemvalue="Python.view" />
-        <item itemvalue="Python.emailverify" />
       </list>
     </recent_temporary>
   </component>
@@ -801,7 +756,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572062699347</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="zpg">
+      <created>1572063034773</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1572063034773</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView">
@@ -816,12 +778,12 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15587847" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2014531" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6083223" visible="true" weight="0.26062322" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6083223" weight="0.3895184" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993395" weight="0.21388102" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -874,56 +836,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/werkzeug/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="640" selection-start-line="640" selection-end-line="640" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/datetime.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="129" column="8" selection-start-line="129" selection-start-column="8" selection-end-line="129" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="1934" selection-start-line="1934" selection-end-line="1934" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/pymysql/connections.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="769" selection-start-line="769" selection-end-line="769" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/ntpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="209" selection-start-line="209" selection-end-line="209" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/flask/helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="782" selection-start-line="782" selection-end-line="782" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/flask/blueprints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="181" selection-start-line="181" selection-end-line="181" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/verify/token_auth.py" />
     <entry file="file://$PROJECT_DIR$/user/verify/token.py" />
     <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/site-packages/pymysql/err.py">
@@ -1027,21 +939,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/verify/emailverify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/text.py" />
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/module/module.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1056,23 +954,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/verify/userverify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_activity/db/db_user_activity.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="64" column="100" selection-start-line="64" selection-start-column="100" selection-end-line="64" selection-end-column="100" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <marker date="1572059402683" expanded="true" signature="930:2126" ph="..." />
-            <marker date="1572059402683" expanded="true" signature="2700:2986" ph="..." />
-            <marker date="1572059402683" expanded="true" signature="3011:3016" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1080,42 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-80">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <marker date="1572059402420" expanded="true" signature="1358:1557" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_activity/activity_private/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <marker date="1572057522203" expanded="true" signature="391:396" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <marker date="1572057604454" expanded="true" signature="505:541" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_public/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1123,9 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1136,27 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/book/books.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="37" column="31" lean-forward="true" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/book/db_book.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/administrators/manage_info/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1164,35 +989,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/manage_info/db_manage.py">
+    <entry file="file://$PROJECT_DIR$/data/synopsis/0SWaixtGQnkHEFOIAdD3.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/synopsis/3JQBkLMSvG2AeKFujHs7.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/synopsis/EClY2qIUBM5ynp7AWG60.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/synopsis/IguPvDQYebTMxHKNlFG7.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/module/defaulttime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
+        <state relative-caret-position="325">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/activity_private/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="44" column="49" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
           <folding>
-            <marker date="1572060802980" expanded="true" signature="99:104" ph="..." />
-            <marker date="1572060802980" expanded="true" signature="383:388" ph="..." />
-            <marker date="1572060802980" expanded="true" signature="710:998" ph="..." />
+            <element signature="e#0#51#0" expanded="true" />
+            <marker date="1572057522203" expanded="true" signature="391:396" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/administrators/manage_info/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+        <state relative-caret-position="319">
+          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <marker date="1572060803210" expanded="true" signature="310:1208" ph="..." />
-            <marker date="1572060803210" expanded="true" signature="917:1208" ph="..." />
-            <marker date="1572060803210" expanded="true" signature="1281:1571" ph="..." />
+            <marker date="1572318403578" expanded="true" signature="332:1230" ph="..." />
+            <marker date="1572318403578" expanded="true" signature="939:1230" ph="..." />
+            <marker date="1572318403578" expanded="true" signature="1671:1995" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/module/defaulttime.py">
+    <entry file="file://$PROJECT_DIR$/administrators/manage_info/db_manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="175">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="112" />
+          <folding>
+            <marker date="1572318351961" expanded="true" signature="99:104" ph="..." />
+            <marker date="1572318351961" expanded="true" signature="383:388" ph="..." />
+            <marker date="1572318351961" expanded="true" signature="1034:1512" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/synopsis/78VSleM0YanKhJdZOoXI.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://D:/envs/library-api-WaIYbAOf/Include/token.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1982" />
+      </provider>
+    </entry>
+    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/encodings/cp1258.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150" />
+      </provider>
+    </entry>
+    <entry file="file://D:/envs/library-api-WaIYbAOf/Lib/encodings/cp1257.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/verify/emailverify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1208,10 +1096,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/db_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="131">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding>
-            <marker date="1572057636211" expanded="true" signature="138:143" ph="..." />
+            <marker date="1572318123904" expanded="true" signature="138:143" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/book/books.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1572329225651" expanded="true" signature="750:841" ph="..." />
+            <marker date="1572329225651" expanded="true" signature="1100:1259" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/book/db_book.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="40" column="82" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
+          <folding>
+            <marker date="1572329292022" expanded="true" signature="1874:2043" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/verify/userverify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_public/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

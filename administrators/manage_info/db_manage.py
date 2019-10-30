@@ -29,7 +29,19 @@ def sql_query_book_info(book_name):
 
 
 
+def sql_add_book_category(category1,category2):
+    sql = "select id from book_category where category1 = '{}' and category2 = '{}'".format(category1,category2)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"信息查询失败"]
+    if result[1]:
+        return [False,"该分类已存在"]
 
+    sql = "insert into book_category(category1,category2) values ('{}','{}')".format(category1,category2)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"分类保存失败"]
+    return [True,"分类保存成功"]
 
 
 

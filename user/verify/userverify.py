@@ -20,11 +20,11 @@ class UserVerify():
         if not re.search(u'^[_a-zA-Z\u4e00-\u9fa5]+$', username) :
             err = "用户名含有非法字符"
             self.username = [False,err]
-            return
+            return self.username
         if not (len(username)>=4 and len(username)<=12):
             err = "用户名长度应为4—12个字符"
             self.username = [False, err]
-            return
+            return self.username
         self.username = [True, username]
         return self.username
 
