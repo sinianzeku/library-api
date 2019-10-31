@@ -45,7 +45,7 @@ def sql_verify_book_code(book_code):
 
 
 def sql_query_borrower(user_account):
-    sql = "select user_id,user_account,user_email,user_registration_time from user where instr(user_account,'{}')".format(user_account)
+    sql = "select user_id,user_account,user_email,cast(user_registration_time as char) as user_registration_time from user where instr(user_account,'{}')".format(user_account)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
