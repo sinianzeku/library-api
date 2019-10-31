@@ -17,8 +17,8 @@ def new_book_entry():
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
     result = NBE.verify_book_code()#验证条码号是否存在
-    if not result[0]:
-        return jsonify({"status": -1, "message": result[1]})
+    if result:
+        return jsonify({"status": -1, "message": "条码号已存在"})
     update_result = NBE.data_access_to_database()  # 存储数据
     if not update_result[0]:
         return jsonify({"status": -1, "message" : update_result[1]})

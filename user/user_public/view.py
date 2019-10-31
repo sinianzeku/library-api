@@ -24,14 +24,11 @@ def user_verify_register():
     username_result = user.username(username)
     if not username_result[0]:
         return jsonify({"status": -1, "message": username_result[1]})
-
     password_result = user.password(password)
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
-
     if  verifycode != get_my_item(email):
         return jsonify({"status": -1, "message": "验证码错误"})
-
     into_resutl = into_register_info(username_result[1],
                                      password_result[1],
                                      email)
@@ -58,7 +55,6 @@ def email_verify():
 @user.route("login",methods = ["post","get"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
-
     username = data["username"]
     password = data["password"]
     # code = data["code"]#admin:1     user:0
