@@ -1,6 +1,6 @@
 from flask import Blueprint,request,jsonify
 from administrators.book import books
-from administrators.book.db_book import sql_borrow_book,sql_return_book
+from administrators.book.db_book import sql_borrow_book,sql_return_book,sql_query_borrower,sql_query_book
 import json
 
 book = Blueprint("book",__name__)
@@ -45,7 +45,23 @@ def return_book():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
+@book.route("query_borrower",methods = ["post"])
+def query_borrower():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
+    result = sql_query_borrower(user_name)
+    if not result[0]:
+        return jsonify({"status":-1,"message":result[1]})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 
+@book.route("query_book",methods = ["post"])
+def query_book():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_name = data["book_name"]
+    result = sql_query_book(book_name)
+    if not result[0]:
+        return jsonify({"status":-1,"message":result[1]})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 
 
 

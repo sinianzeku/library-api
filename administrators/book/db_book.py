@@ -44,6 +44,22 @@ def sql_verify_book_code(book_code):
         return [False,"条码号已存在"]
 
 
+def sql_query_borrower(user_account):
+    sql = "select user_id,user_account,user_email,user_registration_time from user where instr(user_account,'{}')".format(user_account)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
+    if not result[1]:
+        return [False,"查无此用户"]
+    return [True,result[1]]
 
+def sql_query_book(book_name):
+    sql = "select book_id,book_name from book_info where instr(book_name,'{}')".format(book_name)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"查询出错"]
+    if not result[1]:
+        return [False,"查无此书籍"]
+    return [True,result[1]]
 
 
