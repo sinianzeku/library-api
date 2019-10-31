@@ -52,16 +52,41 @@ def sql_my_bookshelf(user_id):
 
 def sql_collect_book(user_id,book_id):
     sql = "insert into my_bookshelf values('{}','{}')".format(user_id,book_id)
-    result = mysql_module(sql)
+    mysql_module(sql)
     return [True,"收藏成功"]
 
-def sql_popular_recommendation():
-    sql = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 3"
-    result = mysql_module(sql)
+def sql_popular_recommendation(today_time,past_time):
+    sql1 = "where 1 = 1"
+    if today_time:
+        sql1 = sql1 + " and books_add_time<='{}'".format(today_time)
+    if past_time:
+        sql1 = sql1 + " and books_add_time >='{}' ".format(past_time)
+    sql2 = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id {} group by book_id order by count desc ".format(sql1)
+    result = mysql_module(sql2)
     return [True,result[1]]
 
 
-def sql_new_arrivals():
-    sql = 'select book_id,book_name,book_auther from book_info order by books_add_time desc limit 5;'
-    result = mysql_module(sql)
+def sql_new_arrivals(today_time,past_time):
+    sql1 = "where 1 = 1"
+    if today_time:
+        sql1 = sql1 + " and books_add_time<='{}'".format(today_time)
+    if past_time:
+        sql1 = sql1 + " and books_add_time >='{}' ".format(past_time)
+    sql2 = 'select book_id,book_name,book_auther from book_info  {}  order by books_add_time '.format(sql1)
+    result = mysql_module(sql2)
+    return [True,result[1]]
+
+
+def sql_class_lookup(category1,category2,language):
+    sql1 = "select id from book_category where 1 = 1 "
+    if category1:
+        sql1 = sql1 + " and category1 = '{}'".format(category1)
+    if category2:
+        sql1 = sql1 + " and category2 = '{}'".format(category2)
+    sql2 = "select * from book_info where book_category in ({}) and book_language = '{}'".format(sql1,language)
+    result = mysql_module(sql2)
+    if not result[0]:
+        return [False,"查询失败"]
+    if not result[1]:
+        return [False,"查无数据"]
     return [True,result[1]]

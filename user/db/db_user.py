@@ -1,5 +1,5 @@
 from config.db_config import mysql_module
-from administrators.module.defaulttime import set_time
+from config.defaulttime import set_time
 def into_register_info(username,password,email):
         st = set_time()
         select_user = "select user_id from user where user_account = '{}'".format(username)

@@ -1,5 +1,5 @@
 from config.db_config import mysql_module,mysql_modules
-from administrators.module.defaulttime  import set_time
+from config.defaulttime import set_time
 
 def insertnewbook(**kwargs):
     list_key = list(kwargs.keys())

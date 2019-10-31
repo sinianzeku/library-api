@@ -3,7 +3,7 @@ import random
 import string
 
 from administrators.book import db_book
-from administrators.module.defaulttime import set_time
+from config.defaulttime import set_time
 
 class NewBookEntry():
     def __init__(self,data):
@@ -32,10 +32,11 @@ class NewBookEntry():
         return [True]
 
     def language(self):
-        if self.book_language == "中文图书":
-            self.book_language = 0
-        if self.book_language == "外文图书":
-            self.book_language = 1
+        book_language = {
+        "中文图书":0,
+        "外文图书":1
+    }
+        self.book_language = book_language[self.book_language]
 
 
     def save_synopsis(self):
