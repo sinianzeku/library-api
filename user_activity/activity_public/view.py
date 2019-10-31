@@ -63,7 +63,6 @@ def new_arrivals():
     past_time = ''
     if "time" in data:
         past_time = st.time_frame(dict_time[data["time"]])
-        print(today_time,past_time)
     result = db_user_activity.sql_new_arrivals(today_time,past_time)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
