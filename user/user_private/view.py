@@ -48,7 +48,7 @@ def update_password():
     if new_password != new_cpassword:
         return jsonify({"status":-1,"meaasge":"两次密码输入不一致"})
     ver = userverify.UserVerify()
-    password = ver.password
+    password = ver.password(new_password)
     if not password[0]:
         return jsonify({"status":-1,"message":password[1]})
     result = sql_update_password(user_account,password[1])
@@ -68,17 +68,3 @@ def update_info():
     return jsonify({"status":0,"message":"success"})
 
 
-
-
-"""
-退出登入
-"""
-@user.route("logout",methods = ["post"])
-def logout():
-    session.clear()
-    return jsonify({"status": 0, "message": "exit successfully"})
-
-@user.route("test")
-def test():
-    # return "测试成功"
-    return jsonify({"status": 0, "message": "success"})

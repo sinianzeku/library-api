@@ -47,7 +47,7 @@ def sql_verify_old_password(user_account,verify_password):
     if not result[0]:
         return [False,"查询出错"]
     if not result[1]:
-        return [False,'旧密码错误']
+        return [False,'原密码错误']
     return [True]
 
 def sql_update_password(user_account,new_password):
