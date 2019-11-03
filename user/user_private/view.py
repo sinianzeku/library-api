@@ -9,15 +9,7 @@ user = Blueprint("user_private",__name__)
 @user.before_request
 def before_user():
     if 'username' not in session:
-        print(session)
         return jsonify({"status": -1, "message": "未登入"})
-
-
-
-@user.route("get_session")
-def get_session():
-    session
-    return jsonify({"status":0})
 
 
 @user.route("feedback",methods = ["post"])
