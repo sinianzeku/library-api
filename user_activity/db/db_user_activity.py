@@ -11,14 +11,13 @@ def sql_query_book(query_criteria,query_content):
 
 
 def sql_query_book_info(book_id):
-    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis_path,book_state,book_publication_date,cast(books_add_time as char) as books_add_time from book_info where book_id = '{}' ".format(book_id)
+    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,book_publication_date,cast(books_add_time as char) as books_add_time from book_info where book_id = '{}' ".format(book_id)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
     if not result[1]:
         return [False,"查无数据"]
-    final_result = activity_set.processing_data(result)
-    return final_result
+    return result
 
 #历史借书记录
 def sql_borrowed_records(user_id):

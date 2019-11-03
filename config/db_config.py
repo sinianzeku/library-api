@@ -13,6 +13,7 @@ def mysql_module(sql):
     cursor.execute(sql)
     result = cursor.fetchall()
     db.commit()
+    db.close()
     return [True,result]
 
 
@@ -24,5 +25,6 @@ def mysql_modules(*arg):
         cursor.execute(sql)
         result.append(cursor.fetchall())
     db.commit()
+    db.close()
     return [True,result]
 

@@ -10,9 +10,6 @@ def new_book_entry():
     data = json.loads(request.get_data("").decode("utf-8"))
     NBE = books.NewBookEntry(data)
     NBE.language()
-    save_result = NBE.save_synopsis()  # 存储图书简介
-    if not save_result:
-        return jsonify({"status": -1, "message": "数据存储失败,请求终止"})
     result = NBE.query_book_category()#查询类别id
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
