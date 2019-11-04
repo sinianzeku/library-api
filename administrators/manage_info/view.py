@@ -2,6 +2,7 @@ from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
 from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info,sql_add_book_category
 import json
+import  os
 
 admin = Blueprint("admin",__name__)
 
@@ -38,6 +39,8 @@ def query_book_info():
     result = sql_query_book_info(book_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data./img/book-010.png'
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
