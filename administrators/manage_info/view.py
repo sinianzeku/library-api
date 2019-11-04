@@ -40,7 +40,7 @@ def query_book_info():
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
-        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data./img/book-010.png'
+        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
