@@ -25,7 +25,9 @@ def add_manager():
 @admin.route("query_user_info",methods = ["post"])
 def query_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_name = data["user_name"]
+    user_name = ''
+    if "user_name" in data:
+        user_name = data["user_name"]
     result = sql_query_user_info(user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
