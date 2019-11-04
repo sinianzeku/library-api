@@ -10,8 +10,13 @@ user_activity = Blueprint("activity_public",__name__)
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
     data = json.loads(request.get_data("").decode("utf-8"))
+
+    dict_query_mode = {
+        "书名":"book_name",
+        "作者":"book_auther"
+    }
     txt = data["txt"]
-    query_mode = data["query_mode"]
+    query_mode = dict_query_mode[ data["query_mode"]]#
     result = db_user_activity.sql_query_book(query_mode, txt)
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
