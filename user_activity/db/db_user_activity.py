@@ -99,3 +99,15 @@ def sql_class_lookup(category1,category2,language):
     if not result[1]:
         return [False,"查无数据"]
     return [True,result[1]]
+
+
+def sql_category1():
+    sql = "select distinct category1 from book_category"
+    result = mysql_module(sql)
+    return result
+
+
+def sql_category2(category1):
+    sql = "select category2 from book_category where category1 = '{}'".format(category1)
+    result = mysql_module(sql)
+    return result

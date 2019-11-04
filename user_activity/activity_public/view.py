@@ -90,5 +90,18 @@ def class_lookup():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
+@user_activity.route("category1",methods=["post"])
+def category1():
+    result = db_user_activity.sql_category1()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({'status':0,"message":"success","data":result[1]})
 
-
+@user_activity.route("category2",methods=["post"])
+def category2():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    category_1 = data["category1"]
+    result = db_user_activity.sql_category2(category_1)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({'status':0,"message":"success","data":result[1]})
