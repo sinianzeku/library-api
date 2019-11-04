@@ -18,13 +18,13 @@ def into_register_info(user_account,user_phone,username,password,email):
 
 
 def user_login(username,password,code):
-    if code == 0:
+    if code == '0':
         sql = 'select user_id from user where user_account = "{}" and user_password = "{}"'.format(username,password)
         result = mysql_module(sql)
         if not result[1]:
             return [False, "账号或密码错误"]
         return [True, result[1][0]["user_id"]]
-    elif code == 1:
+    elif code == '1':
         sql = 'select work_id from admin where work_id = "{}" and work_password = "{}"'.format(username, password)
         result = mysql_module(sql)
         if not result[1]:

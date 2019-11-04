@@ -56,13 +56,12 @@ def email_verify():
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
 
-@user.route("login",methods = ["post","get"])
+@user.route("login",methods = ["post"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
     username = data["username"]
     password = data["password"]
-    # code = data["code"]#admin:1     user:0
-    code = 0
+    code = data["code"]
     user = UserVerify()
     account_result = user.account(username)
     password_result = user.password(password)
