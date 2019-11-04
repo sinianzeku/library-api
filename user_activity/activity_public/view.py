@@ -10,7 +10,6 @@ user_activity = Blueprint("activity_public",__name__)
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-
     dict_query_mode = {
         "书名":"book_name",
         "作者":"book_auther"
