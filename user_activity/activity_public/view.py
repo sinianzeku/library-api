@@ -3,6 +3,7 @@ from user_activity.db import db_user_activity
 import json
 from config.defaulttime import set_time
 from user_activity.module.activity_set import Condition
+import os
 
 user_activity = Blueprint("activity_public",__name__)
 
@@ -15,16 +16,21 @@ def query_book():
         "作者":"book_auther"
     }
     txt = data["txt"]
-    query_mode = dict_query_mode[ data["query_mode"]]#
+    query_mode = "book_name"
+    if "query_mode" in data:
+        query_mode = dict_query_mode[ data["query_mode"]]#
     result = db_user_activity.sql_query_book(query_mode, txt)
     dict_book_language = {
         "0":"中文图书",
         "1":"西文图书"
     }
-    for i in range(len(result[1])):
-        result[1][i]["book_language"] = dict_book_language[result[1][i]["book_language"]]
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_language"] = dict_book_language[result[1][i]["book_language"]]
+    result1 =  db_user_activity.sql_add_key_works(txt,query_mode)
+    if not result1:
+        return jsonify({"status": -1, "massage": "fail"})
     return jsonify({"status":"0","massage":"success","data":result[1]})
 
 
@@ -35,6 +41,8 @@ def query_book_info():
     result = db_user_activity.sql_query_book_info(book_id)
     if not result[0]:
         return jsonify({"status":-1,"massage":"fail","data":result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
     return jsonify({"status":-1,"massage":"success","data":result[1]})
 
 

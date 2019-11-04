@@ -10,7 +10,10 @@ def sql_add_manager(work_id,worker_name,work_password):
 
 
 def sql_query_user_info(user_name):
-    sql = "select user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
+    if user_name:
+        sql = "select user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
+    else:
+        sql = "select user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user"
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]

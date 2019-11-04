@@ -1,5 +1,7 @@
 from flask import Blueprint,jsonify,session,request
 from user_activity.db import db_user_activity
+from flask_mail import Mail,Message
+
 user_activity = Blueprint("activity_private",__name__)
 import json
 @user_activity.before_request
@@ -45,3 +47,20 @@ def collect_book():
     return jsonify({"status":0,"message":"success"})
 
 
+@user_activity.route("thematic_activities",methods=["post"])
+def thematic_activities():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_id = session['id']
+    contestant = data["contestant"]
+    phone = data["phone"]
+    works = data["works"]
+    result = db_user_activity.sql_thematic_activities(contestant,phone,works)
+    if not result[0]:
+        return jsonify({"status":0,"message":"fail"})
+    email = db_user_activity.sql_email(user_id)
+    mail = Mail()
+    message = Message(subject="图书馆活动报名",
+                      recipients=[email],
+                      body='您已成功报名图书馆‘三行情书’活动')
+    mail.send(message)
+    return jsonify({"status":0,"message":"success"})

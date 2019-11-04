@@ -5,8 +5,6 @@ from user_activity.module import activity_set
 def sql_query_book(query_criteria,query_content):
     sql = "select book_id, book_name, book_auther, book_language, book_publisher from book_info where instr({},'{}')".format(query_criteria,query_content)
     result = mysql_module(sql)
-    if not result[1]:
-        return [False,"查无数据"]
     return result
 
 
@@ -15,8 +13,6 @@ def sql_query_book_info(book_id):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无数据"]
     return result
 
 #历史借书记录
@@ -25,8 +21,6 @@ def sql_borrowed_records(user_id):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无数据"]
     return [True,result[1]]
 
 #在借书籍
@@ -35,8 +29,6 @@ def sql_borrowing_books(user_id):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无数据"]
     return result
 
 #书架
@@ -45,8 +37,6 @@ def sql_my_bookshelf(user_id):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无数据"]
     return [True,result[1]]
 
 def sql_collect_book(user_id,book_id):
@@ -111,3 +101,25 @@ def sql_category2(category1):
     sql = "select category2 from book_category where category1 = '{}'".format(category1)
     result = mysql_module(sql)
     return result
+
+
+def sql_thematic_activities(contestant,phone,works):
+    sql = "insert into thematic_activities values('{}','{}','{}')".format(contestant,phone,works)
+    result = mysql_module(sql)
+    return result
+
+
+def sql_email(user_id):
+    sql = "select user_email from user where user_id = '{}'".format(user_id)
+    result = mysql_module(sql)
+    return result[1][0]["user_email"]
+
+def sql_add_key_works(txt,query_mode):
+    sql = "select words from key_word where words = '{}'".format(txt)
+    result = mysql_module(sql)
+    if result[1]:
+        sql2 = "update key_word set count=count+1 where words = '{}'".format(txt)
+    else:
+        sql2 = "insert into key_word value ('{}','{}',1)".format(txt,query_mode)
+    mysql_module(sql2)
+    return True
