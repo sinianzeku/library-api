@@ -3,7 +3,7 @@ from user_activity.module import activity_set
 
 
 def sql_query_book(query_criteria,query_content):
-    sql = "select book_id, book_name, book_auther, book_publisher from book_info where instr({},'{}')".format(query_criteria,query_content)
+    sql = "select book_id, book_name, book_auther, book_language, book_publisher from book_info where instr({},'{}')".format(query_criteria,query_content)
     result = mysql_module(sql)
     if not result[1]:
         return [False,"查无数据"]

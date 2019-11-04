@@ -30,7 +30,7 @@ class NewBookEntry():
     def language(self):
         book_language = {
         "中文图书":0,
-        "外文图书":1
+        "西文图书":1
     }
         self.book_language = book_language[self.book_language]
 
