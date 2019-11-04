@@ -64,13 +64,13 @@ def user_verify_login():
     # code = data["code"]#admin:1     user:0
     code = 0
     user = UserVerify()
-    username_result = user.username(username)
+    account_result = user.account(username)
     password_result = user.password(password)
-    if not username_result[0]:
-        return jsonify({"status": -1, "message": username_result[1]})
+    if not account_result[0]:
+        return jsonify({"status": -1, "message": account_result[1]})
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
-    verify_resutl = user_login(username_result[1],password_result[1],code)
+    verify_resutl = user_login(account_result[1],password_result[1],code)
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
     session["username"] = username
