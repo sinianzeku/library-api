@@ -39,6 +39,7 @@ class NewBookEntry():
     def data_access_to_database(self):
         st = set_time()
         result = db_book.insertnewbook(
+            book_code=self.book_code,
             book_name = self.book_name,
             book_auther = self.book_auther,
             book_category = self.book_category,
@@ -48,7 +49,6 @@ class NewBookEntry():
             book_synopsis = self.book_synopsis,
             book_publication_date = self.book_publication_date,
             books_add_time = st.today(),
-            book_code = self.book_code,
             book_language = self.book_language
         )
         if not result[0]:

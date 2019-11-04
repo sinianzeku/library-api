@@ -21,6 +21,7 @@ def new_book_entry():
         return jsonify({"status": -1, "message" : update_result[1]})
     return jsonify({"status" : 0, "message" : "success"})
 
+
 @book.route("borrow_book",methods = ["post"])
 def borrow_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -30,6 +31,7 @@ def borrow_book():
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
+
 
 @book.route("return_book",methods = ["post"])
 def return_book():
@@ -42,6 +44,7 @@ def return_book():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
+
 @book.route("query_borrower",methods = ["post"])
 def query_borrower():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -50,6 +53,7 @@ def query_borrower():
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
+
 
 @book.route("query_book",methods = ["post"])
 def query_book():
