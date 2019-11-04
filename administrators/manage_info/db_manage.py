@@ -14,8 +14,6 @@ def sql_query_user_info(user_name):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
-    if not result[1]:
-        return [False,"查无数据"]
     return [True,result[1]]
 
 def sql_query_book_info(book_name):
@@ -23,8 +21,6 @@ def sql_query_book_info(book_name):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
-    if not result[1]:
-        return [False,"查无数据"]
     return [True,result[1]]
 
 

@@ -49,8 +49,6 @@ def sql_query_borrower(user_account):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无此用户"]
     return [True,result[1]]
 
 def sql_query_book(book_name):
@@ -58,8 +56,6 @@ def sql_query_book(book_name):
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
-    if not result[1]:
-        return [False,"查无此书籍"]
     return [True,result[1]]
 
 
