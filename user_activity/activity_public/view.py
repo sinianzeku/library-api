@@ -3,6 +3,7 @@ from user_activity.db import db_user_activity
 import json
 from config.defaulttime import set_time
 from user_activity.module.activity_set import Condition
+
 user_activity = Blueprint("activity_public",__name__)
 
 

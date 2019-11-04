@@ -4,7 +4,6 @@
     <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_activity/activity_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_public/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/db/db_user_activity.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/db/db_user_activity.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,14 +67,14 @@
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="30202" />
+          <entry key="py" value="30203" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="30233" />
+          <entry key="Python" value="30234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -83,7 +82,7 @@
           <entry key="Pipfile" value="9" />
           <entry key="h" value="1" />
           <entry key="lock" value="4" />
-          <entry key="py" value="738" />
+          <entry key="py" value="740" />
           <entry key="pyi" value="1" />
           <entry key="txt" value="5" />
         </counts>
@@ -92,7 +91,7 @@
         <counts>
           <entry key="C++" value="1" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="738" />
+          <entry key="Python" value="740" />
           <entry key="PythonStub" value="1" />
           <entry key="TOML" value="9" />
         </counts>
@@ -104,11 +103,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="106" column="69" selection-start-line="106" selection-start-column="69" selection-end-line="106" selection-end-column="69" />
+            <state relative-caret-position="1500">
+              <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <marker date="1572837858039" expanded="true" signature="3536:3835" ph="..." />
+                <marker date="1572838339684" expanded="true" signature="3537:3836" ph="..." />
               </folding>
             </state>
           </provider>
@@ -151,8 +150,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/db/db_user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="-245">
+              <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -161,9 +160,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/db_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
+            <state relative-caret-position="250">
               <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
@@ -179,6 +187,18 @@
               <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding>
                 <marker date="1572771334928" expanded="true" signature="701:792" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -300,6 +320,12 @@
               <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="library-api" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="user_private" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
@@ -517,13 +543,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570592138344</updated>
-    </task>
-    <task id="LOCAL-00008" summary="zpg">
-      <created>1570875244337</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1570875244337</updated>
     </task>
     <task id="LOCAL-00009" summary="zpg">
       <created>1570875771631</created>
@@ -861,7 +880,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572834989740</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="zpg">
+      <created>1572838052678</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1572838052678</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView">
@@ -881,7 +907,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54755616" visible="true" weight="0.5467422" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.54755616" visible="true" weight="0.16572239" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993395" weight="0.21388102" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1143,16 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -1163,27 +1179,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/db_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-428">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/verify/userverify.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="21" column="24" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1193,16 +1192,6 @@
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding>
             <marker date="1572771334928" expanded="true" signature="701:792" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/db/db_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1228,13 +1217,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
+    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="106" column="69" selection-start-line="106" selection-start-column="69" selection-end-line="106" selection-end-column="69" />
+        <state relative-caret-position="100">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/db_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/db/db_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-245">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-            <marker date="1572837858039" expanded="true" signature="3536:3835" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="60" column="19" lean-forward="true" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1572838339684" expanded="true" signature="3537:3836" ph="..." />
           </folding>
         </state>
       </provider>
