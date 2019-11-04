@@ -33,8 +33,8 @@ def user_login(username,password,code):
 
 
 
-def sql_feedbacks(user_id,readers,phone,path):
-    sql = "insert into feedback(user_id,readers,phone,feedbacks) value ('{}','{}','{}','{}')".format(user_id,readers,phone,path)
+def sql_feedbacks(user_id,readers,phone,feedbacks):
+    sql = "insert into feedback(user_id,readers,phone,feedbacks) value ('{}','{}','{}','{}')".format(user_id,readers,phone,feedbacks)
     result = mysql_module(sql)
     if not result[0]:
         return False

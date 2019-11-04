@@ -1,7 +1,6 @@
 from flask import Blueprint,jsonify,session,request
 import json
 from user.db.db_user import sql_feedbacks,sql_verify_old_password,sql_update_password,sql_update_info
-from user.module.module import save_feedbacks
 from user.verify import userverify
 
 user = Blueprint("user_private",__name__)
@@ -19,8 +18,7 @@ def feedback():
     feedbacks = data["feedbacks"]
     reader = data["reader"]
     phone = data["phone"]
-    path = save_feedbacks(feedbacks,reader)
-    result = sql_feedbacks(user_id,reader,phone,path)
+    result = sql_feedbacks(user_id,reader,phone,feedbacks)
     if not result:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
