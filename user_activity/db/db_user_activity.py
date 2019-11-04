@@ -123,3 +123,9 @@ def sql_add_key_works(txt,query_mode):
         sql2 = "insert into key_word value ('{}','{}',1)".format(txt,query_mode)
     mysql_module(sql2)
     return True
+
+
+def sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,time_of_appointment_end):
+    sql = "insert into voluntary_activities values('{}','{}','{}','{}','{}')".format(contestant,phone,email,time_of_appointment_start,time_of_appointment_end)
+    result = mysql_module(sql)
+    return result
