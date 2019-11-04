@@ -16,17 +16,17 @@ class UserVerify():
         return [True,password]
 
 
-    def username(self,username):
-        if not re.search(u'^[_a-zA-Z\u4e00-\u9fa5]+$', username) :
+    def account(self,account):
+        if not re.search(u'^[_a-zA-Z\u4e00-\u9fa5]+$', account) :
             err = "用户名含有非法字符"
             self.username = [False,err]
-            return self.username
-        if not (len(username)>=4 and len(username)<=12):
+            return self.account
+        if not (len(account)>=4 and len(account)<=12):
             err = "用户名长度应为4—12个字符"
             self.username = [False, err]
-            return self.username
-        self.username = [True, username]
-        return self.username
+            return self.account
+        self.account = [True, account]
+        return self.account
 
 
 def password_encryption(password):

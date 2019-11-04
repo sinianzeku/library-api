@@ -23,17 +23,17 @@ def user_verify_register():
     if password != cpassword:
         return jsonify({"status": -1, "message": "两次密码不一致"})
     user = UserVerify()
-    username_result = user.username(username)
-    if not username_result[0]:
-        return jsonify({"status": -1, "message": username_result[1]})
+    account_result = user.account(user_account)
+    if not account_result[0]:
+        return jsonify({"status": -1, "message": account_result[1]})
     password_result = user.password(password)
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
     if  verifycode != get_my_item(email):
         return jsonify({"status": -1, "message": "验证码错误"})
-    into_resutl = into_register_info(user_account,
+    into_resutl = into_register_info(account_result[1],
                                      user_phone,
-                                     username_result[1],
+                                     username,
                                      password_result[1],
                                      email)
     if not into_resutl[0]:
