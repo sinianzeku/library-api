@@ -25,9 +25,9 @@ def new_book_entry():
 @book.route("borrow_book",methods = ["post"])
 def borrow_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_id = data["book_id"]
-    user_id = data["user_id"]
-    result = sql_borrow_book(book_id,user_id)
+    book_name = data["book_name"]
+    user_name = data["user_name"]
+    result = sql_borrow_book(book_name,user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
@@ -45,24 +45,24 @@ def return_book():
     return jsonify({"status":0,"message":"success"})
 
 
-@book.route("query_borrower",methods = ["post"])
-def query_borrower():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    user_name = data["user_name"]
-    result = sql_query_borrower(user_name)
-    if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success","data":result[1]})
-
-
-@book.route("query_book",methods = ["post"])
-def query_book():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    book_name = data["book_name"]
-    result = sql_query_book(book_name)
-    if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+# @book.route("query_borrower",methods = ["post"])
+# def query_borrower():
+#     data = json.loads(request.get_data("").decode("utf-8"))
+#     user_name = data["user_name"]
+#     result = sql_query_borrower(user_name)
+#     if not result[0]:
+#         return jsonify({"status":-1,"message":result[1]})
+#     return jsonify({"status":0,"message":"success","data":result[1]})
+#
+#
+# @book.route("query_book",methods = ["post"])
+# def query_book():
+#     data = json.loads(request.get_data("").decode("utf-8"))
+#     book_name = data["book_name"]
+#     result = sql_query_book(book_name)
+#     if not result[0]:
+#         return jsonify({"status":-1,"message":result[1]})
+#     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
 
