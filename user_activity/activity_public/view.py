@@ -21,7 +21,8 @@ def query_book():
         "0":"中文图书",
         "1":"西文图书"
     }
-    result[1][0]["book_language"] = dict_book_language[result[1][0]["book_language"]]
+    for i in range(len(result[1])):
+        result[1][i]["book_language"] = dict_book_language[result[1][i]["book_language"]]
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     return jsonify({"status":"0","massage":"success","data":result[1]})
