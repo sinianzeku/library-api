@@ -42,7 +42,6 @@ def sql_add_book_category(category1,category2):
         return [False,"信息查询失败"]
     if result[1]:
         return [False,"该分类已存在"]
-
     sql = "insert into book_category(category1,category2) values ('{}','{}')".format(category1,category2)
     result = mysql_module(sql)
     if not result[0]:
@@ -50,8 +49,21 @@ def sql_add_book_category(category1,category2):
     return [True,"分类保存成功"]
 
 
+def sql_user_info():
+    sql = "select user_account,user_name,user_phone,cast(user_registration_time as char) as user_registration_time  from user"
+    result = mysql_module(sql)
+    return result
 
+def sql_conditional_user_info(user_name):
+    sql = "select user_account,user_name,user_phone,cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
+    result = mysql_module(sql)
+    return result
 
+def sql_delete_user(user_name):
+    sql_id = "select user_id from user where user_account = '{}'".format(user_name)
+    user_id = mysql_module(sql_id)[1][0]["user_id"]
+    sql_de_bookshelf = "delete from my_bookshelf where user_id = '{}'".format(user_id)
+    sql_de_bookshelf = "delete from my_bookshelf where user_id = '{}'".format(user_id)
 
 
 

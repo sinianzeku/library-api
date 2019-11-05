@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
-from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info_0,sql_add_book_category,sql_query_book_info_1
+from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info_0,sql_add_book_category,sql_query_book_info_1,sql_user_info,sql_conditional_user_info,sql_delete_user
 from administrators.book.db_book import sql_query_user_id
 import json
 import  os
@@ -75,3 +75,27 @@ def add_book_category():
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success"})
+
+
+@admin.route("user_info",methods = ["post"])
+def user_info():
+    result = sql_user_info()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+@admin.route("conditional_user_info",methods = ["post"])
+def conditional_user_info():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
+    result = sql_conditional_user_info(user_name)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+@admin.route("delete_user",methods = ["post"])
+def delete_user():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
+    result = sql_delete_user(user_name)
+    return jsonify({"status":0,"message":"success"})
