@@ -71,7 +71,7 @@ def sql_delete_user(user_name):
 
 
 def sql_book_info():
-    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info"
+    sql = "select book_id,book_code,book_name,book_auther,category1,category2,book_publisher,book_room,book_bookshelf,book_synopsis,cast(book_publication_date as char) book_publication_date,book_language,book_state from book_info inner JOIN book_category on id = book_category"
     result = mysql_module(sql)
     return result
 
@@ -86,9 +86,21 @@ def sql_borrowing_book():
     result = mysql_module(sql)
     return result
 
+def sql_change_book_info(**kwargs):
+    list_key = list(kwargs.keys())
+    list_value = list(kwargs.values())
 
-
-
+    sql = "UPDATE book_info SET {} = '{}',{} = '{}',{} = '{}',{} = {},{} = '{}',{} = '{}',{} = '{}',{} = '{}',{} = '{}',{} = '{}' where {} = '{}'".format(list_key[0],list_value[0],
+                 list_key[1],list_value[1],                                                                                                                                 list_key[2],list_value[2],
+                 list_key[3],list_value[3],
+                list_key[4],list_value[4],
+                list_key[5],list_value[5],
+                list_key[6],list_value[6],
+                list_key[7],list_value[7],
+                list_key[8],list_value[8],
+                list_key[9],list_value[9],
+                list_key[10],list_value[10])
+    return mysql_module(sql)
 
 
 

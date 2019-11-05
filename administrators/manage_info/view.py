@@ -1,7 +1,7 @@
 from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
 from administrators.manage_info import db_manage
-from administrators.book.db_book import sql_query_user_id
+from administrators.book.db_book import sql_query_user_id,sql_query_book_category
 import json
 import  os
 
@@ -111,8 +111,13 @@ def book_info():
         "0":"在馆",
         "1":"已借出"
     }
+    language = {
+        "0":"中文图书",
+        "1":"西文图书"
+    }
     for i in range(len(result[1])):
         result[1][i]["book_state"] = state[result[1][i]["book_state"]]
+        result[1][i]["book_language"] = language[result[1][i]["book_language"]]
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
@@ -130,6 +135,30 @@ def conditional_book_info():
     for i in range(len(result[1])):
         result[1][i]["book_state"] = state[result[1][i]["book_state"]]
     return jsonify({"status":0,"message":"success","data":result[1]})
+
+@admin.route("change_book_info",methods = ["post"])
+def change_book_info():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    category1 = data["category1"]
+    category2 = data["category2"]
+    language = {
+        "中文图书":0,
+        "西文图书":1
+    }
+    result = db_manage.sql_change_book_info(book_code = data["book_code"],
+                                            book_name=data["book_name"],
+                                            book_auther=data["book_auther"],
+                                            book_category=sql_query_book_category(category1, category2)[1],
+                                            book_publisher=data["book_publisher"],
+                                            book_room=data["book_room"],
+                                            book_bookshelf=data["book_bookshelf"],
+                                            book_synopsis=data["book_synopsis"],
+                                            book_publication_date=data["book_publication_date"],
+                                            book_language=language[data["book_language"]],
+                                            book_id=data["book_id"])
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status": 0, "message": "success"})
 
 @admin.route("borrowing_book",methods = ["post"])
 def borrowing_book():
