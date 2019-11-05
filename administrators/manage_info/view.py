@@ -202,7 +202,41 @@ def borrowing_book():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+@admin.route("conditional_borrowing_book",methods = ["post"])
+def conditional_borrowing_book():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_id = ""
+    book_name = ""
+    book_publisher = ""
+    borrow_time = ""
+    user_name = ""
+    txt = ""
+    query_mode = ""
 
+    query_mode_dict = {
+        "书名":"book_name",
+        "作者":"book_auther"
+    }
+
+    if "txt" in data:
+        txt = data["txt"]
+        query_mode = "book_name"
+    if "query_mode" in data and data["query_mode"]:
+        query_mode = query_mode_dict[data["query_mode"]]
+    if "book_id" in data:
+        book_id = data["book_id"]
+    if "book_name" in data:
+        book_name = data["book_name"]
+    if "book_publisher" in data:
+        book_publisher = data["book_publisher"]
+    if "borrow_time" in data:
+        borrow_time = data["borrow_time"]
+    if "user_name" in data:
+        user_name = data["user_name"]
+    result = db_manage.sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publisher,borrow_time,user_name)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 #借书记录
 @admin.route("borrow_record",methods = ["post"])
 def borrow_record():
