@@ -9,7 +9,7 @@ from user.verify.emailverify import get_my_item
 user = Blueprint("user_public",__name__)
 
 
-
+#注册
 @user.route("register",methods = ["post"])
 def user_verify_register():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -41,7 +41,7 @@ def user_verify_register():
     return jsonify({"status": 0, "message": into_resutl[1]})
 
 
-
+#发送注册验证码
 @user.route("email_verify",methods = ["post"])
 def email_verify():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -55,7 +55,7 @@ def email_verify():
     mail.send(message)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
-
+#登入
 @user.route("login",methods = ["post"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))

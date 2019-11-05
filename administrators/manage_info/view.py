@@ -6,6 +6,7 @@ import  os
 
 admin = Blueprint("admin",__name__)
 
+#增加管理员
 @admin.route("add_manager",methods = ["post"])
 def add_manager():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -22,6 +23,7 @@ def add_manager():
     return jsonify({"status":0,"message":result[1]})
 
 
+#查询借书者信息
 @admin.route("query_user_info",methods = ["post"])
 def query_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -34,6 +36,7 @@ def query_user_info():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
+#查询被借书籍信息
 @admin.route("query_book_info",methods = ["post"])
 def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -45,7 +48,7 @@ def query_book_info():
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-
+#增加书籍类别
 @admin.route("add_book_category",methods = ["post"])
 def add_book_category():
     data = json.loads(request.get_data("").decode("utf-8"))

@@ -8,6 +8,7 @@ import os
 user_activity = Blueprint("activity_public",__name__)
 
 
+#查找书籍
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -33,7 +34,7 @@ def query_book():
         return jsonify({"status": -1, "massage": "fail"})
     return jsonify({"status":"0","massage":"success","data":result[1]})
 
-
+#查询书籍详细信息
 @user_activity.route("query_book_info",methods = ["post"])
 def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -89,7 +90,7 @@ def new_arrivals():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-
+#分类查询
 @user_activity.route("class_lookup",methods = ["post"])
 def class_lookup():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -108,14 +109,14 @@ def class_lookup():
         jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-
+#查找分类1数据
 @user_activity.route("category1",methods=["post"])
 def category1():
     result = db_user_activity.sql_category1()
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({'status':0,"message":"success","data":result[1]})
-
+#查找分类2数据
 @user_activity.route("category2",methods=["post"])
 def category2():
     data = json.loads(request.get_data("").decode("utf-8"))

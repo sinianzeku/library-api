@@ -67,4 +67,9 @@ def sql_update_info( user_id,email,phone,address):
     # return [True]
 
 
+def sql_query_user_info(user_id):
+    sql = "select * from user where user_id = '{}'".format(user_id)
+    result = mysql_module(sql)
+    return result
+
 

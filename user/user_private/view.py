@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,session,request
 import json
-from user.db.db_user import sql_feedbacks,sql_verify_old_password,sql_update_password,sql_update_info
+from user.db.db_user import sql_feedbacks,sql_verify_old_password,sql_update_password,sql_update_info,sql_query_user_info
 from user.verify import userverify
 
 user = Blueprint("user_private",__name__)
@@ -10,7 +10,7 @@ def before_user():
     if 'username' not in session:
         return jsonify({"status": -1, "message": "未登入"})
 
-
+#意见反馈
 @user.route("feedback",methods = ["post"])
 def feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -23,7 +23,7 @@ def feedback():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
-
+#更新密码
 @user.route("update_password", methods = ["post"])
 def update_password():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -46,7 +46,16 @@ def update_password():
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success"})
 
+#查看个人信息
+@user.route("query_user_info",methods = ["post"])
+def query_user_info():
+    user_id = session["id"]
+    result = sql_query_user_info(user_id)
+    if not result:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 
+#修改个人信息
 @user.route("update_info",methods = ["post"])
 def update_info():
     data = json.loads(request.get_data("").decode("utf-8"))

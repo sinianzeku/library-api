@@ -5,6 +5,7 @@ import json
 
 book = Blueprint("book",__name__)
 
+#新书入馆
 @book.route("new_book_entry",methods = ["POST"])
 def new_book_entry():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -21,10 +22,11 @@ def new_book_entry():
         return jsonify({"status": -1, "message" : update_result[1]})
     return jsonify({"status" : 0, "message" : "success"})
 
-
+#借书
 @book.route("borrow_book",methods = ["post"])
 def borrow_book():
     data = json.loads(request.get_data("").decode("utf-8"))
+
     book_name = data["book_name"]
     user_name = data["user_name"]
     result = sql_borrow_book(book_name,user_name)
@@ -32,14 +34,13 @@ def borrow_book():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
-
+#还书
 @book.route("return_book",methods = ["post"])
 def return_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_id = data["book_id"]
-    user_id = data["user_id"]
-    borrow_time = data["borrow_time"]
-    result = sql_return_book(book_id,user_id,borrow_time)
+    book_name = data["book_name"]
+    user_name = data["user_name"]
+    result = sql_return_book(book_name,user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
