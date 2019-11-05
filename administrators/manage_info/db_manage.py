@@ -50,12 +50,12 @@ def sql_add_book_category(category1,category2):
 
 
 def sql_user_info():
-    sql = "select user_account,user_name,user_phone,cast(user_registration_time as char) as user_registration_time  from user"
+    sql = "select user_account,user_name,user_email,user_phone,cast(user_registration_time as char) as user_registration_time  from user"
     result = mysql_module(sql)
     return result
 
 def sql_conditional_user_info(user_name):
-    sql = "select user_account,user_name,user_phone,cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
+    sql = "select user_account,user_name,user_email,user_phone,cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
     result = mysql_module(sql)
     return result
 
