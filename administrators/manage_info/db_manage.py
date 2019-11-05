@@ -76,7 +76,7 @@ def sql_book_info():
     return result
 
 
-def sql_conditional_book_info(book_id,book_name,book_publisher,book_room):
+def sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_state):
     sql = "1 = 1"
     if book_id:
         sql = sql + " and book_id = {}".format(book_id)
@@ -86,6 +86,8 @@ def sql_conditional_book_info(book_id,book_name,book_publisher,book_room):
         sql = sql + " and book_publisher = '{}'".format(book_publisher)
     if book_room:
         sql = sql + " and book_room = '{}'".format(book_room)
+    if book_state:
+        sql = sql + " and book_state = '{}'".format(book_state)
     sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where {}".format(sql)
     result = mysql_module(sql)
     return result

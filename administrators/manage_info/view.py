@@ -131,6 +131,7 @@ def conditional_book_info():
     book_name = ""
     book_publisher = ""
     book_room = ""
+    book_state = ""
     if "book_id" in data:
         book_id = data["book_id"]
     if "book_name" in data:
@@ -139,7 +140,9 @@ def conditional_book_info():
         book_publisher = data["book_publisher"]
     if "book_room" in data:
         book_room = data["book_room"]
-    result = db_manage.sql_conditional_book_info(book_id,book_name,book_publisher,book_room)
+    if "book_state" in data:
+        book_state = data["book_state"]
+    result = db_manage.sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_state)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     state = {
