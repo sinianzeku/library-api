@@ -212,12 +212,10 @@ def conditional_borrowing_book():
     user_name = ""
     txt = ""
     query_mode = ""
-
     query_mode_dict = {
         "书名":"book_name",
         "作者":"book_auther"
     }
-
     if "txt" in data:
         txt = data["txt"]
         query_mode = "book_name"

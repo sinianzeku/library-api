@@ -125,9 +125,9 @@ def sql_delete_book(book_id):
 def sql_change_book_info(**kwargs):
     list_key = list(kwargs.keys())
     list_value = list(kwargs.values())
-
     sql = "UPDATE book_info SET {} = '{}',{} = '{}',{} = '{}',{} = {},{} = '{}',{} = '{}',{} = '{}',{} = '{}',{} = '{}',{} = '{}' where {} = '{}'".format(list_key[0],list_value[0],
-                 list_key[1],list_value[1],                                                                                                                                 list_key[2],list_value[2],
+                 list_key[1],list_value[1],
+                list_key[2],list_value[2],
                  list_key[3],list_value[3],
                 list_key[4],list_value[4],
                 list_key[5],list_value[5],
