@@ -76,7 +76,7 @@ def add_book_category():
         return jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success"})
 
-
+#用户信息
 @admin.route("user_info",methods = ["post"])
 def user_info():
     result = db_manage.sql_user_info()
@@ -84,6 +84,7 @@ def user_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#用户信息条件查询
 @admin.route("conditional_user_info",methods = ["post"])
 def conditional_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -93,6 +94,7 @@ def conditional_user_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#删除用户
 @admin.route("delete_user",methods = ["post"])
 def delete_user():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -102,6 +104,7 @@ def delete_user():
         return jsonify({"status": 0, "message": "success"})
     return jsonify({"status":0,"message":"success"})
 
+#图书信息
 @admin.route("book_info",methods = ["post"])
 def book_info():
     result = db_manage.sql_book_info()
@@ -120,12 +123,23 @@ def book_info():
         result[1][i]["book_language"] = language[result[1][i]["book_language"]]
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-
+#图书信息条件查询
 @admin.route("conditional_book_info",methods = ["post"])
 def conditional_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_id = data["book_id"]
-    result = db_manage.sql_conditional_book_info(book_id)
+    book_id = ""
+    book_name = ""
+    book_publisher = ""
+    book_room = ""
+    if "book_id" in data:
+        book_id = data["book_id"]
+    if "book_name" in data:
+        book_name = data["book_name"]
+    if "book_publisher" in data:
+        book_publisher = data["book_publisher"]
+    if "book_room" in data:
+        book_room = data["book_room"]
+    result = db_manage.sql_conditional_book_info(book_id,book_name,book_publisher,book_room)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     state = {
@@ -136,6 +150,7 @@ def conditional_book_info():
         result[1][i]["book_state"] = state[result[1][i]["book_state"]]
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#修改图书信息
 @admin.route("change_book_info",methods = ["post"])
 def change_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -160,6 +175,8 @@ def change_book_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status": 0, "message": "success"})
 
+
+#在借书籍
 @admin.route("borrowing_book",methods = ["post"])
 def borrowing_book():
     result = db_manage.sql_borrowing_book()
@@ -168,6 +185,13 @@ def borrowing_book():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
+#借书记录
+@admin.route("borrow_record",methods = ["post"])
+def borrowing_book():
+    result = db_manage.sql_borrow_record()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
 
 
 

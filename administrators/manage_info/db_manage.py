@@ -76,8 +76,17 @@ def sql_book_info():
     return result
 
 
-def sql_conditional_book_info(book_id):
-    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where book_id = {}".format(book_id)
+def sql_conditional_book_info(book_id,book_name,book_publisher,book_room):
+    sql = "1 = 1"
+    if book_id:
+        sql = sql + " and book_id = {}".format(book_id)
+    if book_name:
+        sql = sql + " and book_name = '{}'".format(book_name)
+    if book_publisher:
+        sql = sql + " and book_publisher = '{}'".format(book_publisher)
+    if book_room:
+        sql = sql + " and book_room = '{}'".format(book_room)
+    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where {}".format(sql)
     result = mysql_module(sql)
     return result
 
@@ -103,7 +112,10 @@ def sql_change_book_info(**kwargs):
     return mysql_module(sql)
 
 
-
+def sql_borrow_record():
+    sql = "select book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(borrow.return_time as char) return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
+    result = mysql_module(sql)
+    return result
 
 
 
