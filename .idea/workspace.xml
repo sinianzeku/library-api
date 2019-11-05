@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/administrators/manage_info/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_activity/activity_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_public/view.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,14 +68,14 @@
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="36130" />
+          <entry key="py" value="36189" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="36161" />
+          <entry key="Python" value="36220" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -107,18 +107,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrators/manage_info/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="148" column="39" lean-forward="true" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
+            <state relative-caret-position="3875">
+              <caret line="185" column="5" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="5" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
-                <marker date="1572942439961" expanded="true" signature="354:1344" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="980:1344" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="3001:3006" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="3284:3289" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="3658:3885" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="5671:7228" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="6948:7222" ph="..." />
-                <marker date="1572942439961" expanded="true" signature="7299:7764" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="354:1344" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="980:1344" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="3001:3006" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="3284:3289" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="3658:3885" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="5686:7268" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="6988:7262" ph="..." />
+                <marker date="1572944329871" expanded="true" signature="7339:7804" ph="..." />
               </folding>
             </state>
           </provider>
@@ -139,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_activity/activity_private/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3">
+            <state relative-caret-position="638">
               <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
             </state>
           </provider>
@@ -157,11 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administrators/manage_info/db_manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+            <state relative-caret-position="154">
+              <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
               <folding>
                 <marker date="1572942440182" expanded="true" signature="113:118" ph="..." />
                 <marker date="1572942440182" expanded="true" signature="415:424" ph="..." />
@@ -172,11 +172,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="225">
+              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -187,7 +187,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="473">
               <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -212,11 +212,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+            <state relative-caret-position="163">
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
               <folding>
-                <marker date="1572921457942" expanded="true" signature="1816:2114" ph="..." />
-                <marker date="1572921457942" expanded="true" signature="4249:4250" ph="..." />
+                <element signature="e#0#43#0" expanded="true" />
+                <marker date="1572944330185" expanded="true" signature="1823:2121" ph="..." />
+                <marker date="1572944330185" expanded="true" signature="4256:4257" ph="..." />
               </folding>
             </state>
           </provider>
@@ -286,13 +287,13 @@
         <option value="$PROJECT_DIR$/user/db/db_user.py" />
         <option value="$PROJECT_DIR$/user/user_private/view.py" />
         <option value="$PROJECT_DIR$/user/user_public/view.py" />
-        <option value="$PROJECT_DIR$/user_activity/activity_public/view.py" />
         <option value="$PROJECT_DIR$/user_activity/db/db_user_activity.py" />
         <option value="$PROJECT_DIR$/administrators/book/view.py" />
         <option value="$PROJECT_DIR$/config/db_config.py" />
         <option value="$PROJECT_DIR$/administrators/book/db_book.py" />
         <option value="$PROJECT_DIR$/administrators/manage_info/db_manage.py" />
         <option value="$PROJECT_DIR$/administrators/manage_info/view.py" />
+        <option value="$PROJECT_DIR$/user_activity/activity_public/view.py" />
       </list>
     </option>
   </component>
@@ -333,63 +334,6 @@
               <item name="library-api" type="462c0819:PsiDirectoryNode" />
               <item name="administrators" type="462c0819:PsiDirectoryNode" />
               <item name="manage_info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="user_private" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="user_public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="verify" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_private" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
-              <item name="activity_public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library-api" type="462c0819:PsiDirectoryNode" />
-              <item name="user_activity" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -585,20 +529,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570592138344</updated>
-    </task>
-    <task id="LOCAL-00039" summary="zpg">
-      <created>1572063034773</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1572063034773</updated>
-    </task>
-    <task id="LOCAL-00040" summary="zpg">
-      <created>1572397536904</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1572397536904</updated>
     </task>
     <task id="LOCAL-00041" summary="zpg">
       <created>1572494331705</created>
@@ -929,7 +859,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572941760395</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="zpg">
+      <created>1572942451370</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1572942451370</updated>
+    </task>
+    <task id="LOCAL-00089" summary="zpg">
+      <created>1572943173514</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1572943173514</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView">
@@ -945,12 +889,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.1367239" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.1367239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50183153" side_tool="true" weight="0.169749" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.82892996" visible="true" weight="0.26912183" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.82892996" visible="true" weight="0.3385269" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993395" weight="0.21388102" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1207,51 +1151,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
-          <folding>
-            <marker date="1572921457942" expanded="true" signature="1816:2114" ph="..." />
-            <marker date="1572921457942" expanded="true" signature="4249:4250" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_activity/activity_private/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-            <marker date="1572916490381" expanded="true" signature="1876:2100" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/db/db_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
           <folding>
             <marker date="1572915892984" expanded="true" signature="2770:2890" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1283,33 +1188,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administrators/manage_info/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="148" column="39" lean-forward="true" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <marker date="1572942439961" expanded="true" signature="354:1344" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="980:1344" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="3001:3006" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="3284:3289" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="3658:3885" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="5671:7228" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="6948:7222" ph="..." />
-            <marker date="1572942439961" expanded="true" signature="7299:7764" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/administrators/manage_info/db_manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+        <state relative-caret-position="154">
+          <caret line="99" column="10" lean-forward="true" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
           <folding>
             <marker date="1572942440182" expanded="true" signature="113:118" ph="..." />
             <marker date="1572942440182" expanded="true" signature="415:424" ph="..." />
             <marker date="1572942440182" expanded="true" signature="4067:5031" ph="..." />
             <marker date="1572942440182" expanded="true" signature="5899:6328" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_private/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+            <marker date="1572916490381" expanded="true" signature="1876:2100" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1572944330185" expanded="true" signature="1823:2121" ph="..." />
+            <marker date="1572944330185" expanded="true" signature="4256:4257" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_activity/activity_private/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/manage_info/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3875">
+          <caret line="185" column="5" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+            <marker date="1572944329871" expanded="true" signature="354:1344" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="980:1344" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="3001:3006" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="3284:3289" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="3658:3885" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="5686:7268" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="6988:7262" ph="..." />
+            <marker date="1572944329871" expanded="true" signature="7339:7804" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administrators/book/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -183,9 +183,10 @@ def change_book_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status": 0, "message": "success"})
 
-@admin.route("delete_book")
+#删除图书
+@admin.route("delete_book",methods = ["post"])
 def delete_book():
-    data = json.loads(request.get_data("").deocde("utf-8"))
+    data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
     result = db_manage.sql_delete_book(book_id)
     if not result[0]:

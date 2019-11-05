@@ -46,7 +46,7 @@ def query_book_info():
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
     return jsonify({"status":-1,"massage":"success","data":result[1]})
 
-
+#热门书籍信息
 @user_activity.route("popular_book_info",methods = ['post'])
 def popular_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -127,6 +127,7 @@ def category1():
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({'status':0,"message":"success","data":result[1]})
+
 #查询分类2数据
 @user_activity.route("category2",methods=["post"])
 def category2():
