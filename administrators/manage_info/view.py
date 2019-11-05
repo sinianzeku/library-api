@@ -134,7 +134,8 @@ def conditional_book_info():
     book_state = ""
     state_in = {
         "在馆":"0",
-        "已借出":"1"
+        "已借出":"1",
+        "":""
     }
     if "book_id" in data:
         book_id = data["book_id"]
