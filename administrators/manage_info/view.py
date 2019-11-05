@@ -98,4 +98,6 @@ def delete_user():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
     result = sql_delete_user(user_name)
+    if not result[0]:
+        return jsonify({"status": 0, "message": "success"})
     return jsonify({"status":0,"message":"success"})

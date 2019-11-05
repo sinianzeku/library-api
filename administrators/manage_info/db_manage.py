@@ -1,4 +1,4 @@
-from config.db_config import mysql_module
+from config.db_config import mysql_module,mysql_modules
 
 
 def sql_add_manager(work_id,worker_name,work_password):
@@ -63,7 +63,12 @@ def sql_delete_user(user_name):
     sql_id = "select user_id from user where user_account = '{}'".format(user_name)
     user_id = mysql_module(sql_id)[1][0]["user_id"]
     sql_de_bookshelf = "delete from my_bookshelf where user_id = '{}'".format(user_id)
-    sql_de_bookshelf = "delete from my_bookshelf where user_id = '{}'".format(user_id)
+    sql_de_feedback = "delete from feedback where user_id = '{}'".format(user_id)
+    sql_de_borrow = "delete from borrow_info where user_id = '{}'".format(user_id)
+    sql_de_user = "delete from user where user_id = '{}'".format(user_id)
+
+    result = mysql_modules(sql_de_bookshelf,sql_de_feedback,sql_de_borrow,sql_de_user)
+    return result
 
 
 
