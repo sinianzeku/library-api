@@ -178,6 +178,11 @@ def change_book_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status": 0, "message": "success"})
 
+@admin.route("delete_book")
+def delete_book():
+    data = json.loads(request.get_data("").deocde("utf-8"))
+    book_id = data["book_id"]
+    result = db_manage.sql_delete_book(book_id)
 
 #在借书籍
 @admin.route("borrowing_book",methods = ["post"])
@@ -190,7 +195,7 @@ def borrowing_book():
 
 #借书记录
 @admin.route("borrow_record",methods = ["post"])
-def borrowing_book():
+def borrow_record():
     result = db_manage.sql_borrow_record()
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})

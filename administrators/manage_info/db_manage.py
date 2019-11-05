@@ -97,6 +97,10 @@ def sql_borrowing_book():
     result = mysql_module(sql)
     return result
 
+def sql_delete_book(book_id):
+    sql_de_borrow = "delete from borrow_info where book_id = '{}'".format(book_id)
+
+
 def sql_change_book_info(**kwargs):
     list_key = list(kwargs.keys())
     list_value = list(kwargs.values())
