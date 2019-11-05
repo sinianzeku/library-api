@@ -37,11 +37,24 @@ def query_user_info():
 
 
 #查询被借书籍信息
-@admin.route("query_book_info",methods = ["post"])
-def query_book_info():
+@admin.route("query_borrow_book_info",methods = ["post"])
+def query_borrow_book_info():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    state = '0'
+    book_name = data["book_name"]
+    result = sql_query_book_info(book_name,state)
+    if not result[0]:
+        return jsonify({"status":-1,"message":result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+@admin.route("query_return_book_info",methods = ["post"])
+def query_return_book_info():
+    state = '1'
     data = json.loads(request.get_data("").decode("utf-8"))
     book_name = data["book_name"]
-    result = sql_query_book_info(book_name)
+    result = sql_query_book_info(book_name,state)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
