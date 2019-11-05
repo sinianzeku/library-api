@@ -1,6 +1,6 @@
 from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
-from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info_0,sql_add_book_category,sql_query_book_info_1,sql_user_info,sql_conditional_user_info,sql_delete_user
+from administrators.manage_info import db_manage
 from administrators.book.db_book import sql_query_user_id
 import json
 import  os
@@ -18,7 +18,7 @@ def add_manager():
     work_password = user.password(work_passwords)
     if not work_password[0]:
         return jsonify({"status":-1,"message":"密码格式错误"})
-    result = sql_add_manager(work_id,worker_name,work_password[1])
+    result = db_manage.sql_add_manager(work_id,worker_name,work_password[1])
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":result[1]})
@@ -31,7 +31,7 @@ def query_user_info():
     user_name = ''
     if "user_name" in data:
         user_name = data["user_name"]
-    result = sql_query_user_info(user_name)
+    result = db_manage.sql_query_user_info(user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
@@ -44,7 +44,7 @@ def query_borrow_book_info():
     book_name = ""
     if "book_name" in data:
         book_name = data["book_name"]
-    result = sql_query_book_info_0(book_name)
+    result = db_manage.sql_query_book_info_0(book_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
@@ -58,7 +58,7 @@ def query_return_book_info():
     user_name = data["user_name"]
     book_name = data["book_name"]
     user_id = sql_query_user_id(user_name)
-    result = sql_query_book_info_1(book_name,user_id)
+    result = db_manage.sql_query_book_info_1(book_name,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
@@ -71,7 +71,7 @@ def add_book_category():
     data = json.loads(request.get_data("").decode("utf-8"))
     category1 = data["category1"]
     category2 = data["category2"]
-    result = sql_add_book_category(category1,category2)
+    result = db_manage.sql_add_book_category(category1,category2)
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success"})
@@ -79,7 +79,7 @@ def add_book_category():
 
 @admin.route("user_info",methods = ["post"])
 def user_info():
-    result = sql_user_info()
+    result = db_manage.sql_user_info()
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
@@ -88,7 +88,7 @@ def user_info():
 def conditional_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
-    result = sql_conditional_user_info(user_name)
+    result = db_manage.sql_conditional_user_info(user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
@@ -97,7 +97,50 @@ def conditional_user_info():
 def delete_user():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
-    result = sql_delete_user(user_name)
+    result = db_manage.sql_delete_user(user_name)
     if not result[0]:
         return jsonify({"status": 0, "message": "success"})
     return jsonify({"status":0,"message":"success"})
+
+@admin.route("book_info",methods = ["post"])
+def book_info():
+    result = db_manage.sql_book_info()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    state = {
+        "0":"在馆",
+        "1":"已借出"
+    }
+    for i in range(len(result[1])):
+        result[1][i]["book_state"] = state[result[1][i]["book_state"]]
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+
+@admin.route("conditional_book_info",methods = ["post"])
+def conditional_book_info():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_id = data["book_id"]
+    result = db_manage.sql_conditional_book_info(book_id)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    state = {
+        "0":"在馆",
+        "1":"已借出"
+    }
+    for i in range(len(result[1])):
+        result[1][i]["book_state"] = state[result[1][i]["book_state"]]
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+@admin.route("borrowing_book",methods = ["post"])
+def borrowing_book():
+    result = db_manage.sql_borrowing_book()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
+
+
+
+
+
+

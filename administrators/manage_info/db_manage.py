@@ -66,9 +66,30 @@ def sql_delete_user(user_name):
     sql_de_feedback = "delete from feedback where user_id = '{}'".format(user_id)
     sql_de_borrow = "delete from borrow_info where user_id = '{}'".format(user_id)
     sql_de_user = "delete from user where user_id = '{}'".format(user_id)
-
     result = mysql_modules(sql_de_bookshelf,sql_de_feedback,sql_de_borrow,sql_de_user)
     return result
+
+
+def sql_book_info():
+    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info"
+    result = mysql_module(sql)
+    return result
+
+
+def sql_conditional_book_info(book_id):
+    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where book_id = {}".format(book_id)
+    result = mysql_module(sql)
+    return result
+
+def sql_borrowing_book():
+    sql = "select book.book_id, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(borrow.return_time as char) return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '1'"
+    result = mysql_module(sql)
+    return result
+
+
+
+
+
 
 
 
