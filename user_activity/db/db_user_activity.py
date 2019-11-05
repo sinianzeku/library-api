@@ -130,7 +130,7 @@ def sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,ti
     result = mysql_module(sql)
     return result
 
-def sql_book_name_query(book_name):
-    sql = "select * from book_info where book_info = '{}'".format(book_name)
+def sql_book_name_query(book_id):
+    sql = "select * from book_info where book_id = '{}'".format(book_id)
     result = mysql_module(sql)
     return result

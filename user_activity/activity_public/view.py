@@ -47,11 +47,11 @@ def query_book_info():
     return jsonify({"status":-1,"massage":"success","data":result[1]})
 
 
-@user_activity.route("book_name_query",methods = ['post'])
-def book_name_query():
+@user_activity.route("popular_book_info",methods = ['post'])
+def popular_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_name = data['book_name']
-    result = db_user_activity.sql_book_name_query(book_name)
+    book_id = data['book_id']
+    result = db_user_activity.sql_book_name_query(book_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})

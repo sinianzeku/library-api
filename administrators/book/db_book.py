@@ -13,13 +13,19 @@ def insertnewbook(**kwargs):
     return [True]
 
 
-def sql_borrow_book(book_id,user_id):
+def sql_borrow_book(user_id,book_id):
     time = set_time()
-    sql = "insert into borrow_info (user_id,book_id,borrow_time,return_time,state) values ('{}','{}','{}','{}','{}')".format(user_id,book_id,time.today(),time.next_month(),1)
-    sql2 = "UPDATE book_info set book_state = '1' where book_id = '{}'".format(book_id)
+    sql = "insert into borrow_info (user_id,book_id,borrow_time,return_time,state) values ({},{},'{}','{}','{}')".format(user_id,book_id,time.today(),time.next_month(),1)
+    sql2 = "UPDATE book_info set book_state = '1' where book_id = {}".format(book_id)
     result = mysql_modules(sql,sql2)
     return result
 
+def sql_query_user_id(user_name):
+    sql = "select user_id from user where user_account = '{}'".format(user_name)
+    result = mysql_module(sql)
+    if not result[1]:
+        return [False,'fail']
+    return result[1][0]["user_id"]
 
 def sql_return_book(book_id,user_id):
     time = set_time()
