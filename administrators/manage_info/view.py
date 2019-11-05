@@ -208,7 +208,8 @@ def conditional_borrowing_book():
     book_id = ""
     book_name = ""
     book_publisher = ""
-    borrow_time = ""
+    borrow_time_satrt = ''
+    borrow_time_end = ""
     user_name = ""
     txt = ""
     query_mode = ""
@@ -227,11 +228,13 @@ def conditional_borrowing_book():
         book_name = data["book_name"]
     if "book_publisher" in data:
         book_publisher = data["book_publisher"]
-    if "borrow_time" in data:
-        borrow_time = data["borrow_time"]
+    if "borrow_time_satrt" in data:
+        borrow_time_satrt = data["borrow_time_satrt"]
+    if "borrow_time_end" in data:
+        borrow_time_end = data["borrow_time_end"]
     if "user_name" in data:
         user_name = data["user_name"]
-    result = db_manage.sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publisher,borrow_time,user_name)
+    result = db_manage.sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
