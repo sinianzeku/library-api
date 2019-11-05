@@ -19,14 +19,19 @@ def sql_query_user_info(user_name):
         return [False,"用户信息查询失败"]
     return [True,result[1]]
 
-def sql_query_book_info(book_name,state):
-    sql = "select book_id,book_name,book_state from book_info where instr(book_name,'{}') and book_state = '{}'".format(book_name,state)
+def sql_query_book_info_0(book_name):
+    sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '0'".format(book_name)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
     return [True,result[1]]
 
-
+def sql_query_book_info_1(book_name,user_id):
+    sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '1' and book_id in ( select book_id from borrow_info where user_id = {})".format(book_name,user_id)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"用户信息查询失败"]
+    return [True,result[1]]
 
 def sql_add_book_category(category1,category2):
     sql = "select id from book_category where category1 = '{}' and category2 = '{}'".format(category1,category2)

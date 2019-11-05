@@ -30,7 +30,7 @@ def sql_query_user_id(user_name):
 def sql_return_book(book_id,user_id):
     time = set_time()
     sql = "UPDATE borrow_info set state = '0',actual_return_time = '{}' where book_id = {} and user_id = {} ".format(time.today(),book_id,user_id)
-    sql2 = "UPDATE book_info set book_state = '0' where user_id = '{}'".format(user_id)
+    sql2 = "UPDATE book_info set book_state = '0' where book_id = '{}'".format(book_id)
     result = mysql_modules(sql,sql2)
     return result
 

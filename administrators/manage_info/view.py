@@ -1,6 +1,7 @@
 from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
-from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info,sql_add_book_category
+from administrators.manage_info.db_manage import sql_add_manager,sql_query_user_info,sql_query_book_info_0,sql_add_book_category,sql_query_book_info_1
+from administrators.book.db_book import sql_query_user_id
 import json
 import  os
 
@@ -36,25 +37,26 @@ def query_user_info():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
-#查询被借书籍信息
+#借-查询被借书籍信息
 @admin.route("query_borrow_book_info",methods = ["post"])
 def query_borrow_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    state = '0'
     book_name = data["book_name"]
-    result = sql_query_book_info(book_name,state)
+    result = sql_query_book_info_0(book_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#还-查询被借书籍信息
 @admin.route("query_return_book_info",methods = ["post"])
 def query_return_book_info():
-    state = '1'
     data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
     book_name = data["book_name"]
-    result = sql_query_book_info(book_name,state)
+    user_id = sql_query_user_id(user_name)
+    result = sql_query_book_info_1(book_name,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     for i in range(len(result[1])):
