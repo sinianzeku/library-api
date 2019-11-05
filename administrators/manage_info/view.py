@@ -41,7 +41,9 @@ def query_user_info():
 @admin.route("query_borrow_book_info",methods = ["post"])
 def query_borrow_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_name = data["book_name"]
+    book_name = ""
+    if "book_name" in data:
+        book_name = data["book_name"]
     result = sql_query_book_info_0(book_name)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})

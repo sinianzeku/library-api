@@ -20,7 +20,9 @@ def sql_query_user_info(user_name):
     return [True,result[1]]
 
 def sql_query_book_info_0(book_name):
-    sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '0'".format(book_name)
+    sql = "select book_id,book_name from book_info where book_state = '0'"
+    if book_name:
+        sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '0'".format(book_name)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
