@@ -81,13 +81,13 @@ def sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_st
     if book_id:
         sql = sql + " and book_id = {}".format(book_id)
     if book_name:
-        sql = sql + " and book_name = '{}'".format(book_name)
+        sql = sql + " and instr(book_name,'{}')".format(book_name)
     if book_publisher:
-        sql = sql + " and book_publisher = '{}'".format(book_publisher)
+        sql = sql + " and instr(book_publisher,'{}')".format(book_publisher)
     if book_room:
-        sql = sql + " and book_room = '{}'".format(book_room)
+        sql = sql + " and instr(book_room,'{}')".format(book_room)
     if book_state:
-        sql = sql + " and book_state = '{}'".format(book_state)
+        sql = sql + " and  book_state = '{}'".format(book_state)
     sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where {}".format(sql)
     result = mysql_module(sql)
     return result
@@ -99,6 +99,10 @@ def sql_borrowing_book():
 
 def sql_delete_book(book_id):
     sql_de_borrow = "delete from borrow_info where book_id = '{}'".format(book_id)
+    sql_de_bookshelf = "delete from my_bookshelf where book_id = '{}'".format(book_id)
+    sql_de_book = "delete from book_info where book_id = '{}'".format(book_id)
+    result = mysql_modules(sql_de_borrow,sql_de_bookshelf,sql_de_book)
+    return result
 
 
 def sql_change_book_info(**kwargs):

@@ -132,6 +132,10 @@ def conditional_book_info():
     book_publisher = ""
     book_room = ""
     book_state = ""
+    state_in = {
+        "在馆":"0",
+        "已借出":"1"
+    }
     if "book_id" in data:
         book_id = data["book_id"]
     if "book_name" in data:
@@ -141,16 +145,16 @@ def conditional_book_info():
     if "book_room" in data:
         book_room = data["book_room"]
     if "book_state" in data:
-        book_state = data["book_state"]
+        book_state = state_in[data["book_state"]]
     result = db_manage.sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_state)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
-    state = {
+    state_out = {
         "0":"在馆",
         "1":"已借出"
     }
     for i in range(len(result[1])):
-        result[1][i]["book_state"] = state[result[1][i]["book_state"]]
+        result[1][i]["book_state"] = state_out[result[1][i]["book_state"]]
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #修改图书信息
@@ -183,6 +187,10 @@ def delete_book():
     data = json.loads(request.get_data("").deocde("utf-8"))
     book_id = data["book_id"]
     result = db_manage.sql_delete_book(book_id)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status": 0, "message": "success"})
+
 
 #在借书籍
 @admin.route("borrowing_book",methods = ["post"])
