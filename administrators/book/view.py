@@ -39,7 +39,8 @@ def borrow_book():
 def return_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
-    user_id = data["user_id"]
+    user_name = data["user_name"]
+    user_id = sql_query_user_id(user_name)
     result = sql_return_book(book_id,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
