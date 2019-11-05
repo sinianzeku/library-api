@@ -59,7 +59,7 @@ def sql_update_password(user_account,new_password):
 
 
 def sql_update_info( user_id,email,phone,address):
-    sql = "UPDATE USER SET user_email = '{}', user_phone = '{}',user_address = '{}' WHERE user_id = {}".format(email,phone,address,user_id)
+    sql = "UPDATE user SET user_email = '{}', user_phone = '{}',user_address = '{}' WHERE user_id = {}".format(email,phone,address,user_id)
     print(sql)
     # result = mysql_module(sql)
     # if not result[0]:

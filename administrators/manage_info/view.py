@@ -234,6 +234,9 @@ def conditional_borrowing_book():
         borrow_time_end = data["borrow_time_end"]
     if "user_name" in data:
         user_name = data["user_name"]
+
+    if borrow_time_satrt > borrow_time_end:
+        return jsonify({"status": -1, "message": "起始时间不能大于结束时间"})
     result = db_manage.sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
