@@ -47,6 +47,15 @@ def query_book_info():
     return jsonify({"status":-1,"massage":"success","data":result[1]})
 
 
+@user_activity.route("book_name_query",methods = ['post'])
+def book_name_query():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_name = data['book_name']
+    result = db_user_activity.sql_book_name_query(book_name)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
 #热门推荐
 @user_activity.route("popular_recommendation",methods = ["post"])
 def popular_recommendation():
@@ -109,6 +118,8 @@ def class_lookup():
         jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+
+
 #查找分类1数据
 @user_activity.route("category1",methods=["post"])
 def category1():
@@ -116,7 +127,7 @@ def category1():
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({'status':0,"message":"success","data":result[1]})
-#查找分类2数据
+#查询分类2数据
 @user_activity.route("category2",methods=["post"])
 def category2():
     data = json.loads(request.get_data("").decode("utf-8"))

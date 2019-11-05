@@ -26,10 +26,9 @@ def new_book_entry():
 @book.route("borrow_book",methods = ["post"])
 def borrow_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-
-    book_name = data["book_name"]
-    user_name = data["user_name"]
-    result = sql_borrow_book(book_name,user_name)
+    book_id = data["book_id"]
+    user_id = data["user_id"]
+    result = sql_borrow_book(book_id,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
@@ -38,9 +37,9 @@ def borrow_book():
 @book.route("return_book",methods = ["post"])
 def return_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-    book_name = data["book_name"]
-    user_name = data["user_name"]
-    result = sql_return_book(book_name,user_name)
+    book_id = data["book_id"]
+    user_id = data["user_id"]
+    result = sql_return_book(book_id,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})

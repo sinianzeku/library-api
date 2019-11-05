@@ -129,3 +129,8 @@ def sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,ti
     sql = "insert into voluntary_activities values('{}','{}','{}','{}','{}')".format(contestant,phone,email,time_of_appointment_start,time_of_appointment_end)
     result = mysql_module(sql)
     return result
+
+def sql_book_name_query(book_name):
+    sql = "select * from book_info where book_info = '{}'".format(book_name)
+    result = mysql_module(sql)
+    return result

@@ -11,16 +11,16 @@ def sql_add_manager(work_id,worker_name,work_password):
 
 def sql_query_user_info(user_name):
     if user_name:
-        sql = "select user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
+        sql = "select user_id,user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(user_name)
     else:
-        sql = "select user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user"
+        sql = "select user_id,user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user"
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
     return [True,result[1]]
 
 def sql_query_book_info(book_name):
-    sql = "select book_id,book_name,book_auther from book_info where instr(book_name,'{}')".format(book_name)
+    sql = "select book_id,book_name,book_state from book_info where instr(book_name,'{}') and book_state = '0'".format(book_name)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"用户信息查询失败"]
