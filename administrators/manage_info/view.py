@@ -206,26 +206,13 @@ def borrowing_book():
 @admin.route("conditional_borrowing_book",methods = ["post"])
 def conditional_borrowing_book():
     data = json.loads(request.get_data("").decode("utf-8"))
-    print(data)
-    book_id = ""
-    book_name = ""
-    book_publisher = ""
-    borrow_time_satrt = ''
-    borrow_time_end = ""
-    user_name = ""
-    if "book_id" in data:
-        book_id = data["book_id"]
-    if "book_name" in data:
-        book_name = data["book_name"]
-    if "book_publisher" in data:
-        book_publisher = data["book_publisher"]
-    if "borrow_time_satrt" in data:
-        borrow_time_satrt = data["borrow_time_satrt"]
-    if "borrow_time_end" in data:
-        borrow_time_end = data["borrow_time_end"]
-    if "user_name" in data:
-        user_name = data["user_name"]
-    if borrow_time_satrt > borrow_time_end:
+    book_id = data["book_id"]
+    book_name = data["book_name"]
+    book_publisher = data["book_publisher"]
+    borrow_time_satrt = data["borrow_time_satrt"]
+    borrow_time_end = data["borrow_time_end"]
+    user_name = data["user_name"]
+    if borrow_time_satrt and borrow_time_end and borrow_time_satrt > borrow_time_end:
         return jsonify({"status": -1, "message": "起始时间不能大于结束时间"})
     result = db_manage.sql_conditional_borrowing_book(book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name)
     if not result[0]:
