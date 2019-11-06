@@ -34,7 +34,8 @@ def user_login(username,password,code):
 
 
 def sql_feedbacks(user_id,readers,phone,feedbacks):
-    sql = "insert into feedback(user_id,readers,phone,feedbacks) value ('{}','{}','{}','{}')".format(user_id,readers,phone,feedbacks)
+    st =set_time()
+    sql = "insert into feedback(user_id,readers,phone,feedbacks,state,time) value ('{}','{}','{}','{}','1','{}')".format(user_id,readers,phone,feedbacks,st.today())
     result = mysql_module(sql)
     if not result[0]:
         return False
@@ -73,3 +74,7 @@ def sql_query_user_info(user_id):
     return result
 
 
+def sql_get_feedback(user_id):
+    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_id = "{}"'.format(user_id)
+    result = mysql_module(sql)
+    return result

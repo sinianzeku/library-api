@@ -173,22 +173,22 @@ def sql_delete_borrow_record(borrow_id):
 def sql_user_number():
     sql = "select count(user_id) user_number  from user"
     result = mysql_module(sql)
-    return result
+    return result[1][0]["user_number"]
 
 def sql_book_number():
     sql = "select count(book_id) book_number  from book_info"
     result = mysql_module(sql)
-    return result
+    return result[1][0]["book_number"]
 
 def sql_borrowing_number():
     sql = "select count(borrow_id) borrowing_number  from borrow_info where state = '1'"
     result = mysql_module(sql)
-    return result
+    return result[1][0]["borrowing_number"]
 
 def sql_borrow_record_number():
     sql = "select count(borrow_id) borrow_number  from  borrow_info where state = '0'"
     result = mysql_module(sql)
-    return result
+    return result[1][0]["borrow_number"]
 
 def sql_borrowing_condition():
     st = set_time()
