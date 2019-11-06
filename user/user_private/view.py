@@ -14,7 +14,7 @@ user = Blueprint("user_private",__name__)
 @user.route("feedback",methods = ["post"])
 def feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = session["id"]
+    user_id = data["user_id"]
     feedbacks = data["feedbacks"]
     reader = data["reader"]
     phone = data["phone"]
@@ -25,7 +25,8 @@ def feedback():
 
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
-    user_id = session["id"]
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_id = data["user_id"]
     result = db_user.sql_get_feedback(user_id)
     state = {
         '0':"已处理",
