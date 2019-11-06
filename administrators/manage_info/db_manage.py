@@ -196,8 +196,13 @@ def sql_borrowing_condition():
     key = list(time_dict.keys())
     times = list(time_dict.values())
     result_list = {}
+    number = []
+    month = []
     for i in range(len(time_dict)):
         sql = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[i])
         result = mysql_module(sql)
-        result_list["{}月".format(key[i])] = result[1][0]['borrow_number']
+        number.append(result[1][0]['borrow_number'])
+        month.append(key[i])
+    result_list["number"] = number
+    result_list["month"] = month
     return result_list
