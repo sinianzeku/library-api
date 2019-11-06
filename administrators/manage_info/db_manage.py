@@ -202,7 +202,7 @@ def sql_borrowing_condition():
         sql = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[i])
         result = mysql_module(sql)
         number.append(result[1][0]['borrow_number'])
-        month.append(key[i])
+        month.append(str(key[i])+"月")
     result_list["number"] = number
     result_list["month"] = month
     return result_list
