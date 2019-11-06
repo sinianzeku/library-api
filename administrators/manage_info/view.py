@@ -272,18 +272,43 @@ def borrowing_condition():
     data_dict["borrowing_condition"] = borrowing_condition
     return jsonify({"status":0,"message":"success","data":data_dict})
 
+#自动获取
 @admin.route("process_information",methods = ["post"])
 def process_information():
+    result = db_manage.sql_process_information()
+    return jsonify({"status": 0, "message": "success","data":result})
+
+#未处理
+@admin.route("untreated_information",methods = ["post"])
+def untreated_information():
     data = json.loads(request.get_data("").decode("utf-8"))
-    state_dict = {
-        "未处理":"1",
-        "已处理":"0"
-    }
     input = ""
+    state = '1'
     if "input" in data:
         input = data["input"]
-    state = state_dict[data["state"]]
-    result = db_manage.sql_process_information(state,input)
+    result = db_manage.sql_conditional_process_information(input,state)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
+
+#已处理
+@admin.route("processed_information",methods = ["post"])
+def processed_information():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    input = ""
+    state = '0'
+    if "input" in data:
+        input = data["input"]
+    result = db_manage.sql_conditional_process_information(input,state)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
+
+@admin.route("feedback_processing",methods = ["post"])
+def feedback_processing():
+    data = json.loads(request.get_data("").deocde("utf-8"))
+    id = data["id"]
+    result = db_manage.sql_feedback_processing(id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status": 0, "message": "success","data":result[1]})

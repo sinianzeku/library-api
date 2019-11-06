@@ -207,8 +207,23 @@ def sql_borrowing_condition():
     result_list["month"] = month
     return result_list
 
-def sql_process_information(state,input):
-    sql = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '{}' and instr(user.user_name,'{}')".format(state,input)
+def sql_process_information():
+    result_dict = {}
+    sql1 = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '1'"
+    result_dict["untreated"] = mysql_module(sql1)[1]
+    sql2 = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '2'"
+    result_dict["processed"] = mysql_module(sql2)[1]
+    return result_dict
+
+
+def sql_conditional_process_information(input,state):
+    sql = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '{}' and instr(user_name,'{}') ".format(state,input)
+    result = mysql_module(sql)
+    return result
+
+
+def sql_feedback_processing(id):
+    sql = "update feedback set state = '0' where id = '{}'".format(id)
     result = mysql_module(sql)
     return result
 
