@@ -146,5 +146,23 @@ def sql_borrow_record():
     return result
 
 
+def sql_conditional_borrow_record(book_id, book_name, book_publisher, borrow_time_satrt,borrow_time_end, user_name):
+    sql = "select book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(actual_return_time as char) actual_return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
+    if book_id:
+        sql = sql + " and instr(borrow.book_id,'{}')".format(book_id)
+    if book_name:
+        sql = sql + " and instr(book_name,'{}')".format(book_name)
+    if book_publisher:
+        sql = sql + " and instr(book_publisher,'{}')".format(book_publisher)
+    if borrow_time_satrt:
+        sql = sql + " and borrow_time >= '{}'".format(borrow_time_satrt)
+    if borrow_time_end:
+        sql = sql + " and borrow_time <= '{}'".format(borrow_time_end)
+    if user_name:
+        sql = sql + " and instr(user_account,'{}')".format(user_name)
+
+    result = mysql_module(sql)
+    return result
+
 
 
