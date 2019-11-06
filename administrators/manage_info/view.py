@@ -304,15 +304,25 @@ def processed_information():
         return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status": 0, "message": "success","data":result[1]})
 
+#处理反馈信息
 @admin.route("feedback_processing",methods = ["post"])
 def feedback_processing():
     data = json.loads(request.get_data("").deocde("utf-8"))
     id = data["id"]
     result = db_manage.sql_feedback_processing(id)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail","data":[]})
-    return jsonify({"status": 0, "message": "success","data":result[1]})
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status": 0, "message": "success"})
 
+#删除反馈信息
+@admin.route("delete_feedback",methods = ["post"])
+def delete_feedback():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    id = data["id"]
+    result = db_manage.sql_delete_feedback(id)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status": 0, "message": "success"})
 
 
 

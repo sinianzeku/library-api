@@ -209,15 +209,15 @@ def sql_borrowing_condition():
 
 def sql_process_information():
     result_dict = {}
-    sql1 = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '1'"
+    sql1 = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '1'"
     result_dict["untreated"] = mysql_module(sql1)[1]
-    sql2 = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '2'"
+    sql2 = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '2'"
     result_dict["processed"] = mysql_module(sql2)[1]
     return result_dict
 
 
 def sql_conditional_process_information(input,state):
-    sql = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '{}' and instr(user_name,'{}') ".format(state,input)
+    sql = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '{}' and instr(user_account,'{}') ".format(state,input)
     result = mysql_module(sql)
     return result
 
@@ -227,5 +227,7 @@ def sql_feedback_processing(id):
     result = mysql_module(sql)
     return result
 
-
-
+def sql_delete_feedback(id):
+    sql = "delete from feedback where id = {}".format(id)
+    result = mysql_module(sql)
+    return result
