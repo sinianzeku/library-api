@@ -4,10 +4,10 @@ from flask_mail import Mail,Message
 
 user_activity = Blueprint("activity_private",__name__)
 import json
-@user_activity.before_request
-def before_user():
-    if 'username' not in session:
-        return jsonify({"status": -1, "message": "未登入"})
+# @user_activity.before_request
+# def before_user():
+#     if 'username' not in session:
+#         return jsonify({"status": -1, "message": "未登入"})
 
 #借书记录
 @user_activity.route("borrowed_records", methods = ["post"])

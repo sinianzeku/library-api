@@ -5,10 +5,10 @@ from user.verify import userverify
 
 user = Blueprint("user_private",__name__)
 
-@user.before_request
-def before_user():
-    if 'username' not in session:
-        return jsonify({"status": -1, "message": "未登入"})
+# @user.before_request
+# def before_user():
+#     if 'username' not in session:
+#         return jsonify({"status": -1, "message": "未登入"})
 
 #意见反馈
 @user.route("feedback",methods = ["post"])
