@@ -285,3 +285,9 @@ def borrow_record_number():
     return jsonify({"status": 0, "message": "success","data":result[1]})
 
 
+@admin.route("borrowing_condition",methods = ["post"])
+def borrowing_condition():
+    result = db_manage.sql_borrowing_condition()
+    return jsonify({"status":0,"message":"success","data":[result]})
+
+

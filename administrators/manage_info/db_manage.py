@@ -1,5 +1,5 @@
 from config.db_config import mysql_module,mysql_modules
-
+from config.defaulttime import set_time
 
 def sql_add_manager(work_id,worker_name,work_password):
     sql = "insert into admin (work_id,worker_name,work_password) values ('{}','{}','{}')".format(work_id,worker_name,work_password)
@@ -190,4 +190,14 @@ def sql_borrow_record_number():
     result = mysql_module(sql)
     return result
 
-
+def sql_borrowing_condition():
+    st = set_time()
+    time_dict = st.first_half_year()
+    key = list(time_dict.keys())
+    times = list(time_dict.values())
+    result_list = {}
+    for i in range(len(time_dict)):
+        sql = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[i])
+        result = mysql_module(sql)
+        result_list["{}月".format(key[i])] = result[1][0]['borrow_number']
+    return result_list
