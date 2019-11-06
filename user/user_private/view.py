@@ -25,8 +25,9 @@ def feedback():
 
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = data["user_id"]
+    # data = json.loads(request.get_data("").decode("utf-8"))
+    # user_id = data["user_id"]
+    user_id = '10'
     result = db_user.sql_get_feedback(user_id)
     state = {
         '0':"已处理",
