@@ -307,7 +307,7 @@ def processed_information():
 #处理反馈信息
 @admin.route("feedback_processing",methods = ["post"])
 def feedback_processing():
-    data = json.loads(request.get_data("").deocde("utf-8"))
+    data = json.loads(request.get_data("").decode("utf-8"))
     id = data["id"]
     result = db_manage.sql_feedback_processing(id)
     if not result[0]:
