@@ -213,10 +213,10 @@ def conditional_borrowing_book():
     borrow_time_end = data["borrow_time_end"]
     user_name = data["user_name"]
     if borrow_time_satrt and borrow_time_end and borrow_time_satrt > borrow_time_end:
-        return jsonify({"status": -1, "message": "起始时间不能大于结束时间","data":""})
+        return jsonify({"status": -1, "message": "起始时间不能大于结束时间","data":[]})
     result = db_manage.sql_conditional_borrowing_book(book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail","data":""})
+        return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #借书记录
@@ -240,10 +240,10 @@ def conditional_borrow_record():
     borrow_time_end = data["borrow_time_end"]
     user_name = data["user_name"]
     if borrow_time_satrt and borrow_time_end and borrow_time_satrt > borrow_time_end:
-        return jsonify({"status": -1, "message": "起始时间不能大于结束时间","data":""})
+        return jsonify({"status": -1, "message": "起始时间不能大于结束时间","data":[]})
     result = db_manage.sql_conditional_borrow_record(book_id, book_name, book_publisher, borrow_time_satrt,borrow_time_end, user_name)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail","data":""})
+        return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #删除借书记录
