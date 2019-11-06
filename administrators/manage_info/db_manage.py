@@ -97,12 +97,10 @@ def sql_borrowing_book():
     result = mysql_module(sql)
     return result
 
-def sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name):
+def sql_conditional_borrowing_book(book_id,book_name,book_publisher,borrow_time_satrt,borrow_time_end,user_name):
     sql = "select book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(borrow.return_time as char) return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '1'"
-    if txt:
-        sql = sql + " and instr({},'{}')".format(query_mode,txt)
     if book_id:
-        sql = sql + " and book_id = '{}'".format(book_id)
+        sql = sql + " and instr(borrow.book_id,'{}')".format(book_id)
     if book_name:
         sql = sql + " and instr(book_name,'{}')".format(book_name)
     if book_publisher:
@@ -112,7 +110,8 @@ def sql_conditional_borrowing_book(txt,query_mode,book_id,book_name,book_publish
     if borrow_time_end:
         sql = sql + " and borrow_time <= '{}'".format(borrow_time_end)
     if user_name:
-        sql = sql + " and instr(user_name,'{}')".format(user_name)
+        sql = sql + " and instr(user_account,'{}')".format(user_name)
+
     result = mysql_module(sql)
     return result
 
