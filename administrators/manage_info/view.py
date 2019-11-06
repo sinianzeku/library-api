@@ -246,6 +246,15 @@ def conditional_borrow_record():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#删除借书记录
+@admin.route("delete_borrow_record")
+def delete_borrow_record():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    borrow_id = data["borrow_id"]
+    result = db_manage.sql_delete_borrow_record(borrow_id)
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status": 0, "message": "success"})
 
 
 

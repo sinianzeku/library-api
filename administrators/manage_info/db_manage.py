@@ -141,13 +141,13 @@ def sql_change_book_info(**kwargs):
 
 
 def sql_borrow_record():
-    sql = "select book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(borrow.return_time as char) return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
+    sql = "select borrow_id,book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(borrow.return_time as char) return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
     result = mysql_module(sql)
     return result
 
 
 def sql_conditional_borrow_record(book_id, book_name, book_publisher, borrow_time_satrt,borrow_time_end, user_name):
-    sql = "select book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(actual_return_time as char) actual_return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
+    sql = "select borrow_id,book.book_id, book.book_code, book.book_name,book.book_publisher,cast(borrow.borrow_time as char) borrow_time,cast(actual_return_time as char) actual_return_time,user.user_account from borrow_info borrow inner join book_info book on borrow.book_id = book.book_id inner join user on borrow.user_id = user.user_id where borrow.state = '0'"
     if book_id:
         sql = sql + " and instr(borrow.book_id,'{}')".format(book_id)
     if book_name:
@@ -165,4 +165,8 @@ def sql_conditional_borrow_record(book_id, book_name, book_publisher, borrow_tim
     return result
 
 
+def sql_delete_borrow_record(borrow_id):
+    sql_de_borrow = "delete from borrow_info where borrow_id = {}".format(borrow_id)
+    result = mysql_module(sql_de_borrow)
+    return result
 
