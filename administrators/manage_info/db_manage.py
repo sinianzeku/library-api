@@ -207,8 +207,8 @@ def sql_borrowing_condition():
     result_list["month"] = month
     return result_list
 
-# def sql_process_information(state):
-#     sql = "select * from feedback where state = '{}'".format(state)
+def sql_process_information(state):
+    sql = "select * from feedback where state = '{}'".format(state)
 
 
 

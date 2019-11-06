@@ -2,6 +2,7 @@ from flask import Blueprint,jsonify,session,request
 import json
 from user.db import db_user
 from user.verify import userverify
+from administrators.book.db_book import sql_query_user_id
 
 user = Blueprint("user_private",__name__)
 
@@ -14,10 +15,11 @@ user = Blueprint("user_private",__name__)
 @user.route("feedback",methods = ["post"])
 def feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = data["user_id"]
+    user_name = data["user_name"]
     feedbacks = data["feedbacks"]
     reader = data["reader"]
     phone = data["phone"]
+    user_id = sql_query_user_id(user_name)
     result = db_user.sql_feedbacks(user_id,reader,phone,feedbacks)
     if not result:
         return jsonify({"status":-1,"message":"fail"})
@@ -25,9 +27,8 @@ def feedback():
 
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
-    # data = json.loads(request.get_data("").decode("utf-8"))
-    # user_id = data["user_id"]
-    user_id = '10'
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_id = data["user_id"]
     result = db_user.sql_get_feedback(user_id)
     state = {
         '0':"已处理",

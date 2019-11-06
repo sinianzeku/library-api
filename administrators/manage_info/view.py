@@ -272,15 +272,15 @@ def borrowing_condition():
     data_dict["borrowing_condition"] = borrowing_condition
     return jsonify({"status":0,"message":"success","data":data_dict})
 
-# @admin.route("process_information")
-# def process_information():
-#     data = json.loads(request.get_data("").decode("uft-8"))
-#     state_dict = {
-#         "未处理":"",
-#         "已处理":""
-#     }
-#     state = state_dict[data["state"]]
-#     result = db_manage.sql_process_information(state)
+@admin.route("process_information")
+def process_information():
+    data = json.loads(request.get_data("").decode("uft-8"))
+    state_dict = {
+        "未处理":"1",
+        "已处理":"0"
+    }
+    state = state_dict[data["state"]]
+    result = db_manage.sql_process_information(state)
 
 
 
