@@ -256,8 +256,32 @@ def delete_borrow_record():
         return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status": 0, "message": "success","data":[]})
 
+@admin.route("user_number",methods = ["post"])
+def user_number():
+    result = db_manage.sql_user_number()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
 
+@admin.route("book_number",methods = ["post"])
+def book_number():
+    result = db_manage.sql_book_number()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
 
+@admin.route("borrowing_number",methods = ["post"])
+def borrowing_number():
+    result = db_manage.sql_borrowing_number()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
 
+@admin.route("record_number",methods = ["post"])
+def borrow_record_number():
+    result = db_manage.sql_borrow_record_number()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail","data":[]})
+    return jsonify({"status": 0, "message": "success","data":result[1]})
 
 
