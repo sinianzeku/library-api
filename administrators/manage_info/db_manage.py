@@ -207,8 +207,10 @@ def sql_borrowing_condition():
     result_list["month"] = month
     return result_list
 
-def sql_process_information(state):
-    sql = "select * from feedback where state = '{}'".format(state)
+def sql_process_information(state,input):
+    sql = "select id,user_name,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '{}' and instr(user.user_name,'{}')".format(state,input)
+    result = mysql_module(sql)
+    return result
 
 
 

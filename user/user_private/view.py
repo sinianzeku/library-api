@@ -28,8 +28,8 @@ def feedback():
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = data["user_id"]
-    result = db_user.sql_get_feedback(user_id)
+    user_name = data["user_name"]
+    result = db_user.sql_get_feedback(user_name)
     state = {
         '0':"已处理",
         '1':"未处理"
