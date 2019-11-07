@@ -41,7 +41,7 @@ def my_bookshelf():
 def collect_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
-    user_id = session["id"]
+    user_id = data["user_id"]
     result = db_user_activity.sql_collect_book(user_id,book_id)
     if not result[0]:
         return jsonify({"status":0,"message":"fail"})
