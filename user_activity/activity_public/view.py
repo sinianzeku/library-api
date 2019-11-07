@@ -40,11 +40,15 @@ def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
     result = db_user_activity.sql_query_book_info(book_id)
+
+    # result[1][0]["book_category"] = db_user_activity.sql_queery_category(result[1][0]["book_category"])
+    # print(result[1][0]["book_state"])
+    # print(result[1][0]["book_language"])
     if not result[0]:
         return jsonify({"status":-1,"massage":"fail","data":result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
-    return jsonify({"status":-1,"massage":"success","data":result[1]})
+    return jsonify({"status":0,"massage":"success","data":result[1]})
 
 #热门书籍信息
 @user_activity.route("popular_book_info",methods = ['post'])

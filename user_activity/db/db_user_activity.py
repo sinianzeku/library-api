@@ -9,7 +9,7 @@ def sql_query_book(query_criteria,query_content):
 
 
 def sql_query_book_info(book_id):
-    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,book_publication_date,cast(books_add_time as char) as books_add_time from book_info where book_id = '{}' ".format(book_id)
+    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info where book_id = '{}' ".format(book_id)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
@@ -134,3 +134,6 @@ def sql_book_name_query(book_id):
     sql = "select * from book_info where book_id = '{}'".format(book_id)
     result = mysql_module(sql)
     return result
+
+def sql_queery_category(category):
+    sql = 'select category1,category2 from book_category'
