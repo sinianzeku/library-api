@@ -110,7 +110,7 @@ def class_lookup():
         category1 = data["category1"]
     if "category2" in data:
         category2 = data["category2"]
-    if "language" in data:
+    if "language" in data and data["language"]:
         language = C.language(data["language"])
     result = db_user_activity.sql_class_lookup(category1,category2,language)
     if not result[0]:
