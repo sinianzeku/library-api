@@ -74,8 +74,9 @@ def sql_aut_popular_recommendation():
     return [True,result[1]]
 
 
-def sql_new_arrivals(today_time,past_time,language,category1):
+def sql_new_arrivals(today_time,past_time,language,category1,category2):
     sql1 = "where 1 = 1"
+    sql_cate = "select id from book_category where 1 = 1"
     if today_time:
         sql1 = sql1 + " and books_add_time<='{}'".format(today_time)
     if past_time:
@@ -83,9 +84,11 @@ def sql_new_arrivals(today_time,past_time,language,category1):
     if language:
         sql1 = sql1 + " and book_language = '{}'".format(language)
     if category1:
-        sql1 = sql1 + " and book_category in (select id from book_category where category1 = '{}' )".format(category1)
+        sql_cate = sql_cate + " and category1 = '{}'".format(category1)
+    if category2:
+        sql_cate = sql_cate + " and category2 = '{}'".format(category2)
 
-    sql2 = 'select book_id,book_name,book_auther from book_info  {}  order by books_add_time desc '.format(sql1)
+    sql2 = 'select book_id,book_name,book_auther from book_info {} and book_category in ({}) order by books_add_time desc '.format(sql1,sql_cate)
     result = mysql_module(sql2)
     return [True,result[1]]
 
