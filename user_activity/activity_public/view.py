@@ -62,6 +62,7 @@ def popular_recommendation():
     past_time = ''
     language = ''
     category1 = ''
+    category2 = ''
     C = Condition()
     st = set_time()
     today_time = st.today()
@@ -69,9 +70,11 @@ def popular_recommendation():
         past_time = st.time_frame(C.where_time(data["time"]))
     if "language" in data:
         language = C.language(data["language"])
-    if "category1" in data:
+    if "category1" in data and data["category1"]:
         category1  = data["category1"]
-    result = db_user_activity.sql_popular_recommendation(today_time,past_time,language,category1)
+    if "category2" in data and data["category2"]:
+        category2  = data["category2"]
+    result = db_user_activity.sql_popular_recommendation(today_time,past_time,language,category1,category2)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})

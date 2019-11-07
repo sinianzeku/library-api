@@ -49,8 +49,9 @@ def sql_collect_book(user_name,book_id):
     mysql_module(sql)
     return [True,"收藏成功"]
 
-def sql_popular_recommendation(today_time,past_time,language,category1):
+def sql_popular_recommendation(today_time,past_time,language,category1,category2):
     sql1 = "where 1 = 1"
+    sql_cate = "select id from book_category where 1 = 1"
     if today_time:
         sql1 = sql1 + " and books_add_time<='{}'".format(today_time)
     if past_time:
@@ -58,9 +59,11 @@ def sql_popular_recommendation(today_time,past_time,language,category1):
     if language:
         sql1 = sql1 + " and book_language = '{}'".format(language)
     if category1:
-        sql1 = sql1 + " and book_category in (select id from book_category where category1 = '{}' )".format(category1)
+        sql_cate = sql_cate + " and category1 = '{}'".format(category1)
+    if category2:
+        sql_cate = sql_cate + " and category2 = '{}'".format(category2)
 
-    sql2 = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id {} group by book_id order by count desc ".format(sql1)
+    sql2 = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id {} and book.book_category in ({}) group by book_id order by count desc ".format(sql1,sql_cate)
     result = mysql_module(sql2)
     return [True,result[1]]
 
