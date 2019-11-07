@@ -70,6 +70,7 @@ def thematic_activities():
 @user_activity.route("voluntary_activities",methods = ["post"])
 def voluntary_activities():
     data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
     contestant = data["contestant"]
     phone = data["phone"]
     email = data["email"]
@@ -77,7 +78,7 @@ def voluntary_activities():
     time_of_appointment_end = data["time_of_appointment_end"]
     if time_of_appointment_start > time_of_appointment_end:
         return jsonify({"status": -1, "message": "起始时间不能大于结束时间"})
-    result = db_user_activity.sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,time_of_appointment_end)
+    result = db_user_activity.sql_voluntary_activities(contestant,user_name,phone,email,time_of_appointment_start,time_of_appointment_end)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     mail = Mail()

@@ -132,7 +132,12 @@ def sql_add_key_works(txt,query_mode):
     return True
 
 
-def sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,time_of_appointment_end):
+def sql_voluntary_activities(contestant,user_name,phone,email,time_of_appointment_start,time_of_appointment_end):
+    sql_user_id = "select user_id from user where user_account = '{}'".format(user_name)
+    user_id = mysql_module(sql_user_id)[1][0]['user_id']
+    sql_select = "select id from voluntary_activities where user_id = {}".format(user_id)
+    if mysql_module(sql_select)[1]:
+        return [False, "您已报名过该活动"]
     sql = "insert into voluntary_activities values('{}','{}','{}','{}','{}')".format(contestant,phone,email,time_of_appointment_start,time_of_appointment_end)
     result = mysql_module(sql)
     return result
