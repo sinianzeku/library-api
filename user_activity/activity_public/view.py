@@ -66,13 +66,13 @@ def popular_recommendation():
     C = Condition()
     st = set_time()
     today_time = st.today()
-    if "time" in data:
+    if "time" in data and data["time"]:
         past_time = st.time_frame(C.where_time(data["time"]))
-    if "language" in data:
+    if "language" in data and data["language"]:
         language = C.language(data["language"])
-    if "category1" in data and data["category1"]:
+    if "category1" in data:
         category1  = data["category1"]
-    if "category2" in data and data["category2"]:
+    if "category2" in data:
         category2  = data["category2"]
     result = db_user_activity.sql_popular_recommendation(today_time,past_time,language,category1,category2)
     if not result[0]:
@@ -99,13 +99,13 @@ def new_arrivals():
     C = Condition()
     st = set_time()
     today_time = st.today()
-    if "time" in data:
+    if "time" in data and data["time"]:
         past_time = st.time_frame(C.where_time(data["time"]))
-    if "language" in data:
+    if "language" in data and data["language"]:
         language = C.language(data["language"])
     if "category1" in data:
         category1 = data["category1"]
-    if "category2" in data and data["category2"]:
+    if "category2" in data :
         category2 = data["category2"]
     result = db_user_activity.sql_new_arrivals(today_time,past_time,language,category1,category2)
     if not result[0]:
