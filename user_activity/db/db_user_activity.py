@@ -88,7 +88,6 @@ def sql_class_lookup(category1,category2,language):
     if category2:
         sql1 = sql1 + " and category2 = '{}'".format(category2)
     sql2 = "select book_id,book_name,book_auther,book_img_path from book_info where book_category in ({}) and book_language = '{}'".format(sql1,language)
-    print(sql2)
     result = mysql_module(sql2)
     return result
 
