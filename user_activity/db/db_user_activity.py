@@ -39,8 +39,10 @@ def sql_my_bookshelf(user_id):
         return [False,"查询出错"]
     return [True,result[1]]
 
-def sql_collect_book(user_id,book_id):
-    sql = "insert into my_bookshelf values('{}','{}')".format(user_id,book_id)
+def sql_collect_book(user_name,book_id):
+    sql_user_id = "select user_id from user where user_account = '{}'".format(user_name)
+    user_id = mysql_module(sql_user_id)[1][0]['user_id']
+    sql = "insert into my_bookshelf(user_id,book_id) values('{}','{}')".format(user_id,book_id)
     mysql_module(sql)
     return [True,"收藏成功"]
 
