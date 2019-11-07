@@ -44,7 +44,7 @@ def collect_book():
     user_name = data["user_name"]
     result = db_user_activity.sql_collect_book(user_name,book_id)
     if not result[0]:
-        return jsonify({"status":0,"message":"fail"})
+        return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success"})
 
 #三行情书活动
@@ -57,7 +57,7 @@ def thematic_activities():
     works = data["works"]
     result = db_user_activity.sql_thematic_activities(contestant,phone,works)
     if not result[0]:
-        return jsonify({"status":0,"message":"fail"})
+        return jsonify({"status":-1,"message":"fail"})
     email = db_user_activity.sql_email(user_id)
     mail = Mail()
     message = Message(subject="图书馆活动报名",
