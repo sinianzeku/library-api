@@ -75,9 +75,11 @@ def voluntary_activities():
     email = data["email"]
     time_of_appointment_start = data["time_of_appointment_start"]
     time_of_appointment_end = data["time_of_appointment_end"]
+    if time_of_appointment_start > time_of_appointment_end:
+        return jsonify({"status": -1, "message": "起始时间不能大于结束时间"})
     result = db_user_activity.sql_voluntary_activities(contestant,phone,email,time_of_appointment_start,time_of_appointment_end)
     if not result[0]:
-        return jsonify({"status":0,"message":"fail"})
+        return jsonify({"status":-1,"message":"fail"})
     mail = Mail()
     message = Message(subject="图书馆活动报名",
                       recipients=[email],

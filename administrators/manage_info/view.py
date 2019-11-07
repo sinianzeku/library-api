@@ -257,6 +257,7 @@ def delete_borrow_record():
     return jsonify({"status": 0, "message": "success","data":[]})
 
 
+#图书管理首页
 @admin.route("borrowing_condition",methods = ["post"])
 def borrowing_condition():
     user_number = db_manage.sql_user_number()

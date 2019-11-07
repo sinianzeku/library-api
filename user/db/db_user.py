@@ -69,12 +69,12 @@ def sql_update_info( user_id,email,phone,address):
 
 
 def sql_query_user_info(user_id):
-    sql = "select * from user where user_id = '{}'".format(user_id)
+    sql = "select user_account,user_name,user_phone,user_email from user where user_id = '{}'".format(user_id)
     result = mysql_module(sql)
     return result
 
 
 def sql_get_feedback(user_name):
-    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_id = "{}"'.format(user_id)
+    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_account = "{}"'.format(user_name)
     result = mysql_module(sql)
     return result

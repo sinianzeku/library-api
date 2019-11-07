@@ -198,6 +198,18 @@ def sql_borrowing_condition():
     result_list = {}
     number = []
     month = []
+    '''
+    sql1 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[0])
+            result = mysql_module(sql)
+        number.append(result[1][0]['borrow_number'])
+        month.append(str(key[i])+"月")
+    sql2 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[1])
+    sql3 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[2])
+    sql4 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[3])
+    sql5 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[4])
+    sql6 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[5])
+    
+    '''
     for i in range(len(time_dict)):
         sql = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[i])
         result = mysql_module(sql)
@@ -211,7 +223,7 @@ def sql_process_information():
     result_dict = {}
     sql1 = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '1'"
     result_dict["untreated"] = mysql_module(sql1)[1]
-    sql2 = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '2'"
+    sql2 = "select id,user_account,readers,cast(time as char) time, feedbacks from feedback fd INNER join user on fd.user_id = user.user_id and fd.state = '0'"
     result_dict["processed"] = mysql_module(sql2)[1]
     return result_dict
 
