@@ -44,8 +44,7 @@ def sql_collect_book(user_name,book_id):
     user_id = mysql_module(sql_user_id)[1][0]['user_id']
 
     sql_select = "select id from my_bookshelf where user_id = {} and book_id = {}".format(user_id,book_id)
-    id = mysql_module(sql_select)[1][0]['id']
-    if id:
+    if mysql_module(sql_select)[1]:
         return [False, "该书已在您的书架中"]
     sql = "insert into my_bookshelf(user_id,book_id) values('{}','{}')".format(user_id,book_id)
     mysql_module(sql)
