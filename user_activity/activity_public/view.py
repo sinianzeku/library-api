@@ -98,6 +98,13 @@ def new_arrivals():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+@user_activity.route("aut_new_arrivals",methods = ["post"])
+def aut_new_arrivals():
+    result  = db_user_activity.sql_aut_new_arrivals()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
 #分类查询
 @user_activity.route("class_lookup",methods = ["post"])
 def class_lookup():

@@ -76,10 +76,14 @@ def sql_new_arrivals(today_time,past_time,language,category1):
     if category1:
         sql1 = sql1 + " and book_category in (select id from book_category where category1 = '{}' )".format(category1)
 
-    sql2 = 'select book_id,book_name,book_auther from book_info  {}  order by books_add_time '.format(sql1)
+    sql2 = 'select book_id,book_name,book_auther from book_info  {}  order by books_add_time desc '.format(sql1)
     result = mysql_module(sql2)
     return [True,result[1]]
 
+def sql_aut_new_arrivals():
+    sql = "select book_id,book_name,book_auther from book_info order by books_add_time desc "
+    result = mysql_module(sql)
+    return [True, result[1]]
 
 def sql_class_lookup(category1,category2,language):
     sql1 = "select id from book_category where 1 = 1 "

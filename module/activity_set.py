@@ -1,11 +1,11 @@
 class Condition:
     def where_time(self,time):
         time = {
-            "week": ["past", 7],
-            "month": ["past", 30],
-            "season": ["past", 90],
-            "half_a_year": ["past", 180],
-            "year": ["past", 365]
+            "最近一周": ["past", 7],
+            "近一个月": ["past", 30],
+            "近三个月": ["past", 90],
+            "近半年": ["past", 180],
+            "近一年": ["past", 365]
         }
         return time[time]
 
