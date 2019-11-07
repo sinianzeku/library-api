@@ -3,6 +3,8 @@ import json
 from user.db import db_user
 from user.verify import userverify
 from administrators.book.db_book import sql_query_user_id
+from user.verify.emailverify import get_my_item
+
 
 user = Blueprint("user_private",__name__)
 
@@ -43,7 +45,7 @@ def get_feedback():
 @user.route("update_password", methods = ["post"])
 def update_password():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_account = session["username"]
+    user_account = data["user_account"]
     old_password = data["old_password"]
     new_password = data["new_password"]
     new_cpassword = data["new_cpassword"]
@@ -65,8 +67,9 @@ def update_password():
 #查看个人信息
 @user.route("query_user_info",methods = ["post"])
 def query_user_info():
-    user_id = session["id"]
-    result = db_user.sql_query_user_info(user_id)
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_account = data["user_account"]
+    result = db_user.sql_query_user_info(user_account)
     if not result:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
@@ -75,11 +78,15 @@ def query_user_info():
 @user.route("update_info",methods = ["post"])
 def update_info():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = session["id"]
+    user_account = data["user_account"]
+    user_name = data["user_name"]
+    user_sex = data["user_sex"]
     email = data["email"]
     phone = data["phone"]
-    address = data["address"]
-    result = db_user.sql_update_info(user_id,email,phone,address)
+    verifycode = data["verifycode"]
+    if  verifycode != get_my_item(email):
+        return jsonify({"status": -1, "message": "验证码错误"})
+    db_user.sql_update_info(user_account,user_name,user_sex,email,phone)
     return jsonify({"status":0,"message":"success"})
 
 

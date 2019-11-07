@@ -59,8 +59,8 @@ def sql_update_password(user_account,new_password):
     return [True]
 
 
-def sql_update_info( user_id,email,phone,address):
-    sql = "UPDATE user SET user_email = '{}', user_phone = '{}',user_address = '{}' WHERE user_id = {}".format(email,phone,address,user_id)
+def sql_update_info(user_account,user_name,user_sex,email,phone):
+    sql = "UPDATE user SET user_email = '{}', user_phone = '{}',user_name = '{}',user_sex = '{}' WHERE user_account = {}".format(email,phone,user_name,user_sex,user_account)
     print(sql)
     # result = mysql_module(sql)
     # if not result[0]:
@@ -68,8 +68,8 @@ def sql_update_info( user_id,email,phone,address):
     # return [True]
 
 
-def sql_query_user_info(user_id):
-    sql = "select user_account,user_name,user_phone,user_email from user where user_id = '{}'".format(user_id)
+def sql_query_user_info(user_account):
+    sql = "select user_account,user_name,user_phone,user_email,user_sex from user where user_account = '{}'".format(user_account)
     result = mysql_module(sql)
     return result
 
