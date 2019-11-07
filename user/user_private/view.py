@@ -30,8 +30,8 @@ def feedback():
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
-    user_name = data["user_name"]
-    result = db_user.sql_get_feedback(user_name)
+    user_id = 21
+    result = db_user.sql_get_feedback(user_id)
     state = {
         '0':"已处理",
         '1':"未处理"
@@ -67,9 +67,14 @@ def update_password():
 #查看个人信息
 @user.route("query_user_info",methods = ["post"])
 def query_user_info():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    user_account = data["user_account"]
-    result = db_user.sql_query_user_info(user_account)
+    user_id = 21
+    result = db_user.sql_query_user_info(user_id)
+    sex = {
+        '0':'女',
+        '1':'男',
+        None:''
+    }
+    result[1][0]['user_sex'] = sex[result[1][0]['user_sex']]
     if not result:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})

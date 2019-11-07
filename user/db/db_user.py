@@ -68,13 +68,13 @@ def sql_update_info(user_account,user_name,user_sex,email,phone):
     # return [True]
 
 
-def sql_query_user_info(user_account):
-    sql = "select user_account,user_name,user_phone,user_email,user_sex from user where user_account = '{}'".format(user_account)
+def sql_query_user_info(user_id):
+    sql = "select user_account,user_name,user_phone,user_email,user_sex from user where user_id = '{}'".format(user_id)
     result = mysql_module(sql)
     return result
 
 
-def sql_get_feedback(user_name):
-    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_account = "{}"'.format(user_name)
+def sql_get_feedback(user_id):
+    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_account = "{}"'.format(user_id)
     result = mysql_module(sql)
     return result
