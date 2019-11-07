@@ -12,9 +12,9 @@ class Condition:
     def language(self,languages):
         language = {
             "中文图书": 0,
-            "外文图书": 1,
+            "西文图书": 1,
             "0": "中文图书",
-            "1": "外文图书"
+            "1": "西文图书"
         }
         return language[languages]
 

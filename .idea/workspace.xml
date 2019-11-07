@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/activity_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_public/view.py" afterDir="false" />
-    </list>
+    <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +64,14 @@
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="42577" />
+          <entry key="py" value="42608" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="42608" />
+          <entry key="Python" value="42639" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -106,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+            <state relative-caret-position="273">
+              <caret line="114" column="42" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
                 <marker date="1573116162817" expanded="true" signature="2069:2367" ph="..." />
@@ -122,7 +119,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/activity_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="123">
               <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
             </state>
           </provider>
@@ -131,12 +128,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_activity/db/db_user_activity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="89" column="153" selection-start-line="89" selection-start-column="153" selection-end-line="89" selection-end-column="153" />
+            <state relative-caret-position="246">
+              <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
               <folding>
-                <marker date="1573115564032" expanded="true" signature="4653:4784" ph="..." />
-                <marker date="1573115564032" expanded="true" signature="6813:6818" ph="..." />
-                <marker date="1573115564032" expanded="true" signature="7029:7034" ph="..." />
+                <marker date="1573116331472" expanded="true" signature="4704:4835" ph="..." />
+                <marker date="1573116331472" expanded="true" signature="6864:6869" ph="..." />
+                <marker date="1573116331472" expanded="true" signature="7080:7085" ph="..." />
               </folding>
             </state>
           </provider>
@@ -211,8 +208,8 @@
         <option value="$PROJECT_DIR$/user_activity/module/activity_set.py" />
         <option value="$PROJECT_DIR$/user/user_private/view.py" />
         <option value="$PROJECT_DIR$/module/activity_set.py" />
-        <option value="$PROJECT_DIR$/user_activity/db/db_user_activity.py" />
         <option value="$PROJECT_DIR$/user_activity/activity_public/view.py" />
+        <option value="$PROJECT_DIR$/user_activity/db/db_user_activity.py" />
       </list>
     </option>
   </component>
@@ -493,20 +490,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570592138344</updated>
-    </task>
-    <task id="LOCAL-00089" summary="zpg">
-      <created>1572943173514</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1572943173514</updated>
-    </task>
-    <task id="LOCAL-00090" summary="zpg">
-      <created>1572944422716</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1572944422716</updated>
     </task>
     <task id="LOCAL-00091" summary="zpg">
       <created>1572947612941</created>
@@ -837,7 +820,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573115567139</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="zpg">
+      <created>1573116166301</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1573116166301</updated>
+    </task>
+    <task id="LOCAL-00139" summary="zpg">
+      <created>1573116346867</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1573116346867</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1217,27 +1214,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/module/activity_set.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="123">
           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_activity/db/db_user_activity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="89" column="153" selection-start-line="89" selection-start-column="153" selection-end-line="89" selection-end-column="153" />
+        <state relative-caret-position="246">
+          <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
           <folding>
-            <marker date="1573115564032" expanded="true" signature="4653:4784" ph="..." />
-            <marker date="1573115564032" expanded="true" signature="6813:6818" ph="..." />
-            <marker date="1573115564032" expanded="true" signature="7029:7034" ph="..." />
+            <marker date="1573116331472" expanded="true" signature="4704:4835" ph="..." />
+            <marker date="1573116331472" expanded="true" signature="6864:6869" ph="..." />
+            <marker date="1573116331472" expanded="true" signature="7080:7085" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+        <state relative-caret-position="273">
+          <caret line="114" column="42" selection-start-line="114" selection-start-column="42" selection-end-line="114" selection-end-column="42" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
             <marker date="1573116162817" expanded="true" signature="2069:2367" ph="..." />
