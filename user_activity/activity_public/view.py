@@ -161,7 +161,7 @@ def send_email():
     message = Message(subject="图书馆找回密码验证码",
                       recipients=[email],
                       body=verifycode)
-    get_my_item(email,verifycode)
+    get_my_item(email,verifycode,180)
     mail.send(message)
     return jsonify({"status": 0, "message": "验证码发送成功","data":email})
 

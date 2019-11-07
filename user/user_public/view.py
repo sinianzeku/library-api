@@ -51,7 +51,7 @@ def email_verify():
     message = Message(subject="图书馆注册验证码",
                       recipients=[email],
                       body=verifycode)
-    get_my_item(email,verifycode)
+    get_my_item(email,verifycode,60)
     mail.send(message)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
