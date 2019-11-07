@@ -110,15 +110,11 @@ def sql_category2(category1):
 
 
 def sql_thematic_activities(contestant,phone,works):
-    sql = "insert into thematic_activities values('{}','{}','{}')".format(contestant,phone,works)
+    sql = "insert into thematic_activities(contestant,phone,works) values('{}','{}','{}')".format(contestant,phone,works)
     result = mysql_module(sql)
     return result
 
 
-def sql_email(user_id):
-    sql = "select user_email from user where user_id = '{}'".format(user_id)
-    result = mysql_module(sql)
-    return result[1][0]["user_email"]
 
 def sql_add_key_works(txt,query_mode):
     sql = "select words from key_word where words = '{}'".format(txt)
