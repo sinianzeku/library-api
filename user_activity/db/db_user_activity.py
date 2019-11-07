@@ -136,4 +136,6 @@ def sql_book_name_query(book_id):
     return result
 
 def sql_queery_category(category):
-    sql = 'select category1,category2 from book_category'
+    sql = 'select category1,category2 from book_category where id = {}'.format(category)
+    result = mysql_module(sql)
+    return  result[1][0]["category1"]+"/"+result[1][0]["category2"]
