@@ -88,13 +88,15 @@ def sql_class_lookup(category1,category2,language):
         sql1 = sql1 + " and category1 = '{}'".format(category1)
     if category2:
         sql1 = sql1 + " and category2 = '{}'".format(category2)
-    sql2 = "select * from book_info where book_category in (select id from book_category {}) and book_language = '{}'".format(sql1,language)
+    sql2 = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info  where book_category in (select id from book_category {}) and book_language = '{}'".format(sql1,language)
     result = mysql_module(sql2)
-    if not result[0]:
-        return [False,"查询失败"]
-    if not result[1]:
-        return [False,"查无数据"]
-    return [True,result[1]]
+    return result
+
+
+def sql_aut_class_lookup():
+    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info "
+    result = mysql_module(sql)
+    return result
 
 
 def sql_category1():
@@ -147,7 +149,7 @@ def sql_book_name_query(book_id):
     result = mysql_module(sql)
     return result
 
-def sql_queery_category(category):
+def sql_query_category(category):
     sql = 'select category1,category2 from book_category where id = {}'.format(category)
     result = mysql_module(sql)
     return  result[1][0]["category1"]+"/"+result[1][0]["category2"]

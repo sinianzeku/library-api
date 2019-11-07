@@ -40,7 +40,7 @@ def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
     result = db_user_activity.sql_query_book_info(book_id)
-    result[1][0]["book_category"] = db_user_activity.sql_queery_category(result[1][0]["book_category"])
+    result[1][0]["book_category"] = db_user_activity.sql_query_category(result[1][0]["book_category"])
     state = {
         "0":"在馆",
         "1":"已借出"
@@ -129,6 +129,13 @@ def class_lookup():
         jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#分类查询自动获取
+@user_activity.route("aut_class_lookup",methods = ["post"])
+def aut_class_lookup():
+    result = db_user_activity.sql_aut_class_lookup()
+    if not result[0]:
+        jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
 #查找分类1数据
