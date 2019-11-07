@@ -198,23 +198,16 @@ def sql_borrowing_condition():
     result_list = {}
     number = []
     month = []
-    '''
     sql1 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[0])
-            result = mysql_module(sql)
-        number.append(result[1][0]['borrow_number'])
-        month.append(str(key[i])+"月")
     sql2 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[1])
     sql3 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[2])
     sql4 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[3])
     sql5 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[4])
     sql6 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[5])
-    
-    '''
-    for i in range(len(time_dict)):
-        sql = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[i])
-        result = mysql_module(sql)
-        number.append(result[1][0]['borrow_number'])
-        month.append(str(key[i])+"月")
+    result = mysql_modules(sql1,sql2,sql3,sql4,sql5,sql6)
+    for i in range(len(result[1])):
+        number.append(result[1][i][0]['borrow_number'])
+        month.append(str(key[i]) + "月")
     result_list["number"] = number
     result_list["month"] = month
     return result_list
