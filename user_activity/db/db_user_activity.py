@@ -65,6 +65,12 @@ def sql_popular_recommendation(today_time,past_time,language,category1):
     return [True,result[1]]
 
 
+def sql_aut_popular_recommendation():
+    sql = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc "
+    result = mysql_module(sql)
+    return [True,result[1]]
+
+
 def sql_new_arrivals(today_time,past_time,language,category1):
     sql1 = "where 1 = 1"
     if today_time:

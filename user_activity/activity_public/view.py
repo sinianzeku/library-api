@@ -76,6 +76,14 @@ def popular_recommendation():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#热门推荐
+@user_activity.route("aut_popular_recommendation",methods = ["post"])
+def aut_popular_recommendation():
+    result  = db_user_activity.sql_aut_popular_recommendation()
+    if not result[0]:
+        return jsonify({"status":-1,"message":"fail"})
+    return jsonify({"status":0,"message":"success","data":result[1]})
+
 
 #新书推荐
 @user_activity.route("new_arrivals",methods = ["post"])
@@ -98,6 +106,7 @@ def new_arrivals():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
+#新书推荐
 @user_activity.route("aut_new_arrivals",methods = ["post"])
 def aut_new_arrivals():
     result  = db_user_activity.sql_aut_new_arrivals()
