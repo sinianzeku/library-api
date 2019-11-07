@@ -1,5 +1,5 @@
 class Condition:
-    def where_time(self,time):
+    def where_time(self,times):
         time = {
             "最近一周": ["past", 7],
             "近一个月": ["past", 30],
@@ -7,7 +7,7 @@ class Condition:
             "近半年": ["past", 180],
             "近一年": ["past", 365]
         }
-        return time[time]
+        return time[times]
 
     def language(self,languages):
         language = {
