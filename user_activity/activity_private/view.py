@@ -51,13 +51,14 @@ def collect_book():
 @user_activity.route("thematic_activities",methods=["post"])
 def thematic_activities():
     data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
     contestant = data["contestant"]
     phone = data["phone"]
     works = data["works"]
     email = data["email"]
-    result = db_user_activity.sql_thematic_activities(contestant,phone,works)
+    result = db_user_activity.sql_thematic_activities(contestant,phone,works,user_name)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
+        return jsonify({"status":-1,"message":result[1]})
     mail = Mail()
     message = Message(subject="图书馆活动报名",
                       recipients=[email],

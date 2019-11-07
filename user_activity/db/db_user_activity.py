@@ -109,8 +109,13 @@ def sql_category2(category1):
     return result
 
 
-def sql_thematic_activities(contestant,phone,works):
-    sql = "insert into thematic_activities(contestant,phone,works) values('{}','{}','{}')".format(contestant,phone,works)
+def sql_thematic_activities(contestant,phone,works,user_name):
+    sql_user_id = "select user_id from user where user_account = '{}'".format(user_name)
+    user_id = mysql_module(sql_user_id)[1][0]['user_id']
+    sql_select = "select id from thematic_activities where user_id = {}".format(user_id)
+    if mysql_module(sql_select)[1]:
+        return [False, "您已报名过该活动"]
+    sql = "insert into thematic_activities(contestant,phone,works,user_id) values('{}','{}','{}',{})".format(contestant,phone,works,user_id)
     result = mysql_module(sql)
     return result
 
