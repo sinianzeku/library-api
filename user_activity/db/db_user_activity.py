@@ -1,5 +1,4 @@
 from config.db_config import mysql_module
-from user_activity.module import activity_set
 
 
 def sql_query_book(query_criteria,query_content):
@@ -83,18 +82,18 @@ def sql_new_arrivals(today_time,past_time,language,category1):
 
 
 def sql_class_lookup(category1,category2,language):
-    sql1 = " where 1 = 1 "
+    sql1 = "select id from book_category where 1 = 1 "
     if category1:
         sql1 = sql1 + " and category1 = '{}'".format(category1)
     if category2:
         sql1 = sql1 + " and category2 = '{}'".format(category2)
-    sql2 = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info  where book_category in (select id from book_category {}) and book_language = '{}'".format(sql1,language)
+    sql2 = "select book_id,book_name,book_auther,book_img_path where book_category in ({}) and book_language = '{}'".format(sql1,language)
     result = mysql_module(sql2)
     return result
 
 
 def sql_aut_class_lookup():
-    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info "
+    sql = "select book_id,book_name,book_auther,book_img_path from book_info "
     result = mysql_module(sql)
     return result
 
@@ -153,3 +152,11 @@ def sql_query_category(category):
     sql = 'select category1,category2 from book_category where id = {}'.format(category)
     result = mysql_module(sql)
     return  result[1][0]["category1"]+"/"+result[1][0]["category2"]
+
+
+def sql_email(user_name):
+    sql  = "select user_email from user where user_account = '{}' ".format(user_name)
+    result = mysql_module(sql)
+    if not result[1]:
+        return [False,"用户名不存"]
+    return [True,result[1][0]["user_email"]]

@@ -1,9 +1,11 @@
 from flask import Blueprint,request,jsonify
 from user_activity.db import db_user_activity
+from flask_mail import Mail,Message
+from user.verify.emailverify import get_my_item
 import json
 from config.defaulttime import set_time
-from user_activity.module.activity_set import Condition
-import os
+from module.activity_set import Condition
+import os, random
 
 user_activity = Blueprint("activity_public",__name__)
 
@@ -11,24 +13,17 @@ user_activity = Blueprint("activity_public",__name__)
 #查找书籍
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
+    C = Condition()
     data = json.loads(request.get_data("").decode("utf-8"))
-    dict_query_mode = {
-        "书名":"book_name",
-        "作者":"book_auther"
-    }
     txt = data["txt"]
     query_mode = "book_name"
-    if "query_mode" in data:
-        query_mode = dict_query_mode[ data["query_mode"]]
+    if "query_mode" in data and data["query_mode"]:
+        query_mode = C.books(data["query_mode"])
     result = db_user_activity.sql_query_book(query_mode, txt)
-    dict_book_language = {
-        "0":"中文图书",
-        "1":"西文图书"
-    }
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
-        result[1][i]["book_language"] = dict_book_language[result[1][i]["book_language"]]
+        result[1][i]["book_language"] = C.language(result[1][i]["book_language"] )
     result1 =  db_user_activity.sql_add_key_works(txt,query_mode)
     if not result1:
         return jsonify({"status": -1, "massage": "fail"})
@@ -41,16 +36,9 @@ def query_book_info():
     book_id = data["book_id"]
     result = db_user_activity.sql_query_book_info(book_id)
     result[1][0]["book_category"] = db_user_activity.sql_query_category(result[1][0]["book_category"])
-    state = {
-        "0":"在馆",
-        "1":"已借出"
-    }
-    result[1][0]["book_state"] = state[result[1][0]["book_state"]]
-    dict_book_language = {
-        "0":"中文图书",
-        "1":"西文图书"
-    }
-    result[1][0]["book_language"] = dict_book_language[result[1][0]["book_language"]]
+    C = Condition()
+    result[1][0]["book_state"] = C.state(result[1][0]["book_state"])
+    result[1][0]["book_language"] = C.language(result[1][0]["book_language"])
     if not result[0]:
         return jsonify({"status":-1,"massage":"fail","data":result[1]})
     for i in range(len(result[1])):
@@ -137,21 +125,45 @@ def aut_class_lookup():
         jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-
-#查找分类1数据
-@user_activity.route("category1",methods=["post"])
-def category1():
-    result = db_user_activity.sql_category1()
-    if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({'status':0,"message":"success","data":result[1]})
-
-#查询分类2数据
-@user_activity.route("category2",methods=["post"])
-def category2():
+#发送验证码
+@user_activity.route("send_email",methods = ["post"])
+def send_email():
     data = json.loads(request.get_data("").decode("utf-8"))
-    category_1 = data["category1"]
-    result = db_user_activity.sql_category2(category_1)
-    if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({'status':0,"message":"success","data":result[1]})
+    user_name = data["user_name"]
+    sql_email = db_user_activity.sql_email(user_name)
+    if not sql_email[0]:
+        return jsonify({"status": 0, "message": sql_email[1]})
+    email = sql_email[1]
+    # verifycode = str(random.randint(100000,999999))
+    # mail = Mail()
+    # message = Message(subject="图书馆注册验证码",
+    #                   recipients=[email],
+    #                   body=verifycode)
+    # get_my_item(email,verifycode)
+    # mail.send(message)
+    return jsonify({"status": 0, "message": "验证码发送成功"})
+
+#验证码验证
+@user_activity.route("verify_code",methods = ["post"])
+def verify_code():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
+
+
+# #查找分类1数据
+# @user_activity.route("category1",methods=["post"])
+# def category1():
+#     result = db_user_activity.sql_category1()
+#     if not result[0]:
+#         return jsonify({"status":-1,"message":"fail"})
+#     return jsonify({'status':0,"message":"success","data":result[1]})
+#
+# #查询分类2数据
+# @user_activity.route("category2",methods=["post"])
+# def category2():
+#     data = json.loads(request.get_data("").decode("utf-8"))
+#     category_1 = data["category1"]
+#     result = db_user_activity.sql_category2(category_1)
+#     if not result[0]:
+#         return jsonify({"status":-1,"message":"fail"})
+#     return jsonify({'status':0,"message":"success","data":result[1]})
