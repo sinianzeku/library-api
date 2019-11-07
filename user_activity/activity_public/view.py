@@ -2,10 +2,10 @@ from flask import Blueprint,request,jsonify
 from user_activity.db import db_user_activity
 from flask_mail import Mail,Message
 from user.verify.emailverify import get_my_item
-import json
+from user.verify import userverify
 from config.defaulttime import set_time
 from module.activity_set import Condition
-import os, random
+import os, random,json
 
 user_activity = Blueprint("activity_public",__name__)
 
@@ -132,38 +132,44 @@ def send_email():
     user_name = data["user_name"]
     sql_email = db_user_activity.sql_email(user_name)
     if not sql_email[0]:
-        return jsonify({"status": 0, "message": sql_email[1]})
+        return jsonify({"status": -1, "message": sql_email[1]})
     email = sql_email[1]
-    # verifycode = str(random.randint(100000,999999))
-    # mail = Mail()
-    # message = Message(subject="图书馆注册验证码",
-    #                   recipients=[email],
-    #                   body=verifycode)
-    # get_my_item(email,verifycode)
-    # mail.send(message)
-    return jsonify({"status": 0, "message": "验证码发送成功"})
+    verifycode = str(random.randint(100000,999999))
+    mail = Mail()
+    message = Message(subject="图书馆找回密码验证码",
+                      recipients=[email],
+                      body=verifycode)
+    get_my_item(email,verifycode)
+    mail.send(message)
+    return jsonify({"status": 0, "message": "验证码发送成功","data":email})
+
 
 #验证码验证
 @user_activity.route("verify_code",methods = ["post"])
 def verify_code():
     data = json.loads(request.get_data("").decode("utf-8"))
+    email = data["email"]
+    verifycode = data["code"]
+    if  verifycode != get_my_item(email):
+        return jsonify({"status": -1, "message": "验证码错误"})
+    return jsonify({"status": 0, "message": "success"})
+
+#设置密码
+@user_activity.route("make_password",methods = ["post"])
+def make_password():
+    data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
+    password = data["password"]
+    cpassword = data["cpassword"]
+    if password != cpassword:
+        return jsonify({"status": -1, "message": "您输入的两次密码不一致"})
+    ver = userverify.UserVerify()
+    password = ver.password(password)
+    if not password[0]:
+        return jsonify({"status":-1,"message":password[1]})
+    result = db_user_activity.sql_update_password(user_name,password[1])
+    if not result[0]:
+        return jsonify({"status":-1,"message":result[1]})
+    return jsonify({"status":0,"message":"success"})
 
 
-# #查找分类1数据
-# @user_activity.route("category1",methods=["post"])
-# def category1():
-#     result = db_user_activity.sql_category1()
-#     if not result[0]:
-#         return jsonify({"status":-1,"message":"fail"})
-#     return jsonify({'status':0,"message":"success","data":result[1]})
-#
-# #查询分类2数据
-# @user_activity.route("category2",methods=["post"])
-# def category2():
-#     data = json.loads(request.get_data("").decode("utf-8"))
-#     category_1 = data["category1"]
-#     result = db_user_activity.sql_category2(category_1)
-#     if not result[0]:
-#         return jsonify({"status":-1,"message":"fail"})
-#     return jsonify({'status':0,"message":"success","data":result[1]})

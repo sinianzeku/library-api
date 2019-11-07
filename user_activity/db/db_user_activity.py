@@ -160,3 +160,21 @@ def sql_email(user_name):
     if not result[1]:
         return [False,"用户名不存"]
     return [True,result[1][0]["user_email"]]
+
+def sql_update_password(user_account,new_password):
+    sql = "update user set user_password = '{}' where user_account = '{}'".format(new_password,user_account)
+    result = mysql_module(sql)
+    if not result[0]:
+        return [False,"密码更改失败"]
+    return [True]
+
+
+
+
+
+
+
+
+
+
+
