@@ -53,7 +53,7 @@ def update_password():
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
     if new_password != new_cpassword:
-        return jsonify({"status":-1,"meaasge":"两次密码输入不一致"})
+        return jsonify({"status":-1,"message":"两次密码输入不一致"})
     ver = userverify.UserVerify()
     password = ver.password(new_password)
     if not password[0]:
