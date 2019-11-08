@@ -2,6 +2,7 @@ from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
 from administrators.manage_info import db_manage
 from administrators.book.db_book import sql_query_user_id,sql_query_book_category
+from module.activity_set import Condition
 import json
 import  os
 
@@ -110,17 +111,10 @@ def book_info():
     result = db_manage.sql_book_info()
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
-    state = {
-        "0":"在馆",
-        "1":"已借出"
-    }
-    language = {
-        "0":"中文图书",
-        "1":"西文图书"
-    }
+    C = Condition()
     for i in range(len(result[1])):
-        result[1][i]["book_state"] = state[result[1][i]["book_state"]]
-        result[1][i]["book_language"] = language[result[1][i]["book_language"]]
+        result[1][i]["book_state"] = C.state(result[1][i]["book_state"])
+        result[1][i]["book_language"] = C.language(result[1][i]["book_language"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #图书信息条件查询
@@ -132,11 +126,7 @@ def conditional_book_info():
     book_publisher = ""
     book_room = ""
     book_state = ""
-    state_in = {
-        "在馆":"0",
-        "已借出":"1",
-        "":""
-    }
+    C = Condition()
     if "book_id" in data:
         book_id = data["book_id"]
     if "book_name" in data:
@@ -146,16 +136,12 @@ def conditional_book_info():
     if "book_room" in data:
         book_room = data["book_room"]
     if "book_state" in data:
-        book_state = state_in[data["book_state"]]
+        book_state = C.state(data["book_state"])
     result = db_manage.sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_state)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
-    state_out = {
-        "0":"在馆",
-        "1":"已借出"
-    }
     for i in range(len(result[1])):
-        result[1][i]["book_state"] = state_out[result[1][i]["book_state"]]
+        result[1][i]["book_state"] = C.state(result[1][i]["book_state"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #修改图书信息
@@ -164,10 +150,7 @@ def change_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     category1 = data["category1"]
     category2 = data["category2"]
-    language = {
-        "中文图书":0,
-        "西文图书":1
-    }
+    C =Condition()
     result = db_manage.sql_change_book_info(book_code = data["book_code"],
                                             book_name=data["book_name"],
                                             book_auther=data["book_auther"],
@@ -177,7 +160,7 @@ def change_book_info():
                                             book_bookshelf=data["book_bookshelf"],
                                             book_synopsis=data["book_synopsis"],
                                             book_publication_date=data["book_publication_date"],
-                                            book_language=language[data["book_language"]],
+                                            book_language=C.language(data["book_language"]),
                                             book_id=data["book_id"])
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
@@ -260,17 +243,9 @@ def delete_borrow_record():
 #图书管理首页
 @admin.route("borrowing_condition",methods = ["post"])
 def borrowing_condition():
-    user_number = db_manage.sql_user_number()
-    borrowing_condition = db_manage.sql_borrowing_condition()
-    book_number = db_manage.sql_book_number()
-    borrowing_number = db_manage.sql_borrowing_number()
-    record_number = db_manage.sql_borrow_record_number()
     data_dict = {}
-    data_dict["user_number"] = user_number
-    data_dict["book_number"] = book_number
-    data_dict["borrowing_number"] = borrowing_number
-    data_dict["record_number"] = record_number
-    data_dict["borrowing_condition"] = borrowing_condition
+    data_dict["user_number"],data_dict["book_number"],data_dict["borrowing_number"],data_dict["record_number"]=db_manage.sql_borrowing_condition1()
+    data_dict["borrowing_condition"] = db_manage.sql_borrowing_condition()
     return jsonify({"status":0,"message":"success","data":data_dict})
 
 #自动获取

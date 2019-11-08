@@ -170,25 +170,21 @@ def sql_delete_borrow_record(borrow_id):
     result = mysql_module(sql_de_borrow)
     return result
 
-def sql_user_number():
-    sql = "select count(user_id) user_number  from user"
-    result = mysql_module(sql)
-    return result[1][0]["user_number"]
+def sql_count_number():
+    sql7 = "explain select  * from user"
+    sql8 = "explain select  * from book_info"
+    sql9 = "explain select  * from borrow_info where state = '1'"
+    sql10 = "explain select  * from  borrow_info where state = '0'"
+    result = mysql_modules(sql7,sql8,sql9,sql10)
+    return result[1][6][0]["rows"],result[1][1][0]["rows"],result[1][2][0]["rows"],result[1][3][0]["rows"]
 
-def sql_book_number():
-    sql = "select count(book_id) book_number  from book_info"
-    result = mysql_module(sql)
-    return result[1][0]["book_number"]
 
-def sql_borrowing_number():
-    sql = "select count(borrow_id) borrowing_number  from borrow_info where state = '1'"
-    result = mysql_module(sql)
-    return result[1][0]["borrowing_number"]
 
-def sql_borrow_record_number():
-    sql = "select count(borrow_id) borrow_number  from  borrow_info where state = '0'"
+def sql_borrowing_condition1():
+    sql = "SELECT * from (select count(*) as c from user UNION ALL select count(*) as c from book_info UNION ALL select count(*) as c from borrow_info where state = '1' UNION ALL select count(*) as c from borrow_info where state = '0' ) as total"
     result = mysql_module(sql)
-    return result[1][0]["borrow_number"]
+    return result[1][0]["c"],result[1][1]["c"],result[1][2]["c"],result[1][3]["c"]
+
 
 def sql_borrowing_condition():
     st = set_time()
@@ -198,15 +194,10 @@ def sql_borrowing_condition():
     result_list = {}
     number = []
     month = []
-    sql1 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[0])
-    sql2 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[1])
-    sql3 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[2])
-    sql4 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[3])
-    sql5 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[4])
-    sql6 = 'select count(borrow_id) borrow_number from borrow_info where instr(borrow_time,"{}")'.format(times[5])
-    result = mysql_modules(sql1,sql2,sql3,sql4,sql5,sql6)
-    for i in range(len(result[1])):
-        number.append(result[1][i][0]['borrow_number'])
+    sql = 'SELECT * from (select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}") UNION ALL select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}") UNION ALL select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}") UNION ALL select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}") UNION ALL select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}") UNION ALL select count(borrow_id) number  from borrow_info where instr(borrow_time,"{}")) as total'.format(times[0], times[1], times[2], times[3], times[4], times[5])
+    result = mysql_module(sql)
+    for i in range(6):
+        number.append(result[1][i]['number'])
         month.append(str(key[i]) + "月")
     result_list["number"] = number
     result_list["month"] = month
