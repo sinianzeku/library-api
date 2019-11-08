@@ -60,7 +60,7 @@ def sql_update_password(user_account,new_password):
 
 
 def sql_update_info(user_account,user_name,user_sex,email,phone):
-    sql = "UPDATE user SET user_email = '{}', user_phone = '{}',user_name = '{}',user_sex = '{}' WHERE user_account = {}".format(email,phone,user_name,user_sex,user_account)
+    sql = "UPDATE user SET user_email = '{}', user_phone = '{}',user_name = '{}',user_sex = '{}' WHERE user_account = '{}'".format(email,phone,user_name,user_sex,user_account)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"信息更新失败"]
