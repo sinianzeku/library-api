@@ -14,7 +14,8 @@ class Condition():
             "中文图书": 0,
             "西文图书": 1,
             "0": "中文图书",
-            "1": "西文图书"
+            "1": "西文图书",
+            "":""
         }
         return language[languages]
 
@@ -22,7 +23,8 @@ class Condition():
     def books(self,books):
         book = {
             "书名": "book_name",
-            "作者": "book_auther"
+            "作者": "book_auther",
+            "":""
         }
         return book[books]
 
@@ -31,7 +33,8 @@ class Condition():
             "0": "在馆",
             "1": "已借出",
             "在馆": "0",
-            "已借出": "1"
+            "已借出": "1",
+            "":""
         }
         return state[states]
 
