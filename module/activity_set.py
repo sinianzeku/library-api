@@ -1,4 +1,4 @@
-class Condition:
+class Condition():
     def where_time(self,times):
         time = {
             "最近一周": ["past", 7],
@@ -34,6 +34,17 @@ class Condition:
             "已借出": "1"
         }
         return state[states]
+
+    def sex(self,sexs):
+        sex = {
+            '0': '女',
+            '1': '男',
+            '女': '0',
+            '男': '1',
+            None: '',
+            '':''
+        }
+        return sex[sexs]
 
 
 

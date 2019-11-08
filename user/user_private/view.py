@@ -4,6 +4,7 @@ from user.db import db_user
 from user.verify import userverify
 from administrators.book.db_book import sql_query_user_id
 from user.verify.emailverify import get_my_item
+from module.activity_set import Condition
 
 
 user = Blueprint("user_private",__name__)
@@ -32,11 +33,8 @@ def get_feedback():
     # data = json.loads(request.get_data("").decode("utf-8"))
     user_id = 21
     result = db_user.sql_get_feedback(user_id)
-    state = {
-        '0':"已处理",
-        '1':"未处理"
-    }
-    result[1][0]["state"] = state[result[1][0]["state"]]
+    C =Condition()
+    result[1][0]["state"] = C.state(result[1][0]["state"])
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
@@ -69,12 +67,8 @@ def update_password():
 def query_user_info():
     user_id = 21
     result = db_user.sql_query_user_info(user_id)
-    sex = {
-        '0':'女',
-        '1':'男',
-        None:''
-    }
-    result[1][0]['user_sex'] = sex[result[1][0]['user_sex']]
+    C = Condition()
+    result[1][0]['user_sex'] = C.sex(result[1][0]['user_sex'])
     if not result:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
