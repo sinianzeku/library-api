@@ -17,6 +17,8 @@ def sql_borrow_book(user_id,book_id):
     time = set_time()
     sql = "insert into borrow_info (user_id,book_id,borrow_time,return_time,state) values ({},{},'{}','{}','{}')".format(user_id,book_id,time.today(),time.next_month(),1)
     sql2 = "UPDATE book_info set book_state = '1' where book_id = {}".format(book_id)
+    print(sql)
+    print(sql2)
     result = mysql_modules(sql,sql2)
     return result
 
