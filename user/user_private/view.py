@@ -34,10 +34,11 @@ def get_feedback():
     user_name = data["user_name"]
     user_id = sql_query_user_id(user_name)
     result = db_user.sql_get_feedback(user_id)
-    C =Condition()
-    result[1][0]["state"] = C.feed(result[1][0]["state"])
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
+    C = Condition()
+    if result[1]:
+        result[1][0]["state"] = C.feed(result[1][0]["state"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #更新密码

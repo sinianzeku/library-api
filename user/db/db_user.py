@@ -75,6 +75,7 @@ def sql_query_user_info(user_id):
 
 
 def sql_get_feedback(user_id):
-    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_id = "{}"'.format(user_id)
+    st = set_time()
+    sql = 'select feedbacks,cast(time as char) time,state from feedback where user_id = "{}" and time >="{}"'.format(user_id,st.time_frame(["past",30]))
     result = mysql_module(sql)
     return result

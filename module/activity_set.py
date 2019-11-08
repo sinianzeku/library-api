@@ -51,10 +51,10 @@ class Condition():
 
     def feed(self,feeds):
         feed = {
-            '0':'在馆',
-            '1':'已借出',
-            '在馆':'0',
-            '已借出':'1'
+            '0':'已处理',
+            '1':'未处理',
+            '已处理':'0',
+            '未处理':'1'
         }
         return feed[feeds]
 
