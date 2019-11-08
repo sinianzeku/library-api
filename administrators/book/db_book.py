@@ -33,6 +33,7 @@ def sql_Verify(book_id, user_id):
     if not result[1][0]["count"]:
         return False
     return True
+
 def sql_return_book(book_id,user_id):
     time = set_time()
     sql = "UPDATE borrow_info set state = '0',actual_return_time = '{}' where book_id = {} and user_id = {} ".format(time.today(),book_id,user_id)
