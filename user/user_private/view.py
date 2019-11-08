@@ -29,7 +29,7 @@ def feedback():
 
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
-    # data = json.loads(request.get_data("").decode("utf-8"))
+    data = json.loads(request.get_data("").decode("utf-8"))
     user_id = 21
     result = db_user.sql_get_feedback(user_id)
     state = {
