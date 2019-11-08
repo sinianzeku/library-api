@@ -16,7 +16,7 @@ def sql_query_book_info(book_id):
 
 #历史借书记录
 def sql_borrowed_records(user_id):
-    sql = 'SELECT	book.book_id,	book_name,	book_auther,	cast(borrow_time as char) as borrow_time,	cast(actual_return_time as char) as actual_return_time,	book_room FROM	( SELECT book_id, book_name, book_auther, book_room FROM book_info WHERE book_id IN ( SELECT book_id FROM borrow_info WHERE user_id = {} ) ) AS book LEFT JOIN borrow_info borrow ON borrow.book_id = book.book_id'.format(user_id)
+    sql = 'SELECT	book.book_id,	book_name,	book_auther,book.book_publisher,	cast(borrow_time as char) as borrow_time,	cast(actual_return_time as char) as actual_return_time,	book_room FROM	( SELECT book_id,book_publisher, book_name, book_auther, book_room FROM book_info WHERE book_id IN ( SELECT book_id FROM borrow_info WHERE user_id = {} ) ) AS book LEFT JOIN borrow_info borrow ON borrow.book_id = book.book_id'.format(user_id)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
@@ -24,7 +24,7 @@ def sql_borrowed_records(user_id):
 
 #在借书籍
 def sql_borrowing_books(user_id):
-    sql = "select book.book_id,book_name,cast(borrow_time as char) borrow_time,cast(return_time as char) return_time,book_room from  (select book_id,book_name,book_room from book_info where book_id in (select book_id from borrow_info where user_id = {} and state = 1)) book LEFT JOIN (select borrow_time,return_time,book_id from borrow_info where user_id = {} and state = 1) borrow on book.book_id = borrow.book_id ".format(user_id,user_id)
+    sql = "select book.book_id,book_name,book.book_publisher,cast(borrow_time as char) borrow_time,cast(return_time as char) return_time,book_room from  (select book_id,book_name,book_publisher,book_room from book_info where book_id in (select book_id from borrow_info where user_id = {} and state = 1)) book LEFT JOIN (select borrow_time,return_time,book_id from borrow_info where user_id = {} and state = 1) borrow on book.book_id = borrow.book_id ".format(user_id,user_id)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
@@ -32,7 +32,7 @@ def sql_borrowing_books(user_id):
 
 #书架
 def sql_my_bookshelf(user_id):
-    sql = 'SELECT book_id,	book_name,	book_auther, book_room FROM book_info WHERE	book_id IN ( SELECT book_id FROM my_bookshelf WHERE user_id = {} )'.format(user_id)
+    sql = 'SELECT book_id,	book_name,book_publisher,book_auther, book_room FROM book_info WHERE	book_id IN ( SELECT book_id FROM my_bookshelf WHERE user_id = {} )'.format(user_id)
     result = mysql_module(sql)
     if not result[0]:
         return [False,"查询出错"]
