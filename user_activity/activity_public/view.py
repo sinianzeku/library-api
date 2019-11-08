@@ -1,11 +1,11 @@
 from flask import Blueprint,request,jsonify
 from user_activity.db import db_user_activity
-from flask_mail import Mail,Message
+from module.send_email import sendverifycode as se
 from user.verify.emailverify import get_my_item
 from user.verify import userverify
 from config.defaulttime import set_time
 from module.activity_set import Condition
-import os, random,json
+import os,json
 
 user_activity = Blueprint("activity_public",__name__)
 
@@ -156,13 +156,8 @@ def send_email():
     if not sql_email[0]:
         return jsonify({"status": -1, "message": sql_email[1]})
     email = sql_email[1]
-    verifycode = str(random.randint(100000,999999))
-    mail = Mail()
-    message = Message(subject="图书馆找回密码验证码",
-                      recipients=[email],
-                      body=verifycode)
-    get_my_item(email,verifycode,180)
-    mail.send(message)
+    subject = "图书馆找回密码验证"
+    se(subject,email,180)
     return jsonify({"status": 0, "message": "验证码发送成功","data":email})
 
 

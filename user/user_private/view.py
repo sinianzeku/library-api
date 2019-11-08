@@ -1,18 +1,15 @@
-from flask import Blueprint,jsonify,request,session
+from flask import Blueprint,jsonify,request
 import json
 from user.db import db_user
 from user.verify import userverify
 from administrators.book.db_book import sql_query_user_id
 from user.verify.emailverify import get_my_item
 from module.activity_set import Condition
+from module.send_email import sendverifycode as se
 
 
 user = Blueprint("user_private",__name__)
 
-# @user.before_request
-# def before_user():
-#     if 'username' not in session:
-#         return jsonify({"status": -1, "message": "未登入"})
 
 #意见反馈
 @user.route("feedback",methods = ["post"])
@@ -28,6 +25,7 @@ def feedback():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
+#自动获取反馈信息
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -65,10 +63,21 @@ def update_password():
         return jsonify({"status":-1,"message":result[1]})
     return jsonify({"status":0,"message":"success"})
 
+#发送验证码
+@user.route("update_info_email_verify",methods = ["post"])
+def update_info_email_verify():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    email = data["email"]
+    subject = '图书馆更新密码验证码'
+    se(subject,email,60)
+    return jsonify({"status": 0, "message": "验证码发送成功"})
+
 #查看个人信息
 @user.route("query_user_info",methods = ["post"])
 def query_user_info():
-    user_id = 21
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_account = data["user_account"]
+    user_id = sql_query_user_id(user_account)
     result = db_user.sql_query_user_info(user_id)
     C = Condition()
     result[1][0]['user_sex'] = C.sex(result[1][0]['user_sex'])

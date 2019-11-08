@@ -1,9 +1,10 @@
+import random
 from flask import Blueprint,jsonify,request,session
 from user.verify.userverify import UserVerify
 from user.db.db_user import into_register_info,user_login
-from flask_mail import Mail,Message
-import json,random
+import json
 from user.verify.emailverify import get_my_item
+from module.send_email import sendverifycode as se
 
 
 user = Blueprint("user_public",__name__)
@@ -45,14 +46,10 @@ def user_verify_register():
 @user.route("email_verify",methods = ["post"])
 def email_verify():
     data = json.loads(request.get_data("").decode("utf-8"))
+    verifycode = str(random.randint(100000, 999999))
     email = data["email"]
-    verifycode = str(random.randint(100000,999999))
-    mail = Mail()
-    message = Message(subject="图书馆注册验证码",
-                      recipients=[email],
-                      body=verifycode)
-    get_my_item(email,verifycode,60)
-    mail.send(message)
+    subject = '图书馆注册验证码'
+    se(subject,email,verifycode,60)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
 #登入
