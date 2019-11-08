@@ -7,6 +7,16 @@ import json
 user_activity = Blueprint("activity_private",__name__)
 
 
+@user_activity.route("count_book",methods = ["post"])
+def count_book():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_account = data["user_account"]
+    user_id = sql_query_user_id(user_account)
+    result = {}
+    result["bookshelf"],result["borrowing"],result["borrow"] = db_user_activity.sql_count_book(user_id)
+    return jsonify({"status": 0, "message": "success","data":result})
+
+
 #借书记录
 @user_activity.route("borrowed_records", methods = ["post"])
 def borrowed_records():
@@ -85,3 +95,7 @@ def voluntary_activities():
     body='您已成功报名图书馆‘社会实践志愿服务’活动'
     sendinfo(subject, email, body)
     return jsonify({"status":0,"message":"success"})
+
+
+
+
