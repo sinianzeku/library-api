@@ -49,6 +49,9 @@ def sql_verify_book_code(book_code):
     if result[1]:
         return [False,"条码号已存在"]
 
-
+def sql_borrow_limit(user_id):
+    sql = "select count(*) count from borrow_info where state = '1' and user_id = {}".format(user_id)
+    result = mysql_module(sql)
+    return result[1][0]["count"]
 
 
