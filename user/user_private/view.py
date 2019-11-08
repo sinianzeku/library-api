@@ -30,8 +30,9 @@ def feedback():
 
 @user.route("get_feedback",methods = ["post"])
 def get_feedback():
-    # data = json.loads(request.get_data("").decode("utf-8"))
-    user_id = 21
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_name = data["user_name"]
+    user_id = sql_query_user_id(user_name)
     result = db_user.sql_get_feedback(user_id)
     C =Condition()
     result[1][0]["state"] = C.feed(result[1][0]["state"])
