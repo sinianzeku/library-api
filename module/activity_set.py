@@ -49,5 +49,14 @@ class Condition():
         }
         return sex[sexs]
 
+    def feed(self,feeds):
+        feed = {
+            '0':'在馆',
+            '1':'已借出',
+            '在馆':'0',
+            '已借出':'1'
+        }
+        return feed[feeds]
+
 
 

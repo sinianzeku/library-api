@@ -1,4 +1,4 @@
-from flask import Blueprint,jsonify,request
+from flask import Blueprint,jsonify,request,session
 import json
 from user.db import db_user
 from user.verify import userverify
@@ -34,7 +34,7 @@ def get_feedback():
     user_id = 21
     result = db_user.sql_get_feedback(user_id)
     C =Condition()
-    result[1][0]["state"] = C.state(result[1][0]["state"])
+    result[1][0]["state"] = C.feed(result[1][0]["state"])
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
