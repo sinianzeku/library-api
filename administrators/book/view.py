@@ -46,6 +46,9 @@ def return_book():
     book_id = data["book_id"]
     user_name = data["user_name"]
     user_id = db_book.sql_query_user_id(user_name)
+    verify = db_book.sql_Verify(book_id, user_id)
+    if not verify:
+        return jsonify({"status": -1, "message": "借书记录不存在"})
     result = db_book.sql_return_book(book_id,user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
