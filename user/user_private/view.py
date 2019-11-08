@@ -38,7 +38,8 @@ def get_feedback():
         return jsonify({"status":-1,"message":"fail"})
     C = Condition()
     if result[1]:
-        result[1][0]["state"] = C.feed(result[1][0]["state"])
+        for i in range(len(result[1])):
+            result[1][i]["state"] = C.feed(result[1][i]["state"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #更新密码
