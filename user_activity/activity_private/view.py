@@ -10,7 +10,9 @@ user_activity = Blueprint("activity_private",__name__)
 #借书记录
 @user_activity.route("borrowed_records", methods = ["post"])
 def borrowed_records():
-    user_id = session["id"]
+    data = json.loads(request.get_data("").decode("utf-8"))
+    user_account = data["user_account"]
+    user_id = sql_query_user_id(user_account)
     result = db_user_activity.sql_borrowed_records(user_id)
     if not result[0]:
         return jsonify({"status":-1,"message":result[1]})
