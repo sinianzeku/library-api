@@ -29,20 +29,14 @@ def borrow_book():
     book_id = data["book_id"]
     user_name = data["user_name"]
     user_id = db_book.sql_query_user_id(user_name)
+    sum = db_book.sql_borrow_limit(user_id)
+    if sum ==7 :
+        return jsonify({"status": -1, "message": "该用户借书数量已达7本，借书失败"})
     result = db_book.sql_borrow_book(user_id,book_id)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success"})
 
-@book.route("borrow_limit",methods = ["post"])
-def borrow_limit():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    user_account = data["user_account"]
-    user_id = db_book.sql_query_user_id(user_account)
-    sum = db_book.sql_borrow_limit(user_id)
-    if sum ==7 :
-        return jsonify({"status": -1, "message": "该用户借书数量已达7本，借书失败"})
-    return jsonify({"status": 0, "message": "success"})
 #还书
 @book.route("return_book",methods = ["post"])
 def return_book():
