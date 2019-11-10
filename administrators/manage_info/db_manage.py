@@ -88,7 +88,7 @@ def sql_conditional_book_info(book_id,book_name,book_publisher,book_room,book_st
         sql = sql + " and instr(book_room,'{}')".format(book_room)
     if book_state:
         sql = sql + " and  book_state = '{}'".format(book_state)
-    sql = "select book_id,book_code,book_name,book_publisher,book_room,book_state from book_info where {}".format(sql)
+    sql = "select book_id,book_code,book_name,book_auther,category1,category2,book_publisher,book_room,book_bookshelf,book_synopsis,cast(book_publication_date as char) book_publication_date,book_language,book_state from book_info inner JOIN book_category on id = book_category where {}".format(sql)
     result = mysql_module(sql)
     return result
 

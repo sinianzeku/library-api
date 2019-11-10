@@ -142,6 +142,7 @@ def conditional_book_info():
         return jsonify({"status":-1,"message":"fail"})
     for i in range(len(result[1])):
         result[1][i]["book_state"] = C.state(result[1][i]["book_state"])
+        result[1][i]["book_language"] = C.language(result[1][i]["book_language"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 #修改图书信息
