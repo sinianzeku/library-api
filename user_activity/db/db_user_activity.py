@@ -146,17 +146,6 @@ def sql_thematic_activities(contestant,phone,works,user_name):
 
 
 
-def sql_add_key_works(txt,query_mode):
-    sql = "select words from key_word where words = '{}'".format(txt)
-    result = mysql_module(sql)
-    if result[1]:
-        sql2 = "update key_word set count=count+1 where words = '{}'".format(txt)
-    else:
-        sql2 = "insert into key_word value ('{}','{}',1)".format(txt,query_mode)
-    mysql_module(sql2)
-    return True
-
-
 def sql_voluntary_activities(contestant,user_name,phone,email,days,times):
     sql_user_id = "select user_id from user where user_account = '{}'".format(user_name)
     user_id = mysql_module(sql_user_id)[1][0]['user_id']

@@ -1,16 +1,16 @@
-from flask import Blueprint,request,jsonify
+from flask import Blueprint, request, jsonify
 from user_activity.db import db_user_activity
 from module.send_email import sendverifycode as se
 from user.verify.emailverify import get_my_item
 from user.verify import userverify
 from config.defaulttime import set_time
 from module.activity_set import Condition
-import os,json
+import os, json
 
-user_activity = Blueprint("activity_public",__name__)
+user_activity = Blueprint("activity_public", __name__)
 
 
-#查找书籍
+# 查找书籍
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -24,12 +24,10 @@ def query_book():
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_language"] = C.language(result[1][i]["book_language"] )
-    result1 =  db_user_activity.sql_add_key_works(txt,query_mode)
-    if not result1:
-        return jsonify({"status": -1, "massage": "fail"})
-    return jsonify({"status":"0","massage":"success","data":result[1]})
+    return jsonify({"status": "0", "massage": "success", "data": result[1]})
 
-#查询书籍详细信息
+
+# 查询书籍详细信息
 @user_activity.route("query_book_info",methods = ["post"])
 def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -40,12 +38,13 @@ def query_book_info():
     result[1][0]["book_state"] = C.state(result[1][0]["book_state"])
     result[1][0]["book_language"] = C.language(result[1][0]["book_language"])
     if not result[0]:
-        return jsonify({"status":-1,"massage":"fail","data":result[1]})
+        return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
-    return jsonify({"status":0,"massage":"success","data":result[1]})
+    return jsonify({"status": 0, "massage": "success", "data": result[1]})
 
-#热门书籍信息
+
+# 热门书籍信息
 @user_activity.route("popular_book_info",methods = ['post'])
 def popular_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
