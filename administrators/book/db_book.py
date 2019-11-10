@@ -27,6 +27,13 @@ def sql_query_user_id(user_name):
         return [False,'fail']
     return result[1][0]["user_id"]
 
+def sql_book_state(book_id):
+    sql = "select book_state from book_info where book_id = {}".format(book_id)
+    result = mysql_module(sql)
+    if not result[1]:
+        return [False,'fail']
+    return result[1][0]["book_state"]
+
 def sql_Verify(book_id, user_id):
     sql = "select count(*) count from borrow_info where user_id = {} and book_id = {}".format(user_id,book_id)
     result = mysql_module(sql)

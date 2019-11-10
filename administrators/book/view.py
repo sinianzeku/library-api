@@ -29,6 +29,9 @@ def borrow_book():
     book_id = data["book_id"]
     user_name = data["user_name"]
     user_id = db_book.sql_query_user_id(user_name)
+    book_state = db_book.sql_book_state(book_id)
+    if book_state == '1':
+        return jsonify({"status": -1, "message": "该书本已借出"})
     sum = db_book.sql_borrow_limit(user_id)
     if sum ==7 :
         return jsonify({"status": -1, "message": "该用户借书数量已达7本，借书失败"})
