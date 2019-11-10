@@ -13,6 +13,7 @@ user_activity = Blueprint("activity_public",__name__)
 #查找书籍
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
+    #注释
     data = json.loads(request.get_data("").decode("utf-8"))
     C = Condition()
     txt = data["txt"]
