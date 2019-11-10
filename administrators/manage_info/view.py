@@ -154,7 +154,7 @@ def conditional_book_info():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
-# 修改图书信息
+# 修改图书信息------------------------
 @admin.route("change_book_info", methods = ["post"])
 def change_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -177,7 +177,7 @@ def change_book_info():
     return jsonify({"status": 0, "message": "success"})
 
 
-# 删除图书
+# 删除图书---------------------------
 @admin.route("delete_book",methods = ["post"])
 def delete_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -224,8 +224,7 @@ def borrow_record():
     return jsonify({"status":0,"message":"success","data":result[1]})
 
 
-#借书记录—条件查询
-
+# 借书记录—条件查询
 @admin.route("conditional_borrow_record",methods = ["post"])
 def conditional_borrow_record():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -242,7 +241,8 @@ def conditional_borrow_record():
         return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#删除借书记录
+
+# 删除借书记录
 @admin.route("delete_borrow_record",methods = ["post"])
 def delete_borrow_record():
     data = json.loads(request.get_data("").decode("utf-8"))

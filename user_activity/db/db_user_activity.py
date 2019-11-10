@@ -156,8 +156,8 @@ def sql_voluntary_activities(contestant,user_name,phone,email,days,times):
     result = mysql_module(sql)
     return result
 
-def sql_book_name_query(book_id):
-    sql = "select * from book_info where book_id = '{}'".format(book_id)
+def sql_book_name_query(book_name):
+    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info where book_name = '{}' ".format(book_name)
     result = mysql_module(sql)
     return result
 
