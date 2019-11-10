@@ -18,15 +18,15 @@ def add_manager():
     user = UserVerify()
     work_password = user.password(work_passwords)
     if not work_password[0]:
-        return jsonify({"status":-1,"message":"密码格式错误"})
-    result = db_manage.sql_add_manager(work_id,worker_name,work_password[1])
+        return jsonify({"status": -1, "message": "密码格式错误"})
+    result = db_manage.sql_add_manager(work_id, worker_name, work_password[1])
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":result[1]})
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": result[1]})
 
 
 #查询借书者信息
-@admin.route("query_user_info",methods = ["post"])
+@admin.route("query_user_info", methods=["post"])
 def query_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = ''
@@ -34,8 +34,8 @@ def query_user_info():
         user_name = data["user_name"]
     result = db_manage.sql_query_user_info(user_name)
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
 #借-查询被借书籍信息
