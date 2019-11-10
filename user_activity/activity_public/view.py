@@ -13,8 +13,8 @@ user_activity = Blueprint("activity_public",__name__)
 #查找书籍
 @user_activity.route("query_book",methods = ["post"])
 def query_book():
-    C = Condition()
     data = json.loads(request.get_data("").decode("utf-8"))
+    C = Condition()
     txt = data["txt"]
     query_mode = "book_name"
     if "query_mode" in data and data["query_mode"]:
