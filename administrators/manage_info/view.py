@@ -1,10 +1,10 @@
-from flask import Blueprint,jsonify,request
+from flask import Blueprint, jsonify, request
 from user.verify.userverify import UserVerify
 from administrators.manage_info import db_manage
-from administrators.book.db_book import sql_query_user_id,sql_query_book_category
+from administrators.book import db_book
 from module.activity_set import Condition
 import json
-import  os
+import os
 
 admin = Blueprint("admin",__name__)
 
@@ -60,7 +60,7 @@ def query_return_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
     book_name = data["book_name"]
-    user_id = sql_query_user_id(user_name)
+    user_id = db_book.sql_query_user_id(user_name)
     result = db_manage.sql_query_book_info_1(book_name,user_id)
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
@@ -155,7 +155,7 @@ def conditional_book_info():
 
 
 # 修改图书信息
-@admin.route("change_book_info",methods = ["post"])
+@admin.route("change_book_info", methods = ["post"])
 def change_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     category1 = data["category1"]
@@ -164,7 +164,7 @@ def change_book_info():
     result = db_manage.sql_change_book_info(book_code = data["book_code"],
                                             book_name=data["book_name"],
                                             book_auther=data["book_auther"],
-                                            book_category=sql_query_book_category(category1, category2)[1],
+                                            book_category=db_book.sql_query_book_category(category1, category2)[1],
                                             book_publisher=data["book_publisher"],
                                             book_room=data["book_room"],
                                             book_bookshelf=data["book_bookshelf"],
