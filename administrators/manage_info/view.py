@@ -8,7 +8,8 @@ import  os
 
 admin = Blueprint("admin",__name__)
 
-#增加管理员
+
+# 增加管理员
 @admin.route("add_manager",methods = ["post"])
 def add_manager():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -25,7 +26,7 @@ def add_manager():
     return jsonify({"status": 0, "message": result[1]})
 
 
-#查询借书者信息
+# 查询借书者信息
 @admin.route("query_user_info", methods=["post"])
 def query_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -38,8 +39,8 @@ def query_user_info():
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
-#借-查询被借书籍信息
-@admin.route("query_borrow_book_info",methods = ["post"])
+# 借-查询被借书籍信息
+@admin.route("query_borrow_book_info", methods=["post"])
 def query_borrow_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_name = ""
@@ -47,13 +48,14 @@ def query_borrow_book_info():
         book_name = data["book_name"]
     result = db_manage.sql_query_book_info_0(book_name)
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
+        return jsonify({"status": -1, "message": result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
-    return jsonify({"status":0,"message":"success","data":result[1]})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#还-查询被借书籍信息
-@admin.route("query_return_book_info",methods = ["post"])
+
+# 还-查询被借书籍信息
+@admin.route("query_return_book_info", methods=["post"])
 def query_return_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
@@ -61,13 +63,14 @@ def query_return_book_info():
     user_id = sql_query_user_id(user_name)
     result = db_manage.sql_query_book_info_1(book_name,user_id)
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
+        return jsonify({"status": -1, "message": result[1]})
     for i in range(len(result[1])):
         result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
-    return jsonify({"status":0,"message":"success","data":result[1]})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#增加书籍类别
-@admin.route("add_book_category",methods = ["post"])
+
+# 增加书籍类别
+@admin.route("add_book_category", methods=["post"])
 def add_book_category():
     data = json.loads(request.get_data("").decode("utf-8"))
     category1 = data["category1"]
@@ -77,7 +80,8 @@ def add_book_category():
         return jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success"})
 
-#用户信息
+
+# 用户信息
 @admin.route("user_info",methods = ["post"])
 def user_info():
     result = db_manage.sql_user_info()
@@ -85,7 +89,8 @@ def user_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#用户信息条件查询
+
+# 用户信息条件查询
 @admin.route("conditional_user_info",methods = ["post"])
 def conditional_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -95,7 +100,8 @@ def conditional_user_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#删除用户
+
+# 删除用户
 @admin.route("delete_user",methods = ["post"])
 def delete_user():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -105,7 +111,8 @@ def delete_user():
         return jsonify({"status": 0, "message": "success"})
     return jsonify({"status":0,"message":"success"})
 
-#图书信息
+
+# 图书信息
 @admin.route("book_info",methods = ["post"])
 def book_info():
     result = db_manage.sql_book_info()
@@ -117,7 +124,8 @@ def book_info():
         result[1][i]["book_language"] = C.language(result[1][i]["book_language"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#图书信息条件查询
+
+# 图书信息条件查询
 @admin.route("conditional_book_info",methods = ["post"])
 def conditional_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -145,7 +153,8 @@ def conditional_book_info():
         result[1][i]["book_language"] = C.language(result[1][i]["book_language"])
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#修改图书信息
+
+# 修改图书信息
 @admin.route("change_book_info",methods = ["post"])
 def change_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -167,7 +176,8 @@ def change_book_info():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status": 0, "message": "success"})
 
-#删除图书
+
+# 删除图书
 @admin.route("delete_book",methods = ["post"])
 def delete_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -178,7 +188,7 @@ def delete_book():
     return jsonify({"status": 0, "message": "success"})
 
 
-#在借书籍
+# 在借书籍
 @admin.route("borrowing_book",methods = ["post"])
 def borrowing_book():
     result = db_manage.sql_borrowing_book()
@@ -186,7 +196,8 @@ def borrowing_book():
         return jsonify({"status":-1,"message":"fail"})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#在借书籍-条件查询
+
+# 在借书籍-条件查询
 @admin.route("conditional_borrowing_book",methods = ["post"])
 def conditional_borrowing_book():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -203,7 +214,8 @@ def conditional_borrowing_book():
         return jsonify({"status":-1,"message":"fail","data":[]})
     return jsonify({"status":0,"message":"success","data":result[1]})
 
-#借书记录
+
+# 借书记录
 @admin.route("borrow_record",methods = ["post"])
 def borrow_record():
     result = db_manage.sql_borrow_record()
