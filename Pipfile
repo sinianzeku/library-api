@@ -15,7 +15,11 @@ image = "*"
 opencv-python = "*"
 pyzbar = "*"
 flask-cache = "*"
-
+requests = "*"
+beautifulsoup = "*"
+xlwt = "*"
+bs4 = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.6"

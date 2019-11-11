@@ -45,7 +45,7 @@ def query_book_info():
 
 
 # 新书-热门书籍信息
-@user_activity.route("popular_book_info",methods = ['post'])
+@user_activity.route("popular_or_new_book_info", methods=['post'])
 def popular_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_name = data['book_name']
@@ -55,8 +55,8 @@ def popular_book_info():
     result[1][0]["book_state"] = C.state(result[1][0]["book_state"])
     result[1][0]["book_language"] = C.language(result[1][0]["book_language"])
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 #热门推荐
 @user_activity.route("popular_recommendation",methods = ["post"])
