@@ -17,6 +17,8 @@ def new_book_entry():
     result = NBE.verify_book_code()#验证条码号是否存在
     if result:
         return jsonify({"status": -1, "message": "条码号已存在"})
+    if not NBE.pictures():
+        return jsonify({"status": -1, "message": "图片保存失败"})
     update_result = NBE.data_access_to_database()  # 存储数据
     if not update_result[0]:
         return jsonify({"status": -1, "message": update_result[1]})
@@ -33,7 +35,7 @@ def borrow_book():
     if book_state == '1':
         return jsonify({"status": -1, "message": "该书本已借出"})
     sum = db_book.sql_borrow_limit(user_id)
-    if sum ==7 :
+    if sum == 7:
         return jsonify({"status": -1, "message": "该用户借书数量已达7本，借书失败"})
     result = db_book.sql_borrow_book(user_id, book_id)
     if not result[0]:

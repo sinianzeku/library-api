@@ -1,5 +1,6 @@
 from administrators.book import db_book
 from config.defaulttime import set_time
+import base64, re, string, random, os
 
 class NewBookEntry():
     def __init__(self,data):
@@ -14,6 +15,7 @@ class NewBookEntry():
         self.category1 = data["category1"]
         self.category2 = data["category2"]
         self.book_language = data["book_language"]
+        self.imges = data["imges"]
 
     def verify_book_code(self):
         result = db_book.sql_verify_book_code(self.book_code)
@@ -34,22 +36,43 @@ class NewBookEntry():
     }
         self.book_language = book_language[self.book_language]
 
+    def pictures(self):
+        src = ''
+        if self.imges:
+            imges = re.findall(r"base64,(.*)", self.imges)
+            imgdata = base64.b64decode(imges[0])
+            src = './date/img/'
+            while 1:
+                ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))
+                src = src + ran_str + '.jpg'
+                if os.path.exists(src):
+                    continue
+                break
+            file = open(src, 'wb')
+            file.write(imgdata)
+            file.close()
+            self.src = src
+            return True
+        self.src = src
+        return False
+
 
     #数据入库
     def data_access_to_database(self):
         st = set_time()
         result = db_book.insertnewbook(
             book_code=self.book_code,
-            book_name = self.book_name,
-            book_auther = self.book_auther,
-            book_category = self.book_category,
-            book_publisher = self.book_publisher,
-            book_room = self.book_room,
-            book_bookshelf = self.book_bookshelf,
-            book_synopsis = self.book_synopsis,
-            book_publication_date = self.book_publication_date,
-            books_add_time = st.today(),
-            book_language = self.book_language
+            book_name=self.book_name,
+            book_auther=self.book_auther,
+            book_category=self.book_category,
+            book_publisher=self.book_publisher,
+            book_room=self.book_room,
+            book_bookshelf=self.book_bookshelf,
+            book_synopsis=self.book_synopsis,
+            book_publication_date=self.book_publication_date,
+            books_add_time=st.today(),
+            book_language=self.book_language,
+            book_img_path = self.src
         )
         if not result[0]:
             return result

@@ -59,22 +59,24 @@ def update_password():
     ver = userverify.UserVerify()
     password = ver.password(new_password)
     if not password[0]:
-        return jsonify({"status":-1,"message":password[1]})
-    result = db_user.sql_update_password(user_account,password[1])
+        return jsonify({"status": -1, "message": password[1]})
+    result = db_user.sql_update_password(user_account, password[1])
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success"})
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success"})
 
-#发送验证码
-@user.route("update_info_email_verify",methods = ["post"])
+
+# 发送验证码
+@user.route("update_info_email_verify", methods = ["post"])
 def update_info_email_verify():
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
     subject = '图书馆更新密码验证码'
-    se(subject,email,60)
+    se(subject, email, 60)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 
-#查看个人信息
+
+# 查看个人信息
 @user.route("query_user_info",methods = ["post"])
 def query_user_info():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -84,11 +86,12 @@ def query_user_info():
     C = Condition()
     result[1][0]['user_sex'] = C.sex(result[1][0]['user_sex'])
     if not result:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#修改个人信息
-@user.route("update_info",methods = ["post"])
+
+# 修改个人信息
+@user.route("update_info", methods=["post"])
 def update_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = data["user_account"]
@@ -97,9 +100,9 @@ def update_info():
     email = data["email"]
     phone = data["phone"]
     verifycode = data["verifycode"]
-    if  verifycode != get_my_item(email):
+    if verifycode != get_my_item(email):
         return jsonify({"status": -1, "message": "验证码错误"})
-    db_user.sql_update_info(user_account,user_name,user_sex,email,phone)
-    return jsonify({"status":0,"message":"success"})
+    db_user.sql_update_info(user_account, user_name, user_sex, email, phone)
+    return jsonify({"status": 0, "message": "success"})
 
 
