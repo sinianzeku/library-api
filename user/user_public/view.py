@@ -1,5 +1,4 @@
-import random
-from flask import Blueprint,jsonify,request,session
+from flask import Blueprint,jsonify,request
 from user.verify.userverify import UserVerify
 from user.db.db_user import into_register_info,user_login
 import json
@@ -59,12 +58,9 @@ def user_verify_login():
     username = data["username"]
     password = data["password"]
     code = data["code"]
-    token = data["token"]
     user = UserVerify()
     account_result = user.account(username)
     password_result = user.password(password)
-    if tk.certify_token(username, token):
-        return jsonify({"status": 0, "message": "success"})
     if not account_result[0]:
         return jsonify({"status": -1, "message": account_result[1]})
     if not password_result[0]:
@@ -74,4 +70,11 @@ def user_verify_login():
         return jsonify({"status": -1, "message": verify_resutl[1]})
     return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username)})
 
-
+@user.route("token",methods=["post"])
+def token():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    username = data["username"]
+    tokens = data["token"]
+    if not tk.certify_token(username, tokens):
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success"})
