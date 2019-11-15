@@ -74,9 +74,9 @@ def popular_recommendation():
     if "language" in data and data["language"]:
         language = C.language(data["language"])
     if "category1" in data:
-        category1  = data["category1"]
+        category1 = data["category1"]
     if "category2" in data:
-        category2  = data["category2"]
+        category2 = data["category2"]
     result = db_user_activity.sql_popular_recommendation(today_time,past_time,language,category1,category2)
     if not result[0]:
         return jsonify({"status":-1,"message":"fail"})
@@ -170,7 +170,7 @@ def verify_code():
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
     verifycode = data["code"]
-    if  verifycode != get_my_item(email):
+    if verifycode != get_my_item(email):
         return jsonify({"status": -1, "message": "验证码错误"})
     return jsonify({"status": 0, "message": "success"})
 

@@ -10,20 +10,20 @@ admin = Blueprint("admin",__name__)
 
 
 # 增加管理员
-@admin.route("add_manager",methods = ["post"])
-def add_manager():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    work_id = data["work_id"]
-    worker_name = data["worker_name"]
-    work_passwords = data["work_password"]
-    user = UserVerify()
-    work_password = user.password(work_passwords)
-    if not work_password[0]:
-        return jsonify({"status": -1, "message": "密码格式错误"})
-    result = db_manage.sql_add_manager(work_id, worker_name, work_password[1])
-    if not result[0]:
-        return jsonify({"status": -1, "message": result[1]})
-    return jsonify({"status": 0, "message": result[1]})
+# @admin.route("add_manager",methods = ["post"])
+# def add_manager():
+#     data = json.loads(request.get_data("").decode("utf-8"))
+#     work_id = data["work_id"]
+#     worker_name = data["worker_name"]
+#     work_passwords = data["work_password"]
+#     user = UserVerify()
+#     work_password = user.password(work_passwords)
+#     if not work_password[0]:
+#         return jsonify({"status": -1, "message": "密码格式错误"})
+#     result = db_manage.sql_add_manager(work_id, worker_name, work_password[1])
+#     if not result[0]:
+#         return jsonify({"status": -1, "message": result[1]})
+#     return jsonify({"status": 0, "message": result[1]})
 
 
 # 查询借书者信息
