@@ -95,7 +95,7 @@ def aut_popular_recommendation():
 
 # 热门推荐2
 @user_activity.route("index_popular_recommendation", methods=["post"])
-def aut_popular_recommendation():
+def index_popular_recommendation():
     result = db_user_activity.sql_index_popular_recommendation()
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})

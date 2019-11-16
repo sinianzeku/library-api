@@ -3,36 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d22c7607-895d-432f-a5c5-ef7ea3e7f8b3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/book/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/book/books.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/books.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/book/db_book.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/db_book.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/book/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/book/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/manage_info/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/db_manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/administrators/manage_info/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/administrators/manage_info/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/db_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/defaulttime.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/defaulttime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/sendemail.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/sendemail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/activity_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/activity_set.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/send_email.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/module/token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/db/db_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/db/db_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_private/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_private/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_private/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_private/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_public/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_public/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/user_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/user_public/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/verify/emailverify.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/verify/emailverify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/verify/userverify.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/verify/userverify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/activity_private/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_private/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/activity_private/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_private/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/activity_public/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_public/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_activity/activity_public/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/activity_public/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_activity/db/db_user_activity.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_activity/db/db_user_activity.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,14 +72,14 @@
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="dummy" value="22" />
-          <entry key="py" value="47794" />
+          <entry key="py" value="47824" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="25" />
-          <entry key="Python" value="47825" />
+          <entry key="Python" value="47855" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -117,7 +88,7 @@
           <entry key="h" value="1" />
           <entry key="jpg" value="5" />
           <entry key="lock" value="5" />
-          <entry key="py" value="1090" />
+          <entry key="py" value="1095" />
           <entry key="pyi" value="1" />
           <entry key="txt" value="5" />
         </counts>
@@ -127,7 +98,7 @@
           <entry key="C++" value="1" />
           <entry key="Image" value="5" />
           <entry key="PLAIN_TEXT" value="14" />
-          <entry key="Python" value="1090" />
+          <entry key="Python" value="1095" />
           <entry key="PythonStub" value="1" />
           <entry key="TOML" value="9" />
         </counts>
@@ -139,11 +110,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+            <state relative-caret-position="150">
+              <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_activity/db/db_user_activity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="120" column="20" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+            <state relative-caret-position="468">
+              <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -255,6 +238,17 @@
             <path>
               <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
               <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="user_public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="library-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="library-api" type="462c0819:PsiDirectoryNode" />
               <item name="user_activity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -302,7 +296,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.token">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" singleton="true" temporary="true">
       <module name="library-api" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -439,8 +433,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.token" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.token" />
         <item itemvalue="Python.douban" />
         <item itemvalue="Python.tp" />
         <item itemvalue="Python.txt" />
@@ -457,20 +451,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570592138344</updated>
-    </task>
-    <task id="LOCAL-00148" summary="zpg">
-      <created>1573123131014</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1573123131014</updated>
-    </task>
-    <task id="LOCAL-00149" summary="zpg">
-      <created>1573182201611</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1573182201612</updated>
     </task>
     <task id="LOCAL-00150" summary="zpg">
       <created>1573182208708</created>
@@ -801,7 +781,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573872254308</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="zpg">
+      <created>1573872881841</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1573872881843</updated>
+    </task>
+    <task id="LOCAL-00198" summary="zpg">
+      <created>1573873232192</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1573873232192</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="TodoView">
@@ -817,12 +811,12 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.12219287" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.12219287" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50183153" side_tool="true" weight="0.169749" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5177305" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8282695" visible="true" weight="0.1035461" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8282695" visible="true" weight="0.2141844" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993395" weight="0.21388102" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1069,13 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/user_public/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="63" column="9" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/verify/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1137,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pipfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1151,17 +1131,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user/user_public/view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/user_activity/db/db_user_activity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="120" column="20" selection-start-line="120" selection-start-column="20" selection-end-line="120" selection-end-column="20" />
+        <state relative-caret-position="468">
+          <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_activity/activity_public/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
+        <state relative-caret-position="150">
+          <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
