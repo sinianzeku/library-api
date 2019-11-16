@@ -92,6 +92,12 @@ def sql_aut_popular_recommendation():
     return [True, result[1]]
 
 
+def sql_index_popular_recommendation():
+    sql = "select distinct book.book_id,book.book_name,count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 7"
+    result = mysql_module(sql)
+    return [True, result[1]]
+
+
 def sql_new_arrivals(today_time, past_time, language, category1, category2):
     sql1 = "where 1 = 1"
     sql_cate = "select id from book_category where 1 = 1"
