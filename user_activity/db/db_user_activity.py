@@ -125,7 +125,7 @@ def sql_aut_new_arrivals():
 
 
 def sql_index_new_arrivals():
-    sql = "select book_id,book_name,books_add_time from book_info order by books_add_time desc limit 8"
+    sql = "select book_id,book_name,cast(books_add_time as char)books_add_time from book_info order by books_add_time desc limit 7"
     result = mysql_module(sql)
     return [True, result[1]]
 
