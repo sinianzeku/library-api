@@ -241,24 +241,21 @@ def delete_borrow_record():
 #图书管理首页
 @admin.route("borrowing_condition",methods = ["post"])
 def borrowing_condition():
-    data = json.load(request.get_data("").decode("utf-8"))
-    account = data["account"]
-    tokens = data["tokens"]
-    if not token.certify_token(account,tokens):
-        return jsonify({"status": -1, "message": "not login", "data": ""})
     data_dict = {}
     data_dict["user_number"],data_dict["book_number"],data_dict["borrowing_number"],data_dict["record_number"]=db_manage.sql_borrowing_condition1()
     data_dict["borrowing_condition"] = db_manage.sql_borrowing_condition()
     return jsonify({"status":0,"message":"success","data":data_dict})
 
-#自动获取
-@admin.route("process_information",methods = ["post"])
+
+# 自动获取
+@admin.route("process_information", methods=["post"])
 def process_information():
     result = db_manage.sql_process_information()
     return jsonify({"status": 0, "message": "success","data":result})
 
-#未处理
-@admin.route("untreated_information",methods = ["post"])
+
+# 未处理
+@admin.route("untreated_information", methods=["post"])
 def untreated_information():
     data = json.loads(request.get_data("").decode("utf-8"))
     input = ""
