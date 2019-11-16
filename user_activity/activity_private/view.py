@@ -28,6 +28,9 @@ def count_book():
 def borrowed_records():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = data["user_account"]
+    tokens = data["tokens"]
+    if not token.certify_token(user_account, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(user_account)
     result = db_user_activity.sql_borrowed_records(user_id)
     if not result[0]:
@@ -40,6 +43,9 @@ def borrowed_records():
 def borrowing_books():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = data["user_account"]
+    tokens = data["tokens"]
+    if not token.certify_token(user_account, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(user_account)
     result = db_user_activity.sql_borrowing_books(user_id)
     if not result[0]:
@@ -52,6 +58,9 @@ def borrowing_books():
 def my_bookshelf():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = data["user_account"]
+    tokens = data["tokens"]
+    if not token.certify_token(user_account, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(user_account)
     result = db_user_activity.sql_my_bookshelf(user_id)
     if not result[0]:
