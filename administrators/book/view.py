@@ -1,20 +1,21 @@
-from flask import Blueprint,request,jsonify
+from flask import Blueprint, request, jsonify
 from administrators.book import books
 from administrators.book import db_book
 import json
 
-book = Blueprint("book",__name__)
+book = Blueprint("book", __name__)
 
-#新书入馆
-@book.route("new_book_entry",methods = ["POST"])
+
+# 新书入馆
+@book.route("new_book_entry", methods=["POST"])
 def new_book_entry():
     data = json.loads(request.get_data("").decode("utf-8"))
     NBE = books.NewBookEntry(data)
     NBE.language()
-    result = NBE.query_book_category()#查询类别id
+    result = NBE.query_book_category()  # 查询类别id
     if not result[0]:
         return jsonify({"status": -1, "message": result[1]})
-    result = NBE.verify_book_code()#验证条码号是否存在
+    result = NBE.verify_book_code()  # 验证条码号是否存在
     if result:
         return jsonify({"status": -1, "message": "条码号已存在"})
     if not NBE.pictures():
@@ -24,8 +25,9 @@ def new_book_entry():
         return jsonify({"status": -1, "message": update_result[1]})
     return jsonify({"status": 0, "message": "success"})
 
-#借书
-@book.route("borrow_book",methods = ["post"])
+
+# 借书
+@book.route("borrow_book", methods=["post"])
 def borrow_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
@@ -42,8 +44,9 @@ def borrow_book():
         return jsonify({"status": -1, "message": "fail"})
     return jsonify({"status": 0, "message": "success"})
 
-#还书
-@book.route("return_book",methods = ["post"])
+
+# 还书
+@book.route("return_book", methods=["post"])
 def return_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
@@ -56,9 +59,3 @@ def return_book():
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})
     return jsonify({"status": 0, "message": "success"})
-
-
-
-
-
-

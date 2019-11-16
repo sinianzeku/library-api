@@ -1,6 +1,7 @@
-#encoding:utf-8
+# encoding:utf-8
 from datetime import timedelta
 import os
+
 
 # 邮箱
 class email_config():
@@ -12,9 +13,7 @@ class email_config():
     MAIL_DEFAULT_SENDER = "374652530@qq.com"
 
 
-
 # session
 class session_config():
     SECRET_KEY = os.urandom(24)
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
-

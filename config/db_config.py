@@ -8,13 +8,13 @@ database = "library"
 
 
 def mysql_module(sql):
-    db = pymysql.connect(host,user,password,database)
+    db = pymysql.connect(host, user, password, database)
     cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
     cursor.execute(sql)
     result = cursor.fetchall()
     db.commit()
     db.close()
-    return [True,result]
+    return [True, result]
 
 
 def mysql_modules(*arg):
@@ -26,5 +26,4 @@ def mysql_modules(*arg):
         result.append(cursor.fetchall())
     db.commit()
     db.close()
-    return [True,result]
-
+    return [True, result]

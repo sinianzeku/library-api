@@ -1,11 +1,11 @@
-from flask import Blueprint,jsonify,request
+from flask import Blueprint, jsonify, request
 from user_activity.db import db_user_activity
 from administrators.book.db_book import sql_query_user_id
 from module.send_email import sendinfo
 from module import token
 import json
 
-user_activity = Blueprint("activity_private",__name__)
+user_activity = Blueprint("activity_private", __name__)
 
 
 @user_activity.route("count_book", methods=["post"])
@@ -23,7 +23,7 @@ def count_book():
     return jsonify({"status": 0, "message": "success", "data": result})
 
 
-#借书记录
+# 借书记录
 @user_activity.route("borrowed_records", methods=["post"])
 def borrowed_records():
     data = json.loads(request.get_data("").decode("utf-8"))
@@ -89,16 +89,17 @@ def thematic_activities():
     phone = data["phone"]
     works = data["works"]
     email = data["email"]
-    result = db_user_activity.sql_thematic_activities(contestant,phone,works,user_name)
+    result = db_user_activity.sql_thematic_activities(contestant, phone, works, user_name)
     if not result[0]:
-        return jsonify({"status": -1, "message":result[1]})
-    subject="图书馆活动报名",
-    body='您已成功报名图书馆‘三行情书’活动'
-    sendinfo(subject,email,body)
-    return jsonify({"status":0,"message":"success"})
+        return jsonify({"status": -1, "message": result[1]})
+    subject = "图书馆活动报名",
+    body = '您已成功报名图书馆‘三行情书’活动'
+    sendinfo(subject, email, body)
+    return jsonify({"status": 0, "message": "success"})
 
-#志愿服务活动
-@user_activity.route("voluntary_activities",methods = ["post"])
+
+# 志愿服务活动
+@user_activity.route("voluntary_activities", methods=["post"])
 def voluntary_activities():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
@@ -107,14 +108,10 @@ def voluntary_activities():
     email = data["email"]
     days = data["days"]
     times = data["times"]
-    result = db_user_activity.sql_voluntary_activities(contestant,user_name,phone,email,days,times)
+    result = db_user_activity.sql_voluntary_activities(contestant, user_name, phone, email, days, times)
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    subject="图书馆活动报名"
-    body='您已成功报名图书馆‘社会实践志愿服务’活动'
+        return jsonify({"status": -1, "message": result[1]})
+    subject = "图书馆活动报名"
+    body = '您已成功报名图书馆‘社会实践志愿服务’活动'
     sendinfo(subject, email, body)
-    return jsonify({"status":0,"message":"success"})
-
-
-
-
+    return jsonify({"status": 0, "message": "success"})

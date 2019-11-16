@@ -11,7 +11,7 @@ user_activity = Blueprint("activity_public", __name__)
 
 
 # 查找书籍
-@user_activity.route("query_book",methods = ["post"])
+@user_activity.route("query_book", methods=["post"])
 def query_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     C = Condition()
@@ -23,12 +23,12 @@ def query_book():
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
-        result[1][i]["book_language"] = C.language(result[1][i]["book_language"] )
+        result[1][i]["book_language"] = C.language(result[1][i]["book_language"])
     return jsonify({"status": "0", "massage": "success", "data": result[1]})
 
 
 # 查询书籍详细信息
-@user_activity.route("query_book_info",methods = ["post"])
+@user_activity.route("query_book_info", methods=["post"])
 def query_book_info():
     data = json.loads(request.get_data("").decode("utf-8"))
     book_id = data["book_id"]
@@ -40,7 +40,7 @@ def query_book_info():
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
-        result[1][i]["book_img_path"] = os.path.abspath('.')+'/data/img/book-010.png'
+        result[1][i]["book_img_path"] = os.path.abspath('.') + '/data/img/book-010.png'
     return jsonify({"status": 0, "massage": "success", "data": result[1]})
 
 
@@ -58,8 +58,9 @@ def popular_book_info():
         return jsonify({"status": -1, "message": "fail"})
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#热门推荐
-@user_activity.route("popular_recommendation",methods = ["post"])
+
+# 热门推荐
+@user_activity.route("popular_recommendation", methods=["post"])
 def popular_recommendation():
     data = json.loads(request.get_data("").decode("utf-8"))
     past_time = ''
@@ -77,22 +78,23 @@ def popular_recommendation():
         category1 = data["category1"]
     if "category2" in data:
         category2 = data["category2"]
-    result = db_user_activity.sql_popular_recommendation(today_time,past_time,language,category1,category2)
+    result = db_user_activity.sql_popular_recommendation(today_time, past_time, language, category1, category2)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#热门推荐
-@user_activity.route("aut_popular_recommendation",methods = ["post"])
+
+# 热门推荐
+@user_activity.route("aut_popular_recommendation", methods=["post"])
 def aut_popular_recommendation():
     result = db_user_activity.sql_aut_popular_recommendation()
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
-#新书推荐
-@user_activity.route("new_arrivals",methods = ["post"])
+# 新书推荐
+@user_activity.route("new_arrivals", methods=["post"])
 def new_arrivals():
     data = json.loads(request.get_data("").decode("utf-8"))
     past_time = ''
@@ -108,23 +110,34 @@ def new_arrivals():
         language = C.language(data["language"])
     if "category1" in data:
         category1 = data["category1"]
-    if "category2" in data :
+    if "category2" in data:
         category2 = data["category2"]
-    result = db_user_activity.sql_new_arrivals(today_time,past_time,language,category1,category2)
+    result = db_user_activity.sql_new_arrivals(today_time, past_time, language, category1, category2)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#新书推荐
-@user_activity.route("aut_new_arrivals",methods = ["post"])
+
+# 新书推荐
+@user_activity.route("aut_new_arrivals", methods=["post"])
 def aut_new_arrivals():
-    result  = db_user_activity.sql_aut_new_arrivals()
+    result = db_user_activity.sql_aut_new_arrivals()
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#分类查询
-@user_activity.route("class_lookup",methods = ["post"])
+
+# 新书推荐2
+@user_activity.route("index_new_arrivals", methods=["post"])
+def index_new_arrivals():
+    result = db_user_activity.sql_index_new_arrivals()
+    if not result[0]:
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
+
+
+# 分类查询
+@user_activity.route("class_lookup", methods=["post"])
 def class_lookup():
     data = json.loads(request.get_data("").decode("utf-8"))
     C = Condition()
@@ -137,21 +150,23 @@ def class_lookup():
         category2 = data["category2"]
     if "language" in data and data["language"]:
         language = C.language(data["language"])
-    result = db_user_activity.sql_class_lookup(category1,category2,language)
+    result = db_user_activity.sql_class_lookup(category1, category2, language)
     if not result[0]:
-        jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success","data":result[1]})
+        jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#分类查询自动获取
-@user_activity.route("aut_class_lookup",methods = ["post"])
+
+# 分类查询自动获取
+@user_activity.route("aut_class_lookup", methods=["post"])
 def aut_class_lookup():
     result = db_user_activity.sql_aut_class_lookup()
     if not result[0]:
         jsonify({"status": -1, "message": result[1]})
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
-#发送验证码
-@user_activity.route("send_email",methods = ["post"])
+
+# 发送验证码
+@user_activity.route("send_email", methods=["post"])
 def send_email():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
@@ -160,12 +175,12 @@ def send_email():
         return jsonify({"status": -1, "message": sql_email[1]})
     email = sql_email[1]
     subject = "图书馆找回密码验证"
-    se(subject,email,180)
-    return jsonify({"status": 0, "message": "验证码发送成功","data":email})
+    se(subject, email, 180)
+    return jsonify({"status": 0, "message": "验证码发送成功", "data": email})
 
 
-#验证码验证
-@user_activity.route("verify_code",methods = ["post"])
+# 验证码验证
+@user_activity.route("verify_code", methods=["post"])
 def verify_code():
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
@@ -174,8 +189,9 @@ def verify_code():
         return jsonify({"status": -1, "message": "验证码错误"})
     return jsonify({"status": 0, "message": "success"})
 
-#设置密码
-@user_activity.route("make_password",methods = ["post"])
+
+# 设置密码
+@user_activity.route("make_password", methods=["post"])
 def make_password():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
@@ -186,10 +202,8 @@ def make_password():
     ver = userverify.UserVerify()
     password = ver.password(password)
     if not password[0]:
-        return jsonify({"status":-1,"message":password[1]})
-    result = db_user_activity.sql_update_password(user_name,password[1])
+        return jsonify({"status": -1, "message": password[1]})
+    result = db_user_activity.sql_update_password(user_name, password[1])
     if not result[0]:
-        return jsonify({"status":-1,"message":result[1]})
-    return jsonify({"status":0,"message":"success"})
-
-
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success"})
