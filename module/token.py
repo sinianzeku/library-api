@@ -7,7 +7,7 @@ import hmac
 def generate_token(key, expire=60*60*24*7):
     ts_str = str(time.time() + expire)
     ts_byte = ts_str.encode("utf-8")
-    sha1_tshexstr  = hmac.new(key.encode("utf-8"),ts_byte,'sha1').hexdigest() 
+    sha1_tshexstr = hmac.new(key.encode("utf-8"), ts_byte, 'sha1').hexdigest()
     token = ts_str+':'+sha1_tshexstr
     b64_token = base64.urlsafe_b64encode(token.encode("utf-8"))
     return b64_token.decode("utf-8")

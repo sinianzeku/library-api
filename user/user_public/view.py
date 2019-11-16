@@ -59,7 +59,10 @@ def user_verify_login():
     username = data["username"]
     password = data["password"]
     code = data["code"]
-    time = data["time"]
+    if data["time"]:
+        time = 60*60*24*7
+    else:
+        time = 60*60*24*1
     user = UserVerify()
     account_result = user.account(username)
     password_result = user.password(password)
