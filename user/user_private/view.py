@@ -13,18 +13,21 @@ user = Blueprint("user_private",__name__)
 
 
 #意见反馈
-@user.route("feedback",methods = ["post"])
+@user.route("feedback", methods=["post"])
 def feedback():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_name = data["user_name"]
     feedbacks = data["feedbacks"]
     reader = data["reader"]
     phone = data["phone"]
+    tokens = data["tokens"]
+    if not token.certify_token(user_name, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(user_name)
     result = db_user.sql_feedbacks(user_id,reader,phone,feedbacks)
     if not result:
-        return jsonify({"status":-1,"message":"fail"})
-    return jsonify({"status":0,"message":"success"})
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success"})
 
 #自动获取反馈信息
 @user.route("get_feedback",methods = ["post"])
