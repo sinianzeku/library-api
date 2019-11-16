@@ -55,12 +55,11 @@ def email_verify():
 @user.route("login",methods = ["post"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
+    print(data)
     username = data["username"]
     password = data["password"]
     code = data["code"]
-    tokens = data["token"]
-    if tk.certify_token(username, tokens):
-        return jsonify({"status": 0, "message": "success"})
+    time = data["time"]
     user = UserVerify()
     account_result = user.account(username)
     password_result = user.password(password)
@@ -68,7 +67,11 @@ def user_verify_login():
         return jsonify({"status": -1, "message": account_result[1]})
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
-    verify_resutl = user_login(account_result[1],password_result[1],code)
+    verify_resutl = user_login(account_result[1], password_result[1], code)
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
-    return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username)})
+    return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username,time)})
+
+
+
+

@@ -24,10 +24,12 @@ def certify_token(key, token):
         # token expired
         return False
     known_sha1_tsstr = token_list[1]
-    sha1 = hmac.new(key.encode("utf-8"),ts_str.encode('utf-8'),'sha1')
+    sha1 = hmac.new(key.encode("utf-8"), ts_str.encode('utf-8'), 'sha1')
     calc_sha1_tsstr = sha1.hexdigest()
     if calc_sha1_tsstr != known_sha1_tsstr:
-        # token certification failed
-        return False 
-    # token certification success
+        return False
     return True
+
+
+
+

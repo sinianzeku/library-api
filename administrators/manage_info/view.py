@@ -1,29 +1,14 @@
 from flask import Blueprint, jsonify, request
-from user.verify.userverify import UserVerify
 from administrators.manage_info import db_manage
 from administrators.book import db_book
 from module.activity_set import Condition
+from module import token
 import json
 import os
 
 admin = Blueprint("admin",__name__)
 
 
-# 增加管理员
-# @admin.route("add_manager",methods = ["post"])
-# def add_manager():
-#     data = json.loads(request.get_data("").decode("utf-8"))
-#     work_id = data["work_id"]
-#     worker_name = data["worker_name"]
-#     work_passwords = data["work_password"]
-#     user = UserVerify()
-#     work_password = user.password(work_passwords)
-#     if not work_password[0]:
-#         return jsonify({"status": -1, "message": "密码格式错误"})
-#     result = db_manage.sql_add_manager(work_id, worker_name, work_password[1])
-#     if not result[0]:
-#         return jsonify({"status": -1, "message": result[1]})
-#     return jsonify({"status": 0, "message": result[1]})
 
 
 # 查询借书者信息
@@ -256,6 +241,11 @@ def delete_borrow_record():
 #图书管理首页
 @admin.route("borrowing_condition",methods = ["post"])
 def borrowing_condition():
+    data = json.load(request.get_data("").decode("utf-8"))
+    account = data["account"]
+    tokens = data["tokens"]
+    if not token.certify_token(account,tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     data_dict = {}
     data_dict["user_number"],data_dict["book_number"],data_dict["borrowing_number"],data_dict["record_number"]=db_manage.sql_borrowing_condition1()
     data_dict["borrowing_condition"] = db_manage.sql_borrowing_condition()
