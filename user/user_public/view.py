@@ -58,6 +58,9 @@ def user_verify_login():
     username = data["username"]
     password = data["password"]
     code = data["code"]
+    tokens = data["token"]
+    if tk.certify_token(username, tokens):
+        return jsonify({"status": 0, "message": "success"})
     user = UserVerify()
     account_result = user.account(username)
     password_result = user.password(password)
@@ -69,12 +72,3 @@ def user_verify_login():
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
     return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username)})
-
-@user.route("token",methods=["post"])
-def token():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    username = data["username"]
-    tokens = data["token"]
-    if not tk.certify_token(username, tokens):
-        return jsonify({"status": -1, "message": "fail"})
-    return jsonify({"status": 0, "message": "success"})
