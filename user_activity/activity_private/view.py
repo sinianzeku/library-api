@@ -1,22 +1,26 @@
-from flask import Blueprint,jsonify,session,request
+from flask import Blueprint,jsonify,request
 from user_activity.db import db_user_activity
 from administrators.book.db_book import sql_query_user_id
 from module.send_email import sendinfo
+from module import token
 import json
 
 user_activity = Blueprint("activity_private",__name__)
 
 
-@user_activity.route("count_book",methods = ["post"])
+@user_activity.route("count_book", methods=["post"])
 def count_book():
     data = json.loads(request.get_data("").decode("utf-8"))
     if not data["user_account"]:
-        return jsonify({"status": -1, "message": "fail","data":[]})
-    user_account = data["user_account"]
-    user_id = sql_query_user_id(user_account)
+        return jsonify({"status": -1, "message": "fail", "data":[]})
+    account = data["user_account"]
+    tokens = data["tokens"]
+    if not token.certify_token(account, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
+    user_id = sql_query_user_id(account)
     result = {}
-    result["bookshelf"],result["borrowing"],result["borrow"] = db_user_activity.sql_count_book(user_id)
-    return jsonify({"status": 0, "message": "success","data":result})
+    result["bookshelf"], result["borrowing"], result["borrow"] = db_user_activity.sql_count_book(user_id)
+    return jsonify({"status": 0, "message": "success", "data": result})
 
 
 #借书记录

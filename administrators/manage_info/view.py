@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from administrators.manage_info import db_manage
 from administrators.book import db_book
 from module.activity_set import Condition
-from module import token
 import json
 import os
 
@@ -242,16 +241,16 @@ def delete_borrow_record():
 @admin.route("borrowing_condition",methods = ["post"])
 def borrowing_condition():
     data_dict = {}
-    data_dict["user_number"],data_dict["book_number"],data_dict["borrowing_number"],data_dict["record_number"]=db_manage.sql_borrowing_condition1()
+    data_dict["user_number"], data_dict["book_number"], data_dict["borrowing_number"],data_dict["record_number"]=db_manage.sql_borrowing_condition1()
     data_dict["borrowing_condition"] = db_manage.sql_borrowing_condition()
-    return jsonify({"status":0,"message":"success","data":data_dict})
+    return jsonify({"status": 0, "message": "success", "data": data_dict})
 
 
 # 自动获取
 @admin.route("process_information", methods=["post"])
 def process_information():
     result = db_manage.sql_process_information()
-    return jsonify({"status": 0, "message": "success","data":result})
+    return jsonify({"status": 0, "message": "success", "data": result})
 
 
 # 未处理
@@ -264,8 +263,8 @@ def untreated_information():
         input = data["input"]
     result = db_manage.sql_conditional_process_information(input,state)
     if not result[0]:
-        return jsonify({"status":-1,"message":"fail","data":[]})
-    return jsonify({"status": 0, "message": "success","data":result[1]})
+        return jsonify({"status": -1, "message": "fail", "data": []})
+    return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 #已处理
 @admin.route("processed_information",methods = ["post"])
