@@ -51,17 +51,6 @@ def query_return_book_info():
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
-# 增加书籍类别
-@admin.route("add_book_category", methods=["post"])
-def add_book_category():
-    data = json.loads(request.get_data("").decode("utf-8"))
-    category1 = data["category1"]
-    category2 = data["category2"]
-    result = db_manage.sql_add_book_category(category1, category2)
-    if not result[0]:
-        return jsonify({"status": -1, "message": result[1]})
-    return jsonify({"status": 0, "message": "success"})
-
 
 # 用户信息
 @admin.route("user_info", methods=["post"])

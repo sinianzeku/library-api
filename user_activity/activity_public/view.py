@@ -127,7 +127,7 @@ def new_arrivals():
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
-# 新书推荐
+# 新书推荐自动获取
 @user_activity.route("aut_new_arrivals", methods=["post"])
 def aut_new_arrivals():
     result = db_user_activity.sql_aut_new_arrivals()
