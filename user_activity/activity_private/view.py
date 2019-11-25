@@ -19,7 +19,8 @@ def count_book():
         return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(account)
     result = {}
-    result["bookshelf"], result["borrowing"], result["borrow"] = db_user_activity.sql_count_book(user_id)
+    result["bookshelf"], result["borrowing"], result["borrow"], result["img"] = db_user_activity.sql_count_book(user_id)
+    result["img"] ="http://47.96.139.19:6868/library/img1/"+result["img"]
     return jsonify({"status": 0, "message": "success", "data": result})
 
 

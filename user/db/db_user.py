@@ -94,10 +94,10 @@ def sql_change_photo(img, username):
 
 
 def sql_query_photo(username):
-    sql = 'select user_photo from user where user_account = "{}"'.format(username)
-    result = mysql_module(sql)
-    if result[1]:
-        return result[1][0]["user_photo"]
+    sql1 = 'select user_photo from user where user_account = "{}"'.format(username)
+    result1 = mysql_module(sql1)
+    if result1[1]:
+        return result1[1][0]["user_photo"]
     return None
 
 

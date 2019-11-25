@@ -18,10 +18,11 @@ def sql_query_book_info(book_id):
 
 
 def sql_count_book(user_id):
-    sql = "SELECT * from ( select count(*) count  from my_bookshelf where user_id = {} UNION ALL select count(*) count  from borrow_info where user_id = {} and state = '1' UNION ALL select count(*) count  from borrow_info where user_id = {}) as counts".format(
-        user_id, user_id, user_id)
+    sql = "SELECT * from ( select count(*) count  from my_bookshelf where user_id = {} UNION ALL select count(*) count  from borrow_info where user_id = {} and state = '1' UNION ALL select count(*) count  from borrow_info where user_id = {} UNION ALL select user_photo from user where user_id = '{}') as counts".format(
+        user_id, user_id, user_id, user_id)
     result = mysql_module(sql)
-    return result[1][0]["count"], result[1][1]["count"], result[1][2]["count"]
+    print(result)
+    return result[1][0]["count"], result[1][1]["count"], result[1][2]["count"], result[1][3]["count"]
 
 
 # 历史借书记录

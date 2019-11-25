@@ -69,4 +69,4 @@ def user_verify_login():
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
     img = db_user.sql_query_photo(username)
-    return jsonify({"status": 0, "message": "success", "data": [tk.generate_token(username, time), img]})
+    return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username, time)})
