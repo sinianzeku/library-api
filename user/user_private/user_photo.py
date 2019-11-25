@@ -12,8 +12,9 @@ def pictures(photo, username):
         src = src + ran_str
     else:
         while 1:
-            ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))
-            src = src + ran_str + '.jpg'
+            src = '/home/date/library/img1/'
+            ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))+ '.jpg'
+            src = src + ran_str
             if os.path.exists(src):
                 continue
             break
@@ -21,4 +22,4 @@ def pictures(photo, username):
     file = open(src, 'wb')
     file.write(imgdata)
     file.close()
-    return ran_str+".jpg"
+    return ran_str
