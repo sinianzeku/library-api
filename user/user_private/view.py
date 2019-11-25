@@ -6,6 +6,7 @@ from administrators.book.db_book import sql_query_user_id
 from user.verify.emailverify import get_my_item
 from module.activity_set import Condition
 from module.send_email import sendverifycode as se
+from user.user_private.user_photo import pictures
 import json
 
 user = Blueprint("user_private", __name__)
@@ -112,3 +113,20 @@ def update_info():
         return jsonify({"status": -1, "message": "验证码错误"})
     db_user.sql_update_info(user_account, user_name, user_sex, email, phone)
     return jsonify({"status": 0, "message": "success"})
+
+
+# 修改头像
+@user.route("change_photo")
+def change_photo():
+    data = json.load(request.get_data("").deocde("utf-8"))
+    photo = data["photo"]
+    username = data["username"]
+    img = pictures(photo, username)
+    result = db_user.sql_change_photo(img, username)
+    if not result:
+        return jsonify({"status": -1, "message": "fail"})
+    return jsonify({"status": 0, "message": "success"})
+
+
+
+

@@ -236,7 +236,7 @@ def borrowing_condition():
     return jsonify({"status": 0, "message": "success", "data": data_dict})
 
 
-# 自动获取
+# 自动获取反馈信息
 @admin.route("process_information", methods=["post"])
 def process_information():
     result = db_manage.sql_process_information()

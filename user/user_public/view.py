@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from user.verify.userverify import UserVerify
-from user.db.db_user import into_register_info, user_login
+from user.db import db_user
 import json
 from user.verify.emailverify import get_my_item
 from module.send_email import sendverifycode as se
@@ -31,11 +31,7 @@ def user_verify_register():
         return jsonify({"status": -1, "message": password_result[1]})
     if verifycode != get_my_item(email):
         return jsonify({"status": -1, "message": "验证码错误"})
-    into_resutl = into_register_info(account_result[1],
-                                     user_phone,
-                                     username,
-                                     password_result[1],
-                                     email)
+    into_resutl = db_user.into_register_info(account_result[1], user_phone, username, password_result[1], email)
     if not into_resutl[0]:
         return jsonify({"status": -1, "message": into_resutl[1]})
     return jsonify({"status": 0, "message": into_resutl[1]})
@@ -55,11 +51,10 @@ def email_verify():
 @user.route("login", methods=["post"])
 def user_verify_login():
     data = json.loads(request.get_data("").decode("utf-8"))
-    print(data)
     username = data["username"]
     password = data["password"]
     code = data["code"]
-    if data["time"]:
+    if data["time"] == "true":
         time = 60 * 60 * 24 * 7
     else:
         time = 60 * 60 * 24 * 1
@@ -70,7 +65,8 @@ def user_verify_login():
         return jsonify({"status": -1, "message": account_result[1]})
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
-    verify_resutl = user_login(account_result[1], password_result[1], code)
+    verify_resutl = db_user.user_login(account_result[1], password_result[1], code)
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
-    return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username, time)})
+    img = db_user.sql_query_photo(username)
+    return jsonify({"status": 0, "message": "success", "data": [tk.generate_token(username, time), img]})

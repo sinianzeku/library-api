@@ -80,6 +80,18 @@ def collect_book():
     return jsonify({"status": 0, "message": "success"})
 
 
+# 取消收藏
+@user_activity.route("cancel_collect_book",methods = ["post"])
+def cancel_collect_book():
+    data = json.loads(request.get_data("").decode("utf-8"))
+    book_id = data["book_id"]
+    user_name = data["user_name"]
+    result = db_user_activity.cancel_collect_book(user_name, book_id)
+    if not result[0]:
+        return jsonify({"status": -1, "message": result[1]})
+    return jsonify({"status": 0, "message": "success"})
+
+
 # 三行情书活动
 @user_activity.route("thematic_activities", methods=["post"])
 def thematic_activities():

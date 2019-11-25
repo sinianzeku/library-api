@@ -1,4 +1,4 @@
-from config.db_config import mysql_module, mysql_modules
+from config.db_config import mysql_module
 
 
 def sql_query_book(query_criteria, query_content):
@@ -9,7 +9,7 @@ def sql_query_book(query_criteria, query_content):
 
 
 def sql_query_book_info(book_id):
-    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language from book_info where book_id = '{}' ".format(
+    sql = "select book_id,book_name,book_auther,book_category,book_publisher,book_room,book_bookshelf,book_synopsis,book_state,cast(book_publication_date as char) as book_publication_date ,cast(books_add_time as char) as books_add_time, book_language,book_img_path from book_info where book_id = '{}' ".format(
         book_id)
     result = mysql_module(sql)
     if not result[0]:
@@ -65,6 +65,12 @@ def sql_collect_book(user_name, book_id):
     mysql_module(sql)
     return [True, "收藏成功"]
 
+def cancel_collect_book(user_name, book_id):
+    sql_user_id = "select user_id from user where user_account = '{}'".format(user_name)
+    user_id = mysql_module(sql_user_id)[1][0]['user_id']
+    sql = "DELETE from my_bookshelf where user_id = {} and book_id = '{}'".format(user_id,book_id)
+    mysql_module(sql)
+    return [True, "删除成功"]
 
 def sql_popular_recommendation(today_time, past_time, language, category1, category2):
     sql1 = "where 1 = 1"

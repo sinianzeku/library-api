@@ -5,7 +5,7 @@ from user.verify.emailverify import get_my_item
 from user.verify import userverify
 from config.defaulttime import set_time
 from module.activity_set import Condition
-import os, json
+import json
 
 user_activity = Blueprint("activity_public", __name__)
 
@@ -40,7 +40,7 @@ def query_book_info():
     if not result[0]:
         return jsonify({"status": -1, "massage": "fail", "data": result[1]})
     for i in range(len(result[1])):
-        result[1][i]["book_img_path"] = os.path.abspath('.') + '/data/img/book-010.png'
+        result[1][i]["book_img_path"] ='http://47.96.139.19:6868/library/images/'+str(result[1][i]["book_img_path"])
     return jsonify({"status": 0, "massage": "success", "data": result[1]})
 
 

@@ -41,7 +41,7 @@ class NewBookEntry():
         if self.imges:
             imges = re.findall(r"base64,(.*)", self.imges)
             imgdata = base64.b64decode(imges[0])
-            src = 'http://47.96.139.19:6868/library/images/'
+            src = '/home/date/library/img/'
             while 1:
                 ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))
                 src = src + ran_str + '.jpg'
@@ -51,7 +51,7 @@ class NewBookEntry():
             file = open(src, 'wb')
             file.write(imgdata)
             file.close()
-            self.src = src
+            self.src = ran_str
             return True
         self.src = src
         return False

@@ -85,3 +85,20 @@ def sql_get_feedback(user_id):
         user_id, st.time_frame(["past", 30]))
     result = mysql_module(sql)
     return result
+
+
+def sql_change_photo(img, username):
+    sql = "update user set user_photo = '{}' where user_account = '{}'".format(img, username)
+    mysql_module(sql)
+    return True
+
+
+def sql_query_photo(username):
+    sql = 'select user_photo from user where user_account = "{}"'.format(username)
+    result = mysql_module(sql)
+    if result[1]:
+        return result[1][0]["user_photo"]
+    return None
+
+
+
