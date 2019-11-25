@@ -26,7 +26,7 @@ def sql_count_book(user_id):
 
 # 历史借书记录
 def sql_borrowed_records(user_id):
-    sql = 'SELECT book.book_id,	book_name,	book_auther,book.book_publisher,	cast(borrow_time as char) as borrow_time,	cast(actual_return_time as char) as actual_return_time,	book_room FROM	( SELECT book_id,book_publisher, book_name, book_auther, book_room FROM book_info WHERE book_id IN ( SELECT book_id FROM borrow_info WHERE user_id = {} ) ) AS book LEFT JOIN borrow_info borrow ON borrow.book_id = book.book_id'.format(
+    sql = 'SELECT book.book_id,book_name,book_auther,book.book_publisher,	cast(borrow_time as char) as borrow_time,cast(actual_return_time as char) as actual_return_time,book_room FROM ( SELECT book_id,book_publisher, book_name, book_auther, book_room FROM book_info WHERE book_id IN ( SELECT book_id FROM borrow_info WHERE user_id = {} ) ) AS book LEFT JOIN borrow_info borrow ON borrow.book_id = book.book_id and borrow.user_id = 21'.format(
         user_id)
     result = mysql_module(sql)
     if not result[0]:
