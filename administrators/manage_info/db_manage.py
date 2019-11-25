@@ -24,9 +24,9 @@ def sql_query_user_info(user_name):
 
 
 def sql_query_book_info_0(book_name):
-    sql = "select book_id,book_name from book_info where book_state = '0'"
+    sql = "select book_id,book_name,book_img_path from book_info where book_state = '0'"
     if book_name:
-        sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '0'".format(
+        sql = "select book_id,book_name,book_img_path from book_info where instr(book_name,'{}')  and book_state = '0'".format(
             book_name)
     result = mysql_module(sql)
     if not result[0]:
@@ -35,7 +35,7 @@ def sql_query_book_info_0(book_name):
 
 
 def sql_query_book_info_1(book_name, user_id):
-    sql = "select book_id,book_name from book_info where instr(book_name,'{}')  and book_state = '1' and book_id in ( select book_id from borrow_info where user_id = {})".format(
+    sql = "select book_id,book_name, book_img_path from book_info where instr(book_name,'{}')  and book_state = '1' and book_id in ( select book_id from borrow_info where user_id = {})".format(
         book_name, user_id)
     result = mysql_module(sql)
     if not result[0]:

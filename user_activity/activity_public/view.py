@@ -170,6 +170,8 @@ def class_lookup():
     result = db_user_activity.sql_class_lookup(category1, category2, language)
     if not result[0]:
         jsonify({"status": -1, "message": result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
@@ -179,6 +181,8 @@ def aut_class_lookup():
     result = db_user_activity.sql_aut_class_lookup()
     if not result[0]:
         jsonify({"status": -1, "message": result[1]})
+    for i in range(len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
