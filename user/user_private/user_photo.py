@@ -21,4 +21,4 @@ def pictures(photo, username):
     file = open(src, 'wb')
     file.write(imgdata)
     file.close()
-    return ran_str
+    return ran_str+".jpg"
