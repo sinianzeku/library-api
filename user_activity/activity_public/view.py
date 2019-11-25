@@ -81,6 +81,8 @@ def popular_recommendation():
     result = db_user_activity.sql_popular_recommendation(today_time, past_time, language, category1, category2)
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})
+    for i in range(0, len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
@@ -90,6 +92,8 @@ def aut_popular_recommendation():
     result = db_user_activity.sql_aut_popular_recommendation()
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})
+    for i in range(0, len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
@@ -124,6 +128,8 @@ def new_arrivals():
     result = db_user_activity.sql_new_arrivals(today_time, past_time, language, category1, category2)
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})
+    for i in range(0, len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 
@@ -133,6 +139,8 @@ def aut_new_arrivals():
     result = db_user_activity.sql_aut_new_arrivals()
     if not result[0]:
         return jsonify({"status": -1, "message": "fail"})
+    for i in range(0, len(result[1])):
+        result[1][i]["book_img_path"] = "http://47.96.139.19:6868/library/img/"+result[1][i]["book_img_path"]
     return jsonify({"status": 0, "message": "success", "data": result[1]})
 
 

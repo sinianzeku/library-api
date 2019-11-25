@@ -21,7 +21,6 @@ def sql_count_book(user_id):
     sql = "SELECT * from ( select count(*) count  from my_bookshelf where user_id = {} UNION ALL select count(*) count  from borrow_info where user_id = {} and state = '1' UNION ALL select count(*) count  from borrow_info where user_id = {} UNION ALL select user_photo from user where user_id = '{}') as counts".format(
         user_id, user_id, user_id, user_id)
     result = mysql_module(sql)
-    print(result)
     return result[1][0]["count"], result[1][1]["count"], result[1][2]["count"], result[1][3]["count"]
 
 
@@ -87,20 +86,20 @@ def sql_popular_recommendation(today_time, past_time, language, category1, categ
     if category2:
         sql_cate = sql_cate + " and category2 = '{}'".format(category2)
 
-    sql2 = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id {} and book.book_category in ({}) group by book_id order by count desc limit 50".format(
+    sql2 = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count, book.book_img_path from borrow_info borrow left join book_info book on borrow.book_id = book.book_id {} and book.book_category in ({}) group by book_id order by count desc limit 50".format(
         sql1, sql_cate)
     result = mysql_module(sql2)
     return [True, result[1]]
 
 
 def sql_aut_popular_recommendation():
-    sql = "select distinct book.book_id,book.book_name,book_auther, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 50"
+    sql = "select distinct book.book_id,book.book_name,book_auther, book.book_img_path, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 50"
     result = mysql_module(sql)
     return [True, result[1]]
 
 
 def sql_index_popular_recommendation():
-    sql = "select distinct book.book_id,book.book_name,count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 7"
+    sql = "select distinct book.book_id,book.book_name, count(book.book_id) as count from borrow_info borrow left join book_info book on borrow.book_id = book.book_id  group by book_id order by count desc limit 7"
     result = mysql_module(sql)
     return [True, result[1]]
 
@@ -119,14 +118,14 @@ def sql_new_arrivals(today_time, past_time, language, category1, category2):
     if category2:
         sql_cate = sql_cate + " and category2 = '{}'".format(category2)
 
-    sql2 = 'select book_id,book_name,book_auther from book_info {} and book_category in ({}) order by books_add_time desc limit 50 '.format(
+    sql2 = 'select book_id,book_name,book_auther, book_img_path from book_info {} and book_category in ({}) order by books_add_time desc limit 50 '.format(
         sql1, sql_cate)
     result = mysql_module(sql2)
     return [True, result[1]]
 
 
 def sql_aut_new_arrivals():
-    sql = "select book_id,book_name,book_auther from book_info order by books_add_time desc limit 50"
+    sql = "select book_id,book_name,book_auther, book.book_img_path from book_info order by books_add_time desc limit 50"
     result = mysql_module(sql)
     return [True, result[1]]
 
