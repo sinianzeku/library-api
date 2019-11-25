@@ -116,9 +116,9 @@ def update_info():
 
 
 # 修改头像
-@user.route("change_photo")
+@user.route("change_photo", methods=["post"])
 def change_photo():
-    data = json.load(request.get_data("").deocde("utf-8"))
+    data = json.loads(request.get_data("").decode("utf-8"))
     photo = data["photo"]
     username = data["username"]
     img = pictures(photo, username)

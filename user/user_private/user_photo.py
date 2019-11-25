@@ -17,6 +17,7 @@ def pictures(photo, username):
             if os.path.exists(src):
                 continue
             break
+    print(src)
     file = open(src, 'wb')
     file.write(imgdata)
     file.close()
