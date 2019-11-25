@@ -7,7 +7,7 @@ def pictures(photo, username):
     imgdata = base64.b64decode(imges[0])
     src = '/home/date/library/img1/'
     result = db_user.sql_query_photo(username)
-    if result:
+    if result and result != "1.jpg":
         ran_str = result
         src = src + ran_str
     else:
