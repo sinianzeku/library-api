@@ -41,8 +41,8 @@ class NewBookEntry():
         if self.imges:
             imges = re.findall(r"base64,(.*)", self.imges)
             imgdata = base64.b64decode(imges[0])
-            src = '/home/date/library/img/'
             while 1:
+                src = '/home/date/library/img/'
                 ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 20))
                 src = src + ran_str + '.jpg'
                 if os.path.exists(src):

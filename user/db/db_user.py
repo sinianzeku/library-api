@@ -12,7 +12,8 @@ def into_register_info(user_account, user_phone, username, password, email):
     result = mysql_module(select_user)
     if result[1]:
         return [False, "该昵称已存在"]
-    into_user = 'INSERT INTO user(user_account,user_password,user_name,user_email,user_phone,user_registration_time) VALUES("{}","{}","{}","{}","{}","{}")'.format(
+    into_user = 'INSERT INTO user(user_account,user_password,user_name,user_email,' \
+                'user_phone,user_registration_time) VALUES("{}","{}","{}","{}","{}","{}")'.format(
         user_account, password, username, email, user_phone, st.today())
     result = mysql_module(into_user)
     if not result[0]:

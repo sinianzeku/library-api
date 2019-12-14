@@ -11,7 +11,7 @@ import json
 
 user = Blueprint("user_private", __name__)
 
-
+ #user/feedback
 # 意见反馈
 @user.route("feedback", methods=["post"])
 def feedback():
@@ -77,7 +77,7 @@ def update_password():
 def update_info_email_verify():
     data = json.loads(request.get_data("").decode("utf-8"))
     email = data["email"]
-    subject = '图书馆更新密码验证码'
+    subject = '图书馆更信息验证码'
     se(subject, email, 60)
     return jsonify({"status": 0, "message": "验证码发送成功"})
 

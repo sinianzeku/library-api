@@ -2,15 +2,6 @@ from config.db_config import mysql_module, mysql_modules
 from config.defaulttime import set_time
 
 
-def sql_add_manager(work_id, worker_name, work_password):
-    sql = "insert into admin (work_id,worker_name,work_password) values ('{}','{}','{}')".format(work_id, worker_name,
-                                                                                                 work_password)
-    result = mysql_module(sql)
-    if not result[0]:
-        return [False, "管理员注册失败"]
-    return [True, "管理员注册成功"]
-
-
 def sql_query_user_info(user_name):
     if user_name:
         sql = "select user_id,user_account, user_email, cast(user_registration_time as char) as user_registration_time  from user where instr(user_account,'{}')".format(

@@ -125,7 +125,7 @@ def sql_new_arrivals(today_time, past_time, language, category1, category2):
 
 
 def sql_aut_new_arrivals():
-    sql = "select book_id,book_name,book_auther, book.book_img_path from book_info order by books_add_time desc limit 50"
+    sql = "select book_id,book_name,book_auther, book_img_path from book_info order by books_add_time desc limit 50"
     result = mysql_module(sql)
     return [True, result[1]]
 

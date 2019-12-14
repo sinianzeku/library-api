@@ -6,10 +6,10 @@ import os
 # 邮箱
 class email_config():
     MAIL_SERVER = "smtp.qq.com"
-    MAIL_PORT = "587"
+    MAIL_PORT = "456"
     MAIL_USE_TLS = True
     MAIL_USERNAME = "374652530@qq.com"
-    MAIL_PASSWORD = "qjrlnuwjzbjicadd"
+    MAIL_PASSWORD = "suedigmmeasibjic"
     MAIL_DEFAULT_SENDER = "374652530@qq.com"
 
 

@@ -7,16 +7,9 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-flask-cors = "*"
 pymysql = "*"
 flask-mail = "*"
-qrcode = "*"
-image = "*"
-opencv-python = "*"
-pyzbar = "*"
-flask-cache = "*"
-requests = "*"
-
+flask-cors = "*"
 
 [requires]
 python_version = "3.6"

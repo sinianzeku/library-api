@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
 from user.verify.userverify import UserVerify
 from user.db import db_user
-import json
 from user.verify.emailverify import get_my_item
 from module.send_email import sendverifycode as se
 from module import token as tk
+import json
 
 user = Blueprint("user_public", __name__)
 
@@ -60,13 +60,12 @@ def user_verify_login():
         time = 60 * 60 * 24 * 1
     user = UserVerify()
     account_result = user.account(username)
-    password_result = user.password(password)
     if not account_result[0]:
         return jsonify({"status": -1, "message": account_result[1]})
+    password_result = user.password(password)
     if not password_result[0]:
         return jsonify({"status": -1, "message": password_result[1]})
     verify_resutl = db_user.user_login(account_result[1], password_result[1], code)
     if not verify_resutl[0]:
         return jsonify({"status": -1, "message": verify_resutl[1]})
-    img = db_user.sql_query_photo(username)
     return jsonify({"status": 0, "message": "success", "data": tk.generate_token(username, time)})

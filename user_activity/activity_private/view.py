@@ -20,7 +20,7 @@ def count_book():
     user_id = sql_query_user_id(account)
     result = {}
     result["bookshelf"], result["borrowing"], result["borrow"], result["img"] = db_user_activity.sql_count_book(user_id)
-    result["img"] ="http://47.96.139.19:6868/library/img1/"+result["img"]
+    result["img"] = "http://47.96.139.19:6868/library/img1/" + result["img"]
     return jsonify({"status": 0, "message": "success", "data": result})
 
 
@@ -29,9 +29,9 @@ def count_book():
 def borrowed_records():
     data = json.loads(request.get_data("").decode("utf-8"))
     user_account = data["user_account"]
-    # tokens = data["tokens"]
-    # if not token.certify_token(user_account, tokens):
-    #     return jsonify({"status": -1, "message": "not login", "data": ""})
+    tokens = data["tokens"]
+    if not token.certify_token(user_account, tokens):
+        return jsonify({"status": -1, "message": "not login", "data": ""})
     user_id = sql_query_user_id(user_account)
     result = db_user_activity.sql_borrowed_records(user_id)
     if not result[0]:
